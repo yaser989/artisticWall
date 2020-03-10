@@ -34,8 +34,8 @@ public class ArtistDomain implements Serializable{
 	private Long id;
 	@Column(name="artist_domain")
 	private String domain;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "artistDomain", fetch = FetchType.EAGER)
-	private List <Artist> artist;
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "artistDomain", fetch = FetchType.EAGER)
+//	private List <Artist> artist;
 
 
 }
