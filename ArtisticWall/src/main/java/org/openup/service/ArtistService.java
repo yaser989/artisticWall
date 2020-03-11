@@ -29,4 +29,11 @@ public class ArtistService {
 	   artist.setRole(role);
 		return artistRepository.save(artist);
 	}
+	
+	public Artist login(String mail,String password) {
+	Artist authenticatedArtist=artistRepository.findByMailAndPassword(mail, password);
+	 return authenticatedArtist;
+	}
+	
+	
 }
