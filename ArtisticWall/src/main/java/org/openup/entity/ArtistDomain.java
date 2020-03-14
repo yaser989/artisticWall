@@ -34,7 +34,7 @@ public class ArtistDomain implements Serializable{
 	private Long id;
 	@Column(name="artist_domain")
 	private String domain;
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy = "artistDomain")
 	private List <Artist> artist;
 

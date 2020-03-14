@@ -1,4 +1,7 @@
 package org.openup.controller;
+import java.util.List;
+
+import org.openup.DTO.ArtistDto;
 import org.openup.entity.Artist;
 import org.openup.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
+
+
 @RestController
 @RequestMapping("/v1/artist")
 @CrossOrigin(origins="*")
@@ -19,6 +26,8 @@ public class ArtistController {
 	
 	@Autowired
 	private ArtistService artistService;
+	
+
 	
 	@GetMapping("/")
 	public ResponseEntity findAll() {
