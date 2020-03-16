@@ -1,25 +1,27 @@
 package org.openup.repo;
 
+
+
 import java.util.List;
+import java.util.Optional;
 
 import org.openup.entity.Artist;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ArtistRepository extends JpaRepository<Artist, Long>{
 
 	
 	Artist findByMailAndPassword(String mail, String password);
 	
-	
-	@Query(nativeQuery = true,value ="SELECT artiste_name,"
-			+ "artiste_last_name,"
-			+ "artiste_email"
-			+ "FROM artist"
-			+ "artist,artist_domain"
-			+ "WHERE artist.artiste_id=artist,artist_domain.artist_domain_id AND artist.projectId = :param")
-	public Artist findTransaksisByAccountIdOrderById(@Param("param") Long projectId);
+	@Query("select art from Artist art where art.id = :id")
+	List<Artist> findArtistById(@Param("id") Long id);
+   
+
+       
 
 	
 	

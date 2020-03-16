@@ -8,7 +8,7 @@ public class ArtistDto implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+    private Long idDto;
 	private String ArtistName;
 	private String ArtistLastName;
 	private String ArtistMail;
@@ -51,6 +51,12 @@ public class ArtistDto implements Serializable{
 	}
 	public void setArtistDomain(String artistDomain) {
 		ArtistDomain = artistDomain;
+	}
+	public Long getIdDto() {
+		return idDto;
+	}
+	public void setIdDto(Long idDto) {
+		this.idDto = idDto;
 	}
 	
 	

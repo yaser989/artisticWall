@@ -22,17 +22,20 @@ public class ArtistService {
 
 	public List<ArtistDto> findAll() {
 		List<ArtistDto> listArtistDto = new ArrayList();
-
-		List<Artist> listArtist = artistRepository.findAll();
-
+        List<Artist> listArtist = artistRepository.findAll();
 		for (Artist art : listArtist) {
 			listArtistDto.add(artistMapper.artistToDto(art));
 		}
 		return listArtistDto;
 	}
 
-	public Artist findById(Long id) {
-		return artistRepository.findTransaksisByAccountIdOrderById(id);
+	public List<ArtistDto> findById(Long id) {
+		List<ArtistDto> listArtistDto = new ArrayList();
+		List<Artist> listArtist = artistRepository.findArtistById(id);
+		for (Artist art : listArtist) {
+			listArtistDto.add(artistMapper.artistToDto(art));
+		}
+		return listArtistDto;
 	}
 
 	public Artist createNewArtist(Artist artist) {
