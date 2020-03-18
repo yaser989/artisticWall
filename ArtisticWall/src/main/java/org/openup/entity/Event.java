@@ -45,6 +45,7 @@ public class Event implements Serializable {
 	@Column(name = "description")
 	private String description;
 	
+   
 	@Lob
 	private byte[] photo;
 	
@@ -68,4 +69,8 @@ public class Event implements Serializable {
 	@Column(name = "date")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
+	
+	
+	
+	
 }
