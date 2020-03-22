@@ -10,6 +10,7 @@ public class EventDto implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	private Long idDto;
 	private String typeEventDto;
 	private String descriptionDto;
 	private byte[] photoDto;
@@ -22,6 +23,13 @@ public class EventDto implements Serializable{
 	private String phoneDto;
 	private Date dateDto;
 	private Date dateOfCreatingDto;
+	
+	public Long getIdDto() {
+		return idDto;
+	}
+	public void setIdDto(Long idDto) {
+		this.idDto = idDto;
+	}
 	public String getTypeEventDto() {
 		return typeEventDto;
 	}

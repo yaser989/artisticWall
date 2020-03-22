@@ -9,6 +9,7 @@ public class EventMapper {
 
 	public EventDto toEventDto(Event event) {	
 		EventDto eventDto = new EventDto();
+		eventDto.setIdDto(event.getId());
 		eventDto.setCategoriesDto(event.getCategories().getCategories());
 		eventDto.setDescriptionDto(event.getDescription());
 		eventDto.setTypeEventDto(event.getTypeEvent());

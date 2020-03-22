@@ -1,7 +1,4 @@
 package org.openup.controller;
-import java.util.List;
-
-import org.openup.DTO.ArtistDto;
 import org.openup.entity.Artist;
 import org.openup.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
