@@ -9,6 +9,12 @@ import { LoginComponent } from './components/login/login.component';
 import { SubscribeComponent } from './components/subscribe/subscribe.component';
 import { UpdateEventComponent } from './components/update-event/update-event.component';
 import { CreateNewEventComponent } from './components/create-new-event/create-new-event.component';
+import { AuthorisedTopNavComponent } from './layout/authorised/authorised-top-nav/authorised-top-nav.component';
+import { AuthorisedSideNavTogglerComponent } from './layout/authorised/authorised-side-nav-toggler/authorised-side-nav-toggler.component';
+import { AuthorisedLayoutComponent } from './layout/authorised/authorised-layout/authorised-layout.component';
+import { AuthorisedSideNavComponent } from './layout/authorised/authorised-side-nav/authorised-side-nav.component';
+
+
 
 @NgModule({
   declarations: [
@@ -17,7 +23,11 @@ import { CreateNewEventComponent } from './components/create-new-event/create-ne
     LoginComponent,
     SubscribeComponent,
     UpdateEventComponent,
-    CreateNewEventComponent
+    CreateNewEventComponent,
+    AuthorisedTopNavComponent,
+    AuthorisedSideNavTogglerComponent,
+    AuthorisedLayoutComponent,
+    AuthorisedSideNavComponent
   ],
   imports: [
     BrowserModule,
