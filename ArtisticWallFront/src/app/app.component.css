@@ -1,0 +1,16 @@
+.img-rounded {
+	width: 250px;
+	height: 50px;
+	transform: skew(20deg);
+}
+.twoSide{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	  }
+
+	  .leftSide{
+		  background-color:  #202429de;
+	  }
+	
+		
