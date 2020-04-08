@@ -1,5 +1,6 @@
 package org.openup.controller;
-import org.openup.entity.Artist;
+import org.openup.DTO.ArtistDto;
+import org.openup.repo.ArtistRepository;
 import org.openup.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +26,8 @@ public class ArtistController {
 	@Autowired
 	private ArtistService artistService;
 	
-
+	@Autowired
+	private ArtistRepository artistRepository;
 	
 	@GetMapping("/")
 	public ResponseEntity findAll() {
@@ -38,7 +41,8 @@ public class ArtistController {
 	}
 	
 	@PostMapping("/")
-	public ResponseEntity createNewArtist(Artist artist) {
+	public ResponseEntity createNewArtist(@RequestBody ArtistDto artist) {
+		System.out.println("Controller"+artist);
 		return ResponseEntity.ok(artistService.createNewArtist(artist));
 	}
 	

@@ -1,1 +1,77 @@
-<p>subscribe works!</p>
+<nav class="navbar navbar-dark bg-dark">
+    <img src="assets\login-logo.png" alt="..." class="img-rounded">
+</nav>
+
+<div class="container"> 
+    <form (ngSubmit)="createNewArtist()" novalidate>
+  
+
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="artistName" class="form-control" [(ngModel)]="artist.artistName" required  />
+      </div>
+
+      <div class="form-group">
+        <label>Last name</label>
+        <input type="text" name="artistLastName" class="form-control" [(ngModel)]="artist.artistLastName"  required />
+      </div>
+  
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" name="artistMail" class="form-control" [(ngModel)]="artist.artistMail"  required />
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="text" name="artistPassword" class="form-control" [(ngModel)]="artist.artistPassword"  required />
+      </div>
+  
+      <div class="form-group">
+        <label>Domain</label>
+        <input type="text" name="artistDomain" class="form-control" [(ngModel)]="artist.artistDomain"  required />
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+
+
+
+  <!--Carousel Wrapper-->
+  <div class="all">
+<div id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
+
+    
+      <div class="carousel-item active">
+        <div class="view">
+          <img class="d-block w-100" src="assets\Illustration-classical-music-composer-composition-blog-history-2009.jpg" alt="First slide">
+        </div>
+         </div>
+
+      <div class="carousel-item">
+     <div class="view">
+          <img class="d-block w-100" src="assets\images.png" alt="Second slide">
+        </div>
+      </div>
+      
+      <div class="carousel-item">
+        <div class="view">
+          <img class="d-block w-100" src="assets\musik-islam.jpg" alt="Third slide">
+        </div>
+    </div>
+             
+    <div class="carousel-item">
+        <div class="view">
+             <img class="d-block w-100" src="assets\SOM_Hero_PianoKeys_CreditDavidAndrews.jpg" alt="Second slide">
+           </div>
+         </div>
+         
+   
+
+
+
+
+
+</div>
+</div>

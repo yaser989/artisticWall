@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Router } from '@angular/router';
+import {Artist} from 'src/app/models/artist';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  artist :Artist ; 
+  constructor(private router :Router ) {
+    this.checkUser();
+   }
 
   ngOnInit(): void {
   }
+
+  checkUser(){
+    if (localStorage.getItem('currentUser') === undefined || localStorage.getItem('currentUser') === null){
+      this.router.navigate(['/login']);
+      return;
+    }
+    this.artist = JSON.parse(localStorage.getItem('currentUser'));
+  }
+
+  
  
 }

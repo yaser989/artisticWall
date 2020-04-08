@@ -1,6 +1,7 @@
 package org.openup.DTO;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class ArtistDto implements Serializable{
 
@@ -9,48 +10,69 @@ public class ArtistDto implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
     private Long idDto;
-	private String ArtistName;
-	private String ArtistLastName;
-	private String ArtistMail;
-	private String ArtistPassword;
-	private byte[] ArtistPhoto;
-	private String ArtistDomain;
+	private String artistName;
+	private String artistLastName;
+	private String artistMail;
+	private String artistPassword;
+	private String artistDomain;
+	private byte[] artistPhoto;
 	
+	
+	
+	public ArtistDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public ArtistDto(Long idDto, String artistName, String artistLastName, String artistMail, String artistPassword,
+			byte[] artistPhoto, String artistDomain) {
+		super();
+		this.idDto = idDto;
+		this.artistName = artistName;
+		this.artistLastName = artistLastName;
+		this.artistMail = artistMail;
+		this.artistPassword = artistPassword;
+		this.artistPhoto = artistPhoto;
+		this.artistDomain = artistDomain;
+	}
+
+
 	public String getArtistName() {
-		return ArtistName;
+		return artistName;
 	}
 	public void setArtistName(String artistName) {
-		ArtistName = artistName;
+		this.artistName = artistName;
 	}
 	public String getArtistLastName() {
-		return ArtistLastName;
+		return artistLastName;
 	}
 	public void setArtistLastName(String artistLastName) {
-		ArtistLastName = artistLastName;
+		this.artistLastName = artistLastName;
 	}
 	public String getArtistMail() {
-		return ArtistMail;
+		return artistMail;
 	}
 	public void setArtistMail(String artistMail) {
-		ArtistMail = artistMail;
+		this.artistMail = artistMail;
 	}
 	public String getArtistPassword() {
-		return ArtistPassword;
+		return artistPassword;
 	}
 	public void setArtistPassword(String artistPassword) {
-		ArtistPassword = artistPassword;
+		this.artistPassword = artistPassword;
 	}
 	public byte[] getArtistPhoto() {
-		return ArtistPhoto;
+		return artistPhoto;
 	}
 	public void setArtistPhoto(byte[] artistPhoto) {
-		ArtistPhoto = artistPhoto;
+		this.artistPhoto = artistPhoto;
 	}
 	public String getArtistDomain() {
-		return ArtistDomain;
+		return artistDomain;
 	}
 	public void setArtistDomain(String artistDomain) {
-		ArtistDomain = artistDomain;
+		this.artistDomain = artistDomain;
 	}
 	public Long getIdDto() {
 		return idDto;
@@ -58,6 +80,16 @@ public class ArtistDto implements Serializable{
 	public void setIdDto(Long idDto) {
 		this.idDto = idDto;
 	}
+
+
+	@Override
+	public String toString() {
+		return "ArtistDto [idDto=" + idDto + ", artistName=" + artistName + ", artistLastName=" + artistLastName
+				+ ", artistMail=" + artistMail + ", artistPassword=" + artistPassword + ", artistDomain=" + artistDomain
+				+ ", artistPhoto=" + Arrays.toString(artistPhoto) + "]";
+	}
+
+
 	
 	
 	

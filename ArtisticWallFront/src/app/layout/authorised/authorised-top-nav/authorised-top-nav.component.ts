@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Artist} from 'src/app/models/artist';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-authorised-top-nav',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./authorised-top-nav.component.css']
 })
 export class AuthorisedTopNavComponent implements OnInit {
-
-  constructor() { }
+artist : Artist;
+  constructor(private router :Router ) {
+    this.checkUser();
+   }
 
   ngOnInit(): void {
+  }
+  checkUser(){
+    if (localStorage.getItem('currentUser') === undefined || localStorage.getItem('currentUser') === null){
+      this.router.navigate(['/login']);
+      return;
+    }
+    this.artist = JSON.parse(localStorage.getItem('currentUser'));
   }
 
 }

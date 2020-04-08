@@ -13,7 +13,7 @@ import { AuthorisedTopNavComponent } from './layout/authorised/authorised-top-na
 import { AuthorisedSideNavTogglerComponent } from './layout/authorised/authorised-side-nav-toggler/authorised-side-nav-toggler.component';
 import { AuthorisedLayoutComponent } from './layout/authorised/authorised-layout/authorised-layout.component';
 import { AuthorisedSideNavComponent } from './layout/authorised/authorised-side-nav/authorised-side-nav.component';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -33,7 +33,9 @@ import { AuthorisedSideNavComponent } from './layout/authorised/authorised-side-
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AlertsModule.forRoot()
+    AlertsModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

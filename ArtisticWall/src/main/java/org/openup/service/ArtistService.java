@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openup.DTO.ArtistDto;
 import org.openup.entity.Artist;
+import org.openup.entity.ArtistDomain;
 import org.openup.entity.Role;
 import org.openup.mapper.ArtistMapper;
 import org.openup.repo.ArtistRepository;
@@ -38,11 +39,18 @@ public class ArtistService {
 		return listArtistDto;
 	}
 
-	public Artist createNewArtist(Artist artist) {
+	public Artist createNewArtist(ArtistDto artistDto) {
+		ArtistDomain artistDomain= ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();
 		Role role = new Role();
+		Artist toPersist = Artist.builder().name(artistDto.getArtistName()).lastName(artistDto.getArtistLastName())
+				.mail(artistDto.getArtistMail()).password(artistDto.getArtistPassword()).photo(artistDto.getArtistPhoto())
+				.build();
 		role.setRoleName("ROLE_USER");
-		artist.setRole(role);
-		return artistRepository.save(artist);
+		toPersist.setRole(role);
+		toPersist.setArtistDomain(artistDomain);
+		System.out.println(toPersist);
+		System.out.println(artistDto);
+		return artistRepository.save(toPersist);
 	}
 
 	public Artist login(String mail, String password) {
