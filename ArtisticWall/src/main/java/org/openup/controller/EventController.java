@@ -1,9 +1,14 @@
 package org.openup.controller;
 
+import java.util.List;
+
+import org.openup.DTO.EventDto;
+import org.openup.entity.Artist;
 import org.openup.entity.Event;
+import org.openup.repo.ArtistRepository;
+import org.openup.repo.EventRepository;
 import org.openup.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,6 +24,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/v1/event")
 @CrossOrigin(origins="*")
 public class EventController {
+	
+	@Autowired
+	private EventRepository eventRepository;
+	
+	@Autowired
+	private ArtistRepository artistRepository;
+	
 
 	@Autowired
 	private EventService eventService;
@@ -34,8 +46,9 @@ public class EventController {
 	}
 	
 	
+	
 	@PostMapping("/create/{id}")
-	public Event createNewEvent (@RequestBody Event event,@PathVariable("id") Long id) {
+	public EventDto createNewEvent (@RequestBody EventDto event,@PathVariable("id") Long id) {
 		
 		return   eventService.createNewEvent(event, id);
 	}

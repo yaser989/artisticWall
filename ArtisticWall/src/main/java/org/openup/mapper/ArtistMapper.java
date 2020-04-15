@@ -14,6 +14,7 @@ public class ArtistMapper {
 		artistDto.setArtistLastName(artist.getLastName());
 		artistDto.setArtistMail(artist.getMail());
 		artistDto.setArtistDomain(artist.getArtistDomain().getDomain());
+//		artistDto.setArtistPhoto(artist.getPhoto());
 		return artistDto;
 	}
 	

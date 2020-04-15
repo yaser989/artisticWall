@@ -40,6 +40,7 @@ public class PhotoController {
 	}
 	
 	
+	
 	@GetMapping("/artist/{id}")
 	public ResponseEntity photoArtist(@PathVariable Long id) {
 		Artist artist = artistRepository.getOne(id);

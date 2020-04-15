@@ -1,12 +1,18 @@
 package org.openup.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import org.openup.DTO.ArtistDto;
 import org.openup.DTO.EventDto;
 import org.openup.controller.ResourceNotFound;
+import org.openup.entity.Address;
 import org.openup.entity.Artist;
+import org.openup.entity.ArtistDomain;
+import org.openup.entity.Categories;
 import org.openup.entity.Event;
 import org.openup.mapper.EventMapper;
 import org.openup.repo.ArtistRepository;
@@ -39,29 +45,73 @@ public class EventService {
 	}
 	
 	public List<EventDto> findAllArtistEventById(Long id){
-		
-		Artist artist = artistRepository.getOne(id);
-		
 		List<EventDto> listEventDto = new ArrayList<>();
-		List<Event> eventList = eventRepository.findBySharedAndArtistIsNotLike(true, artist);
- 		List<Event> listEvent = eventRepository.findByArtist(artist);
+		
+		ArtistDto artistDto = new ArtistDto();
+		
+        ArtistDomain domain = ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();
+		
+		Artist art = Artist.builder().id(artistDto.getIdDto()).name(artistDto.getArtistName())
+			.lastName(artistDto.getArtistLastName()).mail(artistDto.getArtistMail()).password(artistDto.getArtistPassword())
+				.photo(artistDto.getArtistPhoto()).event(new ArrayList<Event>()).build();
+		
+		art.setArtistDomain(domain);
+		
+        art = artistRepository.getOne(id);
+	    List<Event> listEvent = eventRepository.findByArtist(art);
+		List<Event> eventList = eventRepository.findBySharedAndArtistIsNotLike(true, art);
  		listEvent.forEach(event -> event.setIdOwner(id));
  		eventList.forEach(event -> event.setIdOwner(-1L));
  		listEvent.addAll(eventList);
  		
-		for (Event event : listEvent) {
-			listEventDto.add(eventMapper.toEventDto(event));
-		}
-		return listEventDto;
+ 		for (Event event : listEvent) {
+ 			listEventDto.add(eventMapper.toEventDto(event));
+ 		}
+ 		
+		return  listEventDto;
 	}
 	
 	
-	public Event createNewEvent(Event event , Long id) {
- 
-		return artistRepository.findById(id).map(artist-> {
-			event.setArtist(artist);
-			return eventRepository.save(event);
-		}).orElseThrow(() -> new ResourceNotFound("not fond"));
+	public EventDto createNewEvent(EventDto eventDto , Long id) {
+		Address address = Address.builder().common(eventDto.getCommonDto()).street(eventDto.getStreetDto())
+				.zipCode(eventDto.getZipCodeDto()).phone(eventDto.getPhoneDto())
+				.date(eventDto.getDateDto()).build();
+		
+		Categories categories = Categories.builder().categories(eventDto.getCategoriesDto()).build();
+		
+		Event toEvent = Event.builder().typeEvent(eventDto.getTypeEventDto()).description(eventDto.getDescriptionDto())
+				.date(eventDto.getDateOfCreatingDto()).build();
+		
+		Event datee = new Event();
+			
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+	    Date date = new Date(00, 00,0000);  
+	    datee.setDate(date);
+	    
+       ArtistDto artistDto = new ArtistDto();
+		
+       ArtistDomain domain = ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();
+		
+	 Artist art = Artist.builder().id(artistDto.getIdDto()).name(artistDto.getArtistName())
+			.lastName(artistDto.getArtistLastName()).mail(artistDto.getArtistMail()).password(artistDto.getArtistPassword())
+				.photo(artistDto.getArtistPhoto()).build();
+		
+
+		toEvent.setAddress(address);
+		toEvent.setCategories(categories);
+		address.setEvent(toEvent);
+		art.setArtistDomain(domain);
+		
+       art = artistRepository.getOne(id);
+       toEvent.setArtist(art);
+        
+       Event eventSave = eventRepository.save(toEvent);
+       eventDto.setIdDto(eventSave.getId());
+	 return eventDto;
+//		return artistRepository.findById(id).map(artist-> {
+//			toEvent.setArtist(artist);
+//			return eventRepository.save(toEvent);
+//		}).orElseThrow(() -> new ResourceNotFound("not fond"));
 		
 	}
 	

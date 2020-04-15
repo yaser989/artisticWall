@@ -12,6 +12,7 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 export class SubscribeComponent implements OnInit {
 artist : ArtistDto = new ArtistDto();
 artistForm :FormGroup; 
+errorMessage : string;
   constructor( private router : Router, private artistService :ArtistService ) { }
 
   ngOnInit(): void {
@@ -29,6 +30,10 @@ artistForm :FormGroup;
     this.artistService.createNewArtist(this.artist).subscribe(data => {
       this.artist=data
       console.log(this.artist);
+      this.router.navigate(['/login']);
+    
     });
+
   }
+  
 }

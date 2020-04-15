@@ -1,7 +1,13 @@
 package org.openup.DTO;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
+
+import org.openup.config.CustomerDateAndTimeDeserialize;
+
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 
 public class EventDto implements Serializable{
 
@@ -21,9 +27,40 @@ public class EventDto implements Serializable{
 	private String zipCodeDto;
 	private String commonDto;
 	private String phoneDto;
+	@JsonDeserialize(using= CustomerDateAndTimeDeserialize.class)
 	private Date dateDto;
+	@JsonDeserialize(using= CustomerDateAndTimeDeserialize.class)
 	private Date dateOfCreatingDto;
 	
+	
+	
+	
+	public EventDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public EventDto(Long idDto, String typeEventDto, String descriptionDto, byte[] photoDto, boolean sharedDto,
+			Long idOwnerDto, String categoriesDto, String streetDto, String zipCodeDto, String commonDto,
+			String phoneDto, Date dateDto, Date dateOfCreatingDto) {
+		super();
+		this.idDto = idDto;
+		this.typeEventDto = typeEventDto;
+		this.descriptionDto = descriptionDto;
+		this.photoDto = photoDto;
+		this.sharedDto = sharedDto;
+		this.idOwnerDto = idOwnerDto;
+		this.categoriesDto = categoriesDto;
+		this.streetDto = streetDto;
+		this.zipCodeDto = zipCodeDto;
+		this.commonDto = commonDto;
+		this.phoneDto = phoneDto;
+		this.dateDto = dateDto;
+		this.dateOfCreatingDto = dateOfCreatingDto;
+	}
+
+
 	public Long getIdDto() {
 		return idDto;
 	}
@@ -104,6 +141,16 @@ public class EventDto implements Serializable{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+
+	@Override
+	public String toString() {
+		return "EventDto [idDto=" + idDto + ", typeEventDto=" + typeEventDto + ", descriptionDto=" + descriptionDto
+				+ ", photoDto=" + Arrays.toString(photoDto) + ", sharedDto=" + sharedDto + ", idOwnerDto=" + idOwnerDto
+				+ ", categoriesDto=" + categoriesDto + ", streetDto=" + streetDto + ", zipCodeDto=" + zipCodeDto
+				+ ", commonDto=" + commonDto + ", phoneDto=" + phoneDto + ", dateDto=" + dateDto
+				+ ", dateOfCreatingDto=" + dateOfCreatingDto + "]";
 	}
 	
 	

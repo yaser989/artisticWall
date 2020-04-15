@@ -1,39 +1,28 @@
 <nav class="navbar navbar-dark bg-dark">
     <img src="assets\login-logo.png" alt="..." class="img-rounded">
 </nav>
+   
 
-<div class="container"> 
-    <form (ngSubmit)="createNewArtist()" novalidate>
-  
 
-      <div class="form-group">
-        <label>Name</label>
-        <input type="text" name="artistName" class="form-control" [(ngModel)]="artist.artistName" required  />
-      </div>
+    <form class="form-group" (ngSubmit)="createNewArtist()"  novalidate>
+  
+        <label for="inputName" class="sr-only">Name</label>
+        <input type="text" name="artistName" class="form-control" [(ngModel)]="artist.artistName" placeholder="Name" required  />
 
-      <div class="form-group">
-        <label>Last name</label>
-        <input type="text" name="artistLastName" class="form-control" [(ngModel)]="artist.artistLastName"  required />
-      </div>
+        <label for="inputLAstName" class="sr-only">Last Name</label> 
+        <input type="text" name="artistLastName" class="form-control" [(ngModel)]="artist.artistLastName" placeholder="Last name" required />
   
-      <div class="form-group">
-        <label>Email</label>
-        <input type="text" name="artistMail" class="form-control" [(ngModel)]="artist.artistMail"  required />
-      </div>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" name="artistMail" class="form-control" [(ngModel)]="artist.artistMail" placeholder="Email address" required />
 
-      <div class="form-group">
-        <label>Password</label>
-        <input type="text" name="artistPassword" class="form-control" [(ngModel)]="artist.artistPassword"  required />
-      </div>
-  
-      <div class="form-group">
-        <label>Domain</label>
-        <input type="text" name="artistDomain" class="form-control" [(ngModel)]="artist.artistDomain"  required />
-      </div>
-  
-      <button type="submit" class="btn btn-primary">Submit</button>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="artistPassword" class="form-control" [(ngModel)]="artist.artistPassword" placeholder="Password" required />
+
+        <label for="inputDomain" class="sr-only">Domain</label>
+        <input type="text" name="artistDomain" class="form-control" [(ngModel)]="artist.artistDomain" placeholder="Domain" required />
+        <br>  
+        <button class="btn btn-lg btn-primary btn-block" type="submit" >register</button>
     </form>
-  </div>
 
 
 

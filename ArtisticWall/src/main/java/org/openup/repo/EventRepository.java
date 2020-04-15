@@ -20,4 +20,6 @@ public interface EventRepository extends JpaRepository<Event, Long>{
 	
 	List<Event> findBySharedAndArtistIsNotLike(boolean shared, Artist artist);
 	
+
+	
 }

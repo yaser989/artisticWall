@@ -3,6 +3,7 @@ package org.openup.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,12 +16,14 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 @Table(name="address")
 public class Address implements Serializable{
@@ -50,6 +53,7 @@ public class Address implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date ;
 	
+
 	@OneToOne
     @JoinColumn(name = "event_id")
 	private Event event;

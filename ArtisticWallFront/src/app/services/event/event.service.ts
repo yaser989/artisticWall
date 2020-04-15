@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {AppSitings} from 'src/app/settings/app.sittings';
 import {Event} from 'src/app/models/event';
-import { Observable } from 'rxjs';
+import { EventDto } from 'src/app/models/eventDto';
 
 @Injectable({
   providedIn: 'root'
@@ -12,15 +12,15 @@ export class EventService {
   constructor(private http : HttpClient) { }
 
   findAllEvent(){
-    return this.http.get<Event>(AppSitings.App_URL+"/event/")
+    return this.http.get<EventDto>(AppSitings.App_URL+"/event/")
   }
 
   findAllArtistEvent(id:number){
-    return this.http.get<Event[]>(AppSitings.App_URL+"/event/"+id)
+    return this.http.get<EventDto[]>(AppSitings.App_URL+"/event/"+id)
   }
 
-  createNewEvent(event: Event, id : number){
-    return this.http.post<Event>(AppSitings.App_URL+"/event/create/" +id ,event)
+  createNewEvent(event: EventDto, id : number){
+    return this.http.post<EventDto>(AppSitings.App_URL+"/event/create/" +id ,event)
   }
 
   shareEvent(id:number, isShared:boolean){
