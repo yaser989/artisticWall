@@ -1,22 +1,24 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpEvent, HttpRequest } from '@angular/common/http';
 import {AppSitings} from 'src/app/settings/app.sittings';
 import {Event} from 'src/app/models/event';
 import { EventDto } from 'src/app/models/eventDto';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
-
+  
+  public require: any
   constructor(private http : HttpClient) { }
 
   findAllEvent(){
     return this.http.get<EventDto>(AppSitings.App_URL+"/event/")
   }
 
-  findAllArtistEvent(id:number){
-    return this.http.get<EventDto[]>(AppSitings.App_URL+"/event/"+id)
+  findAllArtistEvent(id:number) : Observable<any> { 
+    return this.http.get(AppSitings.App_URL+"/event/"+id)
   }
 
   createNewEvent(event: EventDto, id : number){
@@ -33,5 +35,17 @@ deleteEvent(id:number){
 updateEvent(id:number, event:Event){
   return this.http.put<Event>(AppSitings.App_URL+"/event/update/"+id,event)
 }
+
+uploadProductPhoto(file: File, id :number): Observable<HttpEvent<{}>> {
+  let formatData: FormData = new FormData();
+  formatData.append('file', file);
+  const req = new HttpRequest('POST',AppSitings.App_URL+ "/photos/uploadPhoto/" + id , formatData, {
+    reportProgress: true,
+    responseType: 'text'
+  });
+  return this.http.request(req);
+  
+}
+
 
 }

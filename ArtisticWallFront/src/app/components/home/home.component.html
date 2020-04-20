@@ -4,7 +4,7 @@
 
 
 <div class="row">
-    <div class="card" *ngFor="let ev of event" style="width: 18rem;margin-right: 30px;">
+    <div class="card" *ngFor="let ev of evente" style="width: 18rem;margin-right: 30px;">
       <div class="card-header bg-transparent" *ngIf="ev.idOwner !== -1">
         <div class="btn-group" role="group" aria-label="Basic example" >
         <!--  <button type="button" class="btn btn-link" (click)="updateEvent(ev.id)"><i class="fas fa-pen" ></i>&nbsp;Edit</button>-->
@@ -26,6 +26,30 @@
         <p class="card-text">{{ev.zipCodeDto}}</p>
         <p class="card-text">{{ev.phoneDto}}</p>
         <p class="card-text">{{ev.dateDto}}</p>
+
+      <!--  <p *ngIf="onEditPhoto">
+          <input type="file" (change)="onselectedFile($event)" />
+          <button class="btn btn-success" (click)="uploadPhoto()">
+            Upload
+          </button>
+          {{ progress }}
+        </p>-->
+
+        <div *ngIf="currentFileUpload" class="progress">
+          <div class="progress-bar progress-bar-info progress-bar-striped"
+            role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
+            aria-valuemin="0" aria-valuemax="100"
+            [ngStyle]="{width:progress.percentage+'%'}">
+            {{progress.percentage}}%</div>
+        </div>
+         
+        <label class="btn btn-default">
+          <input type="file" (change)="onselectedFile($event)">
+        </label>
+         
+        <button class="btn btn-success" [disabled]="!selectedFiles"
+          (click)="uploadPhoto(ev.id)">Upload</button>
+        {{ev.id}}
       
 
 </div>

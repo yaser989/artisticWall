@@ -1,9 +1,6 @@
 package org.openup.controller;
 
-import java.util.List;
-
 import org.openup.DTO.EventDto;
-import org.openup.entity.Artist;
 import org.openup.entity.Event;
 import org.openup.repo.ArtistRepository;
 import org.openup.repo.EventRepository;
@@ -70,6 +67,8 @@ public class EventController {
 		eventService.shareEvent(id, isShared);
 		return ResponseEntity.ok("Event shared with succses");
 	}
+	
+	
 	
 	
 }

@@ -106,7 +106,7 @@ public class EventService {
        toEvent.setArtist(art);
         
        Event eventSave = eventRepository.save(toEvent);
-       eventDto.setIdDto(eventSave.getId());
+       eventDto.setId(eventSave.getId());
 	 return eventDto;
 //		return artistRepository.findById(id).map(artist-> {
 //			toEvent.setArtist(artist);

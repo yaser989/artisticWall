@@ -10,12 +10,11 @@ public class EventMapper {
 
 	public EventDto toEventDto(Event event) {	
 		EventDto eventDto = new EventDto();
-		Address aders = Address.builder().common(eventDto.getCommonDto()).build();
-		
-		eventDto.setIdDto(event.getId());
+
+		eventDto.setId(event.getId());
 		eventDto.setDescriptionDto(event.getDescription());
 		eventDto.setTypeEventDto(event.getTypeEvent());
-		eventDto.setPhotoDto(event.getPhoto());
+//		eventDto.setPhotoDto(event.getPhoto());
 	    eventDto.setDateOfCreatingDto(event.getDate());
 		eventDto.setIdOwnerDto(event.getIdOwner());
 		eventDto.setCategoriesDto(event.getCategories().getCategories());

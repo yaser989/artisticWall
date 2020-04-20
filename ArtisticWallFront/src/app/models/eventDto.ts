@@ -1,5 +1,5 @@
 export class EventDto{
-     idDto : number;
+     id : number;
 	 typeEventDto : string;
 	 descriptionDto : string;
 	 photoDto : File;

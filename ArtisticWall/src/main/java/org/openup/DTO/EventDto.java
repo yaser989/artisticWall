@@ -16,7 +16,7 @@ public class EventDto implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private Long idDto;
+	private Long id;
 	private String typeEventDto;
 	private String descriptionDto;
 	private byte[] photoDto;
@@ -41,11 +41,11 @@ public class EventDto implements Serializable{
 	}
 	
 	
-	public EventDto(Long idDto, String typeEventDto, String descriptionDto, byte[] photoDto, boolean sharedDto,
+	public EventDto(Long id, String typeEventDto, String descriptionDto, byte[] photoDto, boolean sharedDto,
 			Long idOwnerDto, String categoriesDto, String streetDto, String zipCodeDto, String commonDto,
 			String phoneDto, Date dateDto, Date dateOfCreatingDto) {
 		super();
-		this.idDto = idDto;
+		this.id = id;
 		this.typeEventDto = typeEventDto;
 		this.descriptionDto = descriptionDto;
 		this.photoDto = photoDto;
@@ -61,11 +61,11 @@ public class EventDto implements Serializable{
 	}
 
 
-	public Long getIdDto() {
-		return idDto;
+	public Long getId() {
+		return id;
 	}
-	public void setIdDto(Long idDto) {
-		this.idDto = idDto;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getTypeEventDto() {
 		return typeEventDto;
@@ -146,13 +146,17 @@ public class EventDto implements Serializable{
 
 	@Override
 	public String toString() {
-		return "EventDto [idDto=" + idDto + ", typeEventDto=" + typeEventDto + ", descriptionDto=" + descriptionDto
+		return "EventDto [id=" + id + ", typeEventDto=" + typeEventDto + ", descriptionDto=" + descriptionDto
 				+ ", photoDto=" + Arrays.toString(photoDto) + ", sharedDto=" + sharedDto + ", idOwnerDto=" + idOwnerDto
 				+ ", categoriesDto=" + categoriesDto + ", streetDto=" + streetDto + ", zipCodeDto=" + zipCodeDto
 				+ ", commonDto=" + commonDto + ", phoneDto=" + phoneDto + ", dateDto=" + dateDto
 				+ ", dateOfCreatingDto=" + dateOfCreatingDto + "]";
 	}
+
+
 	
+
+
 	
 
 }
