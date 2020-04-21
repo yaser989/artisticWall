@@ -83,36 +83,22 @@ public class PhotoController {
 				.body(new InputStreamResource(new ByteArrayInputStream(artist.getPhoto())));
 		
 	}
-
 	
-//	@GetMapping("/event/{id}")
-//	public ResponseEntity photoEvent(@PathVariable Long id) {
-//		EventDto eventDto = new EventDto();
-//		 Event event = Event.builder().photo(eventDto.getPhotoDto()).build();
-//	      event=eventRepository.getOne(id);
-//	      eventDto.setPhotoDto(event.getPhoto());  
-//	      
-//	      eventDto.setId(event.getId());
-//		
-//		return ResponseEntity.ok()
-//				.contentType(MediaType.IMAGE_GIF)
-//				.contentType(MediaType.IMAGE_JPEG)
-//				.contentType(MediaType.IMAGE_PNG)
-//				.body(new InputStreamResource(new StringBufferInputStream(eventDto.getPhotoDto())));
-//	}
-//
-//	@PostMapping("/uploadPhoto/{id}")
-//    public EventDto uploadPhoto(MultipartFile file, @PathVariable Long id) throws IOException {
-//		EventDto eventDto = new EventDto();
-//		 Event event = Event.builder().photo(eventDto.getPhotoDto()).build();
-//	          
-//     event  = eventRepository.getOne(id);
-//     event.setPhoto(file.getOriginalFilename());
-//        Files.write(Paths.get(System.getProperty("user.home") + event.getPhoto()), file.getBytes());
-//
-//       eventDto.setPhotoDto(event.getPhoto());
-//        Event eventSave = eventRepository.save(event);
-//        eventDto.setId(eventSave.getId());
-//     return eventDto;
-//    }
+	@PostMapping("/uploadPhotoArtist/{id}")
+    public ResponseEntity uploadPhotoArtist(@PathVariable Long id, MultipartFile file) throws IOException {
+		Artist artist = new Artist();
+
+		 byte[] byteObjects = new byte[file.getBytes().length];
+		 int i= 0;
+		 for (byte b : file.getBytes()){
+		        byteObjects[i++] = b;
+		    }
+		 artist  = artistRepository.getOne(id);
+    
+		 artist.setPhoto(byteObjects);
+     
+     return ResponseEntity.ok(artistRepository.save(artist));
+    }
+
+
 }

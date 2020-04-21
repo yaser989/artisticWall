@@ -6,6 +6,7 @@ import { Event } from 'src/app/models/event';
 import { EventDto } from 'src/app/models/eventDto';
 import { ArtistDto } from 'src/app/models/artistDto';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import {ArtistService} from 'src/app/services/artist/artist.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
  public editPhoto :boolean;
  currentFileUpload:File;
  selectedFiles : FileList;
-  constructor(private router :Router, private eventService:EventService  ) {
+  constructor(private router :Router, private eventService:EventService , private  artistService:ArtistService  ) {
     this.checkUser();
     
    }
@@ -72,13 +73,11 @@ export class HomeComponent implements OnInit {
   });
   }
 
-  // onEditPhoto(evente) {
-  //   this.evente = evente;
-  //   this.editPhoto = true;
-  // }
+ 
+
+
 
   onselectedFile(event) {
-    // this.selectedFiles = event.target.files.item(0);
     const file = event.target.files.item(0)
     if (file.type.match('image.*')) {
       this.selectedFiles = event.target.files;
@@ -90,16 +89,12 @@ export class HomeComponent implements OnInit {
   uploadPhoto(id:number) {
     this.progress.percentage = 0;
     this.currentFileUpload = this.selectedFiles.item(0)
-    // this.spinner = true;
     this.eventService.uploadProductPhoto(this.currentFileUpload, id)
     .subscribe(event => {
       if(event.type === HttpEventType.UploadProgress){
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
-        // this.spinner = false;
       } else if (event instanceof HttpResponse) {
         alert('File loaded successfully');
-        // this.currentTime = Date.now();
-        // this.editPhoto=false;
         console.log('check if ' + event.url);
         window.location.reload();
       }

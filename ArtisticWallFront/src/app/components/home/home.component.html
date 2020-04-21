@@ -3,8 +3,8 @@
 <app-authorised-side-nav></app-authorised-side-nav>
 
 
-<div class="row">
-    <div class="card" *ngFor="let ev of evente" style="width: 18rem;margin-right: 30px;">
+<div class="ro">
+    <div class="card" *ngFor="let ev of evente">
       <div class="card-header bg-transparent" *ngIf="ev.idOwner !== -1">
         <div class="btn-group" role="group" aria-label="Basic example" >
         <!--  <button type="button" class="btn btn-link" (click)="updateEvent(ev.id)"><i class="fas fa-pen" ></i>&nbsp;Edit</button>-->
@@ -16,24 +16,22 @@
       <div class="card-header bg-transparent" *ngIf="ev.idOwner === -1">
           <button type="button" class="btn btn-outline-primary btn-block btn-link"><i class="fas fa-share-alt"></i>&nbsp;Shared</button>
       </div>
-      <img src="http://localhost:8080/v1/photos/event/{{ev.id}}" class="card-img-top" style="height: 400px;">
+      <img src="http://localhost:8080/v1/photos/artist/{{artist.id}}" class="rounded-circle" width="50" height="50">&nbsp;
+      <b>{{artist.name}}&nbsp;{{artist.lastName}}</b>
+      <p style="color: grey; font-size: 10px;">published :&nbsp;{{ev.dateOfCreatingDto}}</p>
+      <img src="http://localhost:8080/v1/photos/event/{{ev.id}}" class="card-img-top" style="width:100%; ">
       <div class="card-body">
-        <h5 class="card-title">{{ev.typeEventDto}}</h5>
-       <p class="card-text">{{ev.categoriesDto}}</p>
-        <p class="card-text">{{ev.descriptionDto}}</p>
-        <p class="card-text">{{ev.commonDto}}</p>
-        <p class="card-text">{{ev.streetDto}}</p>
-        <p class="card-text">{{ev.zipCodeDto}}</p>
-        <p class="card-text">{{ev.phoneDto}}</p>
-        <p class="card-text">{{ev.dateDto}}</p>
+        
 
-      <!--  <p *ngIf="onEditPhoto">
-          <input type="file" (change)="onselectedFile($event)" />
-          <button class="btn btn-success" (click)="uploadPhoto()">
-            Upload
-          </button>
-          {{ progress }}
-        </p>-->
+        <h5 class="card-text">{{ev.typeEventDto}}&nbsp;of&nbsp;{{ev.categoriesDto}}</h5>
+        <p class="card-text">{{ev.descriptionDto}}</p>
+        <p class="card-text"><b>Common :</b>&nbsp;{{ev.commonDto}}</p>
+        <p class="card-text"><b>Street :</b>&nbsp;{{ev.streetDto}}</p>
+        <p class="card-text"><b>Zip code :</b>&nbsp;{{ev.zipCodeDto}}</p>
+        <p class="card-text"><b>Phone :</b>&nbsp;{{ev.phoneDto}}</p>
+        <p class="card-text"><b>At :</b> &nbsp;{{ev.dateDto}}</p>
+
+   
 
         <div *ngIf="currentFileUpload" class="progress">
           <div class="progress-bar progress-bar-info progress-bar-striped"
@@ -43,13 +41,14 @@
             {{progress.percentage}}%</div>
         </div>
          
-        <label class="btn btn-default">
-          <input type="file" (change)="onselectedFile($event)">
+        <label  class="btn btn-link" ><span style="color: red;">Choose photo</span> 
+          <input type="file" (change)="onselectedFile($event)" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden; ">
         </label>
+        <br>
          
-        <button class="btn btn-success" [disabled]="!selectedFiles"
-          (click)="uploadPhoto(ev.id)">Upload</button>
-        {{ev.id}}
-      
+        <button class="btn btn-light" style="border: 1px solid black;" [disabled]="!selectedFiles"
+          (click)="uploadPhoto(ev.id)"><span style="color: brown; ;"><b>Upload</b></span></button>
+        
+          
 
 </div>

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpRequest, HttpEvent } from '@angular/common/http';
 import {AppSitings} from 'src/app/settings/app.sittings';
 import {Artist} from 'src/app/models/artist';
 import {ArtistDto} from 'src/app/models/artistDto';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,17 @@ createNewArtist(artist : ArtistDto){
 }
 login(mail: string, password: string){
   return this.http.post<Artist>(AppSitings.App_URL+"/artist/login?mail="+mail+"&password="+password,null)
+}
+
+uploadProductPhoto(file: File, id :number): Observable<HttpEvent<{}>> {
+  let formatData: FormData = new FormData();
+  formatData.append('file', file);
+  const req = new HttpRequest('POST',AppSitings.App_URL+ "/photos/uploadPhotoArtist/" + id , formatData, {
+    reportProgress: true,
+    responseType: 'text'
+  });
+  return this.http.request(req);
+  
 }
 
 }
