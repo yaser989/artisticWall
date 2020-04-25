@@ -22,10 +22,6 @@ public interface EventRepository extends JpaRepository<Event, Long>{
 	List<Event> findByArtist(Artist artist);
 	
 	List<Event> findBySharedAndArtistIsNotLike(boolean shared, Artist artist);
-//	
-//	 @Transactional
-//	    @Modifying(clearAutomatically = true, flushAutomatically = true)
-//	@Query("delete from Event ad where ad.id = :id")
-//	 Event delete(@Param("id") Long id);
+
 
 }

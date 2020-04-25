@@ -26,7 +26,7 @@ export class EventService {
   }
 
   shareEvent(id:number, isShared:boolean){
-    return this.http.get<Event>(AppSitings.App_URL+"/event/share"+id+"/"+isShared)
+    return this.http.get<EventDto>(AppSitings.App_URL+"/event/share/"+id+"/"+isShared)
   }
 deleteEvent(id:number) : Observable<any>{
   return this.http.delete(AppSitings.App_URL+"/event/"+id)

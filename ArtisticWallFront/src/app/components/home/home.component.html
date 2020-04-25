@@ -5,7 +5,7 @@
 
 <div class="ro">
     <div class="card" *ngFor="let ev of evente">
-      <div class="card-header bg-transparent" *ngIf="ev.idOwner !== -1">
+      <div class="card-header bg-transparent" *ngIf="ev.idOwnerDto !== -1">
         <div class="btn-group" role="group" aria-label="Basic example" >
         <!--  <button type="button" class="btn btn-link" (click)="updateEvent(ev.id)"><i class="fas fa-pen" ></i>&nbsp;Edit</button>-->
           <button type="button" class="btn btn-link" (click)="removeEvent(ev.id)"><i class="fas fa-trash"></i>&nbsp;Remove</button>
@@ -13,7 +13,7 @@
           <button type="button" class="btn btn-link" *ngIf="ev.shared == 1" (click)="shareEvent(ev.id, ev.shared)"><i class="fas fa-share-alt" ></i>&nbsp;Unshare</button>
         </div>
       </div>
-      <div class="card-header bg-transparent" *ngIf="ev.idOwner === -1">
+      <div class="card-header bg-transparent" *ngIf="ev.idOwnerDto === -1">
           <button type="button" class="btn btn-outline-primary btn-block btn-link"><i class="fas fa-share-alt"></i>&nbsp;Shared</button>
       </div>
       <img src="http://localhost:8080/v1/photos/artist/{{artist.id}}" class="rounded-circle" width="50" height="50"onerror="this.src='assets/16-168360_user-add-user-icon-add-symbol-member-friend.png'">&nbsp;

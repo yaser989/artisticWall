@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 
+import javax.persistence.Transient;
+
 import org.openup.config.CustomerDateAndTimeDeserialize;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -20,7 +22,8 @@ public class EventDto implements Serializable{
 	private String typeEventDto;
 	private String descriptionDto;
 	private byte[] photoDto;
-	private boolean sharedDto;
+	private boolean shared;
+	@Transient
 	private Long idOwnerDto;
 	private String categoriesDto;
 	private String streetDto;
@@ -41,7 +44,7 @@ public class EventDto implements Serializable{
 	}
 	
 	
-	public EventDto(Long id, String typeEventDto, String descriptionDto, byte[] photoDto, boolean sharedDto,
+	public EventDto(Long id, String typeEventDto, String descriptionDto, byte[] photoDto, boolean shared,
 			Long idOwnerDto, String categoriesDto, String streetDto, String zipCodeDto, String commonDto,
 			String phoneDto, Date dateDto, Date dateOfCreatingDto) {
 		super();
@@ -49,7 +52,7 @@ public class EventDto implements Serializable{
 		this.typeEventDto = typeEventDto;
 		this.descriptionDto = descriptionDto;
 		this.photoDto = photoDto;
-		this.sharedDto = sharedDto;
+		this.shared = shared;
 		this.idOwnerDto = idOwnerDto;
 		this.categoriesDto = categoriesDto;
 		this.streetDto = streetDto;
@@ -85,11 +88,11 @@ public class EventDto implements Serializable{
 	public void setPhotoDto(byte[] photoDto) {
 		this.photoDto = photoDto;
 	}
-	public boolean isSharedDto() {
-		return sharedDto;
+	public boolean isShared() {
+		return shared;
 	}
-	public void setSharedDto(boolean sharedDto) {
-		this.sharedDto = sharedDto;
+	public void setShared(boolean shared) {
+		this.shared = shared;
 	}
 	public Long getIdOwnerDto() {
 		return idOwnerDto;
@@ -147,7 +150,7 @@ public class EventDto implements Serializable{
 	@Override
 	public String toString() {
 		return "EventDto [id=" + id + ", typeEventDto=" + typeEventDto + ", descriptionDto=" + descriptionDto
-				+ ", photoDto=" + Arrays.toString(photoDto) + ", sharedDto=" + sharedDto + ", idOwnerDto=" + idOwnerDto
+				+ ", photoDto=" + Arrays.toString(photoDto) + ", shared=" + shared + ", idOwnerDto=" + idOwnerDto
 				+ ", categoriesDto=" + categoriesDto + ", streetDto=" + streetDto + ", zipCodeDto=" + zipCodeDto
 				+ ", commonDto=" + commonDto + ", phoneDto=" + phoneDto + ", dateDto=" + dateDto
 				+ ", dateOfCreatingDto=" + dateOfCreatingDto + "]";

@@ -23,6 +23,7 @@ public class EventMapper {
         eventDto.setPhoneDto(event.getAddress().getPhone());
         eventDto.setStreetDto(event.getAddress().getStreet());
         eventDto.setZipCodeDto(event.getAddress().getZipCode());
+        eventDto.setShared(event.isShared());
 		
 		return eventDto;
 	}

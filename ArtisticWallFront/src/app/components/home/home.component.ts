@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   artist :Artist ; 
  evente : EventDto;
-
+events : Event;
  public spinner : boolean;
   public currentUploadFile : any;
  public currentTime : number;
@@ -67,12 +67,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  shareEvent(id : number, shared : boolean){
+  shareEvent(id : number, shared: boolean){
   this.eventService.shareEvent(id,shared)
   .pipe()
   .subscribe(data => {
     this.findAllEvent();
   });
+  window.location.reload();
   }
 
  
@@ -119,5 +120,7 @@ export class HomeComponent implements OnInit {
     }
     window.location.reload();
   }
+
+ 
 
 }

@@ -144,10 +144,16 @@ public class EventService {
 	}
 	
 	
-	public void shareEvent (Long id , boolean isShared) {
+	public EventDto shareEvent (Long id , boolean isShared) {
+		EventDto eventDto = new EventDto();
+		
 		Event event = eventRepository.getOne(id);
-		event.setShared(isShared);
-		eventRepository.save(event);
+		event.setShared(!isShared);
+		eventDto.setShared(!isShared);
+	
+		Event saveEvent =  eventRepository.save(event);
+		eventDto.setId(saveEvent.getId());
+		return eventDto;
 	}
 	
 }

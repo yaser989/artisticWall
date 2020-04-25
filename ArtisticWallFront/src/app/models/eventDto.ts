@@ -3,7 +3,7 @@ export class EventDto{
 	 typeEventDto : string;
 	 descriptionDto : string;
 	 photoDto : File;
-	 sharedDto : boolean;
+	 shared : boolean;
 	 idOwnerDto : number;
 	 categoriesDto : string;
 	 streetDto : string ;
