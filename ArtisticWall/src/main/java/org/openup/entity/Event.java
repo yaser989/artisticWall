@@ -19,6 +19,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
@@ -60,17 +61,18 @@ public class Event implements Serializable {
 	
 	@Transient
 	private Long idOwner;
-	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+//	@JsonIgnore
+	 @JsonBackReference
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "categories_id")
 	private Categories categories;
 	
-
-	@OneToOne(mappedBy = "event",cascade = CascadeType.ALL)
+	 @JsonBackReference
+	@OneToOne(mappedBy = "event",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	private Address address;
 	
 	@JsonIgnore
-	@ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "artiste_id")
 	private Artist artist;
 	

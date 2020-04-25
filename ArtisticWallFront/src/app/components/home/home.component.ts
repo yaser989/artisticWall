@@ -16,6 +16,7 @@ import {ArtistService} from 'src/app/services/artist/artist.service';
 })
 export class HomeComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 }
+
   artist :Artist ; 
  evente : EventDto;
 
@@ -62,6 +63,7 @@ export class HomeComponent implements OnInit {
       this.evente = data;
     }, error => {
       console.log(error);
+    
     });
   }
 
@@ -104,5 +106,18 @@ export class HomeComponent implements OnInit {
     this.selectedFiles = undefined;
   }
   
+  removeEvent(id : number){
+    if (id === undefined){
+      alert('An error has occured while removing the event');
+      return;
+    }
+    if(confirm("Do you relly want to remove the event")){
+      this.eventService.deleteEvent(id)
+      .subscribe(data =>{
+       this.findAllEvent = data
+      });
+    }
+    window.location.reload();
+  }
 
 }

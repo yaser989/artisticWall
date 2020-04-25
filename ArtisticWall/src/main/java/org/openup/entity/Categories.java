@@ -38,7 +38,8 @@ public class Categories implements Serializable{
 	private Long id;
 	@Column(name="type_categories")
 	private String categories;
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "categories", fetch = FetchType.EAGER)
+	
+	@OneToMany(cascade = CascadeType.ALL,targetEntity = Event.class)
 	List <Event> event;
 
 }

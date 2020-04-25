@@ -6,9 +6,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.openup.DTO.ArtistDto;
 import org.openup.DTO.EventDto;
-import org.openup.controller.ResourceNotFound;
 import org.openup.entity.Address;
 import org.openup.entity.Artist;
 import org.openup.entity.ArtistDomain;
@@ -24,6 +25,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
+@Transactional
 public class EventService {
 
 	@Autowired
@@ -82,11 +84,11 @@ public class EventService {
 		Event toEvent = Event.builder().typeEvent(eventDto.getTypeEventDto()).description(eventDto.getDescriptionDto())
 				.date(eventDto.getDateOfCreatingDto()).build();
 		
-		Event datee = new Event();
+		
 			
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
-	    Date date = new Date(00, 00,0000);  
-	    datee.setDate(date);
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");  
+	    Date date = new Date();  
+	  
 	    
        ArtistDto artistDto = new ArtistDto();
 		
@@ -101,7 +103,7 @@ public class EventService {
 		toEvent.setCategories(categories);
 		address.setEvent(toEvent);
 		art.setArtistDomain(domain);
-		
+		toEvent.setDate(date);
        art = artistRepository.getOne(id);
        toEvent.setArtist(art);
         
@@ -115,9 +117,18 @@ public class EventService {
 		
 	}
 	
-	public void deleteEvent(Long id) {
-		Event event = eventRepository.getOne(id);
-		 eventRepository.delete(event);	
+	public EventDto deleteEvent(Long id) {
+	EventDto eventDto = new EventDto();
+	
+    Event  event = eventRepository.getOne(id);      
+	
+	if (event != null) {
+	        eventRepository.delete(event);
+	 		eventRepository.flush();        
+	}
+		 
+		  eventDto.setId(event.getId());
+		 return eventDto;
 	}
 	
 	public void updateEvent (Long id,Event eventt ) {

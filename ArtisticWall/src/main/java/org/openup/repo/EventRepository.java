@@ -2,9 +2,12 @@ package org.openup.repo;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.openup.entity.Artist;
 import org.openup.entity.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
@@ -19,7 +22,10 @@ public interface EventRepository extends JpaRepository<Event, Long>{
 	List<Event> findByArtist(Artist artist);
 	
 	List<Event> findBySharedAndArtistIsNotLike(boolean shared, Artist artist);
-	
+//	
+//	 @Transactional
+//	    @Modifying(clearAutomatically = true, flushAutomatically = true)
+//	@Query("delete from Event ad where ad.id = :id")
+//	 Event delete(@Param("id") Long id);
 
-	
 }

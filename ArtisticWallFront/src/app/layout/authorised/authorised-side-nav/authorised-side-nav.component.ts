@@ -31,5 +31,7 @@ export class AuthorisedSideNavComponent implements OnInit {
     .subscribe(data => this.artist.idDto, err => console.log(err));
     this.router.navigate(['/createNewEvent']);
   }
-
+  goToHome(){
+    this.router.navigate(['/home']);
+  }
 }
