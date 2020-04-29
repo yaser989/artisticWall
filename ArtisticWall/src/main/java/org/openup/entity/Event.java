@@ -21,6 +21,7 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,7 +53,7 @@ public class Event implements Serializable {
 	@Column(name = "description")
 	private String description;
 	
-   
+
 	@Lob
 	private byte[] photo;
 	

@@ -73,6 +73,36 @@ public class EventService {
 		return  listEventDto;
 	}
 	
+	public EventDto findEventById(Long id) {
+	EventDto eventDto = new EventDto();
+	Address address = Address.builder().common(eventDto.getCommonDto()).street(eventDto.getStreetDto())
+			.zipCode(eventDto.getZipCodeDto()).phone(eventDto.getPhoneDto())
+			.date(eventDto.getDateDto()).build();
+	
+	Categories categories = Categories.builder().categories(eventDto.getCategoriesDto()).build();
+	
+	Event toEvent = Event.builder().typeEvent(eventDto.getTypeEventDto()).description(eventDto.getDescriptionDto())
+			.date(eventDto.getDateOfCreatingDto()).photo(eventDto.getPhotoDto()).build();
+	
+	toEvent.setAddress(address);
+	toEvent.setCategories(categories);
+	address.setEvent(toEvent);
+
+  
+		Optional<Event> events = eventRepository.findById(id);
+		toEvent = events.get();
+		eventDto.setId(toEvent.getId());
+		eventDto.setCategoriesDto(toEvent.getCategories().getCategories());
+		eventDto.setTypeEventDto(toEvent.getTypeEvent());
+		eventDto.setDescriptionDto(toEvent.getDescription());
+		eventDto.setCommonDto(toEvent.getAddress().getCommon());
+		eventDto.setDateDto(toEvent.getAddress().getDate());
+		eventDto.setPhoneDto(toEvent.getAddress().getPhone());
+		eventDto.setStreetDto(toEvent.getAddress().getStreet());
+		eventDto.setZipCodeDto(toEvent.getAddress().getZipCode());
+		return eventDto;
+	}
+	
 	
 	public EventDto createNewEvent(EventDto eventDto , Long id) {
 		Address address = Address.builder().common(eventDto.getCommonDto()).street(eventDto.getStreetDto())
@@ -110,11 +140,7 @@ public class EventService {
        Event eventSave = eventRepository.save(toEvent);
        eventDto.setId(eventSave.getId());
 	 return eventDto;
-//		return artistRepository.findById(id).map(artist-> {
-//			toEvent.setArtist(artist);
-//			return eventRepository.save(toEvent);
-//		}).orElseThrow(() -> new ResourceNotFound("not fond"));
-		
+
 	}
 	
 	public EventDto deleteEvent(Long id) {
@@ -131,16 +157,46 @@ public class EventService {
 		 return eventDto;
 	}
 	
-	public void updateEvent (Long id,Event eventt ) {
+	public EventDto updateEvent (Long id, EventDto eventDto) {
+
+		Address address = Address.builder().common(eventDto.getCommonDto()).street(eventDto.getStreetDto())
+				.zipCode(eventDto.getZipCodeDto()).phone(eventDto.getPhoneDto())
+				.date(eventDto.getDateDto()).build();
 		
+		Categories categories = Categories.builder().categories(eventDto.getCategoriesDto()).build();
+		
+		Event toEvent = Event.builder().typeEvent(eventDto.getTypeEventDto()).description(eventDto.getDescriptionDto())
+				.date(eventDto.getDateOfCreatingDto()).photo(eventDto.getPhotoDto()).build();
+		
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");  
+	    Date date = new Date();  
+	    
+	    
+		toEvent.setAddress(address);
+		toEvent.setCategories(categories);
+		address.setEvent(toEvent);
+		toEvent.setDate(date);
+	
 		Optional<Event> events =  eventRepository.findById(id);
 		if(events.isPresent()) {
 			Event event = events.get();
-			event.setDescription(eventt.getDescription());
-			event.setTypeEvent(eventt.getTypeEvent());
-			event.setPhoto(eventt.getPhoto());
-	 eventRepository.save(event);
+			event.setDescription(toEvent.getDescription());
+			event.setTypeEvent(toEvent.getTypeEvent());
+			event.getCategories().setCategories(categories.getCategories());
+	        event.getAddress().setCommon(address.getCommon());
+	        event.getAddress().setDate(address.getDate());
+	        event.getAddress().setPhone(address.getPhone());
+	        event.getAddress().setStreet(address.getStreet());
+	        event.getAddress().setZipCode(address.getZipCode());
+	        event.getAddress().setDate(date);
+//	        event.setPhoto(null);
+	  Event saveEvent =    eventRepository.save(event);
+	 
+	  eventDto.setId(saveEvent.getId());
+		System.out.println(eventDto.getId()+"======================================");
 		}
+	
+		return eventDto;
 	}
 	
 	

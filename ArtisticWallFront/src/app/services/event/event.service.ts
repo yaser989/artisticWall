@@ -21,6 +21,10 @@ export class EventService {
     return this.http.get(AppSitings.App_URL+"/event/"+id)
   }
 
+  findEventByID(id : number): Observable<any>{
+   return this.http.get(AppSitings.App_URL+"/event/findByID/"+id);
+  }
+
   createNewEvent(event: EventDto, id : number){
     return this.http.post<EventDto>(AppSitings.App_URL+"/event/create/" +id ,event)
   }
@@ -32,8 +36,8 @@ deleteEvent(id:number) : Observable<any>{
   return this.http.delete(AppSitings.App_URL+"/event/"+id)
 }
 
-updateEvent(id:number, event:Event){
-  return this.http.put<Event>(AppSitings.App_URL+"/event/update/"+id,event)
+updateEvent(event:EventDto,id:number) : Observable<any>{
+  return this.http.put(AppSitings.App_URL+"/event/update/"+id,event)
 }
 
 uploadProductPhoto(file: File, id :number): Observable<HttpEvent<{}>> {

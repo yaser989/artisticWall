@@ -1,1 +1,38 @@
-<p>update-event works!</p>
+<app-authorised-top-nav></app-authorised-top-nav>
+<div class="up" >
+<app-authorised-side-nav></app-authorised-side-nav>
+
+                {{evente | json}}
+
+<form class="form-group" (ngSubmit)="updateEvent()"  novalidate>
+  
+    <label for="inputName" class="sr-only">typeEventDto</label>
+    <input type="text" name="typeEventDto" class="form-control" [(ngModel)]="evente.typeEventDto" placeholder="Type of event" required  />
+ 
+    <label for="inputLAstName" class="sr-only">categoriesDto</label> 
+    <input type="text" name="categoriesDto" class="form-control" [(ngModel)]="evente.categoriesDto" placeholder="Categories" required />
+
+    <label for="inputEmail" class="sr-only">descriptionDto</label>
+    <input type="text" name="descriptionDto" class="form-control" [(ngModel)]="evente.descriptionDto" placeholder="Description" required />
+
+    <label for="inputPassword" class="sr-only">commonDto</label>
+    <input type="text" name="commonDto" class="form-control" [(ngModel)]="evente.commonDto" placeholder="Common" required />
+
+    <label for="inputDomain" class="sr-only">streetDto</label>
+    <input type="text" name="streetDto" class="form-control" [(ngModel)]="evente.streetDto" placeholder="Street" required />
+
+    <label for="inputDomain" class="sr-only">zipCodeDto</label>
+    <input type="text" name="zipCodeDto" class="form-control" [(ngModel)]="evente.zipCodeDto" placeholder="Zip Code" required />
+
+    <label for="inputDomain" class="sr-only">dateDto</label>
+    <input type="datetime-local" name="dateDto" class="form-control" [(ngModel)]="evente.dateDto" placeholder="Date" required />
+
+    <label for="inputDomain" class="sr-only">phoneDto</label>
+    <input type="text" name="phoneDto" class="form-control" [(ngModel)]="evente.phoneDto" placeholder="Phone" required />
+    
+    <br>  
+    <button class="btn btn-lg btn-primary btn-block" type="submit" >Update</button>
+</form>
+
+
+</div>

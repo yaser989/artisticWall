@@ -8,9 +8,10 @@ import javax.persistence.Transient;
 
 import org.openup.config.CustomerDateAndTimeDeserialize;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class EventDto implements Serializable{
 
 	/**

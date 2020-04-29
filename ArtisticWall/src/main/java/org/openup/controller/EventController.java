@@ -38,11 +38,15 @@ public class EventController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity findById(@PathVariable(name = "id")Long id) {
+	public ResponseEntity findAllArtistEventById(@PathVariable(name = "id")Long id) {
 		return ResponseEntity.ok(eventService.findAllArtistEventById(id));
 	}
 	
-	
+	@GetMapping("/findByID/{id}")
+	public ResponseEntity findEventById(@PathVariable(name = "id")Long id) {
+		return ResponseEntity.ok(eventService.findEventById(id));
+	}
+		
 	
 	@PostMapping("/create/{id}")
 	public EventDto createNewEvent (@RequestBody EventDto event,@PathVariable("id") Long id) {
@@ -57,7 +61,7 @@ public class EventController {
 	}
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity updateEvent(@PathVariable Long id, @RequestBody Event event) {
+	public ResponseEntity updateEvent(@PathVariable(name="id") Long id, @RequestBody EventDto event) {
 		eventService.updateEvent(id, event);
 		return ResponseEntity.ok("updet done with success");
 	}

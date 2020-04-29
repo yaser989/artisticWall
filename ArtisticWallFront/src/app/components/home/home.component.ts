@@ -4,7 +4,6 @@ import {Artist} from 'src/app/models/artist';
 import { EventService } from 'src/app/services/event/event.service';
 import { Event } from 'src/app/models/event';
 import { EventDto } from 'src/app/models/eventDto';
-import { ArtistDto } from 'src/app/models/artistDto';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import {ArtistService} from 'src/app/services/artist/artist.service';
 
@@ -119,6 +118,10 @@ events : Event;
       });
     }
     window.location.reload();
+  }
+
+  updateEvent(id : number){
+this.router.navigate(['/update',id]);
   }
 
  

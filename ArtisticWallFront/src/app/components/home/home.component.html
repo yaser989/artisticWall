@@ -7,7 +7,7 @@
     <div class="card" *ngFor="let ev of evente">
       <div class="card-header bg-transparent" *ngIf="ev.idOwnerDto !== -1">
         <div class="btn-group" role="group" aria-label="Basic example" >
-        <!--  <button type="button" class="btn btn-link" (click)="updateEvent(ev.id)"><i class="fas fa-pen" ></i>&nbsp;Edit</button>-->
+          <button type="button" class="btn btn-link" (click)="updateEvent(ev.id)"><i class="fas fa-pen" ></i>&nbsp;Edit</button>
           <button type="button" class="btn btn-link" (click)="removeEvent(ev.id)"><i class="fas fa-trash"></i>&nbsp;Remove</button>
           <button type="button" class="btn btn-link" *ngIf="ev.shared == 0" (click)="shareEvent(ev.id, ev.shared)"><i class="fas fa-share-alt"></i>&nbsp;Share</button>
           <button type="button" class="btn btn-link" *ngIf="ev.shared == 1" (click)="shareEvent(ev.id, ev.shared)"><i class="fas fa-share-alt" ></i>&nbsp;Unshare</button>
