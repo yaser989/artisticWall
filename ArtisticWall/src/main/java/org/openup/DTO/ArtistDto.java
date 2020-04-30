@@ -9,7 +9,7 @@ public class ArtistDto implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-    private Long idDto;
+    private Long id;
 	private String artistName;
 	private String artistLastName;
 	private String artistMail;
@@ -25,10 +25,10 @@ public class ArtistDto implements Serializable{
 	}
 	
 	
-	public ArtistDto(Long idDto, String artistName, String artistLastName, String artistMail, String artistPassword,
+	public ArtistDto(Long id, String artistName, String artistLastName, String artistMail, String artistPassword,
 			byte[] artistPhoto, String artistDomain) {
 		super();
-		this.idDto = idDto;
+		this.id = id;
 		this.artistName = artistName;
 		this.artistLastName = artistLastName;
 		this.artistMail = artistMail;
@@ -74,17 +74,17 @@ public class ArtistDto implements Serializable{
 	public void setArtistDomain(String artistDomain) {
 		this.artistDomain = artistDomain;
 	}
-	public Long getIdDto() {
-		return idDto;
+	public Long getId() {
+		return id;
 	}
-	public void setIdDto(Long idDto) {
-		this.idDto = idDto;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 
 	@Override
 	public String toString() {
-		return "ArtistDto [idDto=" + idDto + ", artistName=" + artistName + ", artistLastName=" + artistLastName
+		return "ArtistDto [id=" + id + ", artistName=" + artistName + ", artistLastName=" + artistLastName
 				+ ", artistMail=" + artistMail + ", artistPassword=" + artistPassword + ", artistDomain=" + artistDomain
 				+ ", artistPhoto=" + Arrays.toString(artistPhoto) + "]";
 	}

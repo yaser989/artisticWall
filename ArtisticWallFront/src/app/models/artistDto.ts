@@ -1,5 +1,5 @@
 export class ArtistDto {
-    idDto : number; 
+    id : number; 
     artistName : string;
     artistLastName : string;
     artistMail : string;

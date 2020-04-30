@@ -1,5 +1,6 @@
 package org.openup.controller;
 import org.openup.DTO.ArtistDto;
+import org.openup.DTO.EventDto;
 import org.openup.repo.ArtistRepository;
 import org.openup.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,6 +46,12 @@ public class ArtistController {
 	public ResponseEntity createNewArtist(@RequestBody ArtistDto artist) {
 		System.out.println("Controller"+artist);
 		return ResponseEntity.ok(artistService.createNewArtist(artist));
+	}
+	
+	@PutMapping("/update/{id}")
+	public ResponseEntity updateEvent(@PathVariable(name="id") Long id, @RequestBody ArtistDto artist) {
+		artistService.updatArtist(id, artist);
+		return ResponseEntity.ok("updet done with success");
 	}
 	
 	@PostMapping("/login")

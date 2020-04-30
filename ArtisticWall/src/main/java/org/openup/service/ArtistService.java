@@ -2,7 +2,9 @@ package org.openup.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import org.junit.jupiter.engine.discovery.predicates.IsPotentialTestContainer;
 import org.openup.DTO.ArtistDto;
 import org.openup.entity.Artist;
 import org.openup.entity.ArtistDomain;
@@ -30,13 +32,25 @@ public class ArtistService {
 		return listArtistDto;
 	}
 
-	public List<ArtistDto> findById(Long id) {
-		List<ArtistDto> listArtistDto = new ArrayList();
-		List<Artist> listArtist = artistRepository.findArtistById(id);
-		for (Artist art : listArtist) {
-			listArtistDto.add(artistMapper.artistToDto(art));
-		}
-		return listArtistDto;
+	public ArtistDto findById(Long id) {
+	ArtistDto artistDto = new ArtistDto();
+	
+	ArtistDomain artistDomain= ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();
+	Artist toPersist = Artist.builder().name(artistDto.getArtistName()).lastName(artistDto.getArtistLastName())
+			.mail(artistDto.getArtistMail()).password(artistDto.getArtistPassword()).photo(artistDto.getArtistPhoto())
+			.build();
+	toPersist.setArtistDomain(artistDomain);
+	
+	Optional<Artist> artists = artistRepository.findById(id);
+		toPersist = artists.get();
+		artistDto.setId(toPersist.getId());
+		artistDto.setArtistDomain(toPersist.getArtistDomain().getDomain());
+		artistDto.setArtistName(toPersist.getName());
+		artistDto.setArtistLastName(toPersist.getLastName());
+		artistDto.setArtistMail(toPersist.getMail());
+		artistDto.setArtistPassword(toPersist.getPassword());
+	
+		return artistDto;
 	}
 
 	public Artist createNewArtist(ArtistDto artistDto) {
@@ -57,5 +71,28 @@ public class ArtistService {
 		Artist authenticatedArtist = artistRepository.findByMailAndPassword(mail, password);
 		return authenticatedArtist;
 	}
+	
+	public ArtistDto updatArtist(Long id , ArtistDto artistDto) {
+		ArtistDomain artistDomain= ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();
+		Artist toPersist = Artist.builder().name(artistDto.getArtistName()).lastName(artistDto.getArtistLastName())
+				.mail(artistDto.getArtistMail()).password(artistDto.getArtistPassword()).photo(artistDto.getArtistPhoto())
+				.build();
+		toPersist.setArtistDomain(artistDomain);
+		
+		Optional<Artist> artists = artistRepository.findById(id);
+		
+		if (artists.isPresent()) {
+			Artist artis = artists.get();
+			artis.setName(toPersist.getName());
+			artis.setLastName(toPersist.getLastName());
+			artis.setMail(toPersist.getMail());
+			artis.setPassword(toPersist.getPassword());
+			artis.getArtistDomain().setDomain(artistDomain.getDomain());
+			Artist saveArtist = artistRepository.save(artis);
+			artistDto.setId(saveArtist.getId());
+		}
+		return artistDto;
+	}
+	
 
 }

@@ -17,7 +17,8 @@ export class HomeComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 }
 
   artist :Artist ; 
- evente : EventDto;
+ evente : EventDto [];
+ 
 events : Event;
  public spinner : boolean;
   public currentUploadFile : any;
@@ -36,14 +37,16 @@ events : Event;
   }
 
 
-/**filter(keyWord: string){
+  filter(keyWord: string){
   if(keyWord === undefined || keyWord.length === 0){
     this.findAllEvent();
     return;
   }
-  this.event = this.event.filter(event => 
-    event.categoriesDto.toLocaleLowerCase().includes(keyWord) || event.typeEventDto.toLocaleLowerCase().includes(keyWord));
-}*/
+  this.evente = this.evente.filter(data => 
+data.typeEventDto.toLocaleLowerCase().includes(keyWord)
+    
+    );
+}
 
 
 

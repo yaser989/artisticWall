@@ -27,11 +27,14 @@ export class AuthorisedSideNavComponent implements OnInit {
   }
   addNewEvent(){
     let idDto = localStorage.getItem('currentUser');
-    this.eventService.findAllArtistEvent(this.artist.idDto)
-    .subscribe(data => this.artist.idDto, err => console.log(err));
+    this.eventService.findAllArtistEvent(this.artist.id)
+    .subscribe(data => this.artist.id, err => console.log(err));
     this.router.navigate(['/createNewEvent']);
   }
   goToHome(){
     this.router.navigate(['/home']);
+  }
+  profile(id: number){
+    this.router.navigate(['/profile',id]);
   }
 }

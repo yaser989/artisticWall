@@ -6,10 +6,14 @@
 <form class="form-group" (ngSubmit)="createEvent()"  novalidate>
   
     <label for="inputName" class="sr-only">typeEventDto</label>
-    <input type="text" name="typeEventDto" class="form-control" [(ngModel)]="event.typeEventDto" placeholder="Type of event" required  />
-
+    <input type="text" name="typeEventDto" list="chose-type" class="form-control" [(ngModel)]="event.typeEventDto" placeholder="Type of event" required  />
+    <datalist id="chose-type">
+        <option value="Audition">
+         <option value="Concert">
+         <option value="Show"></option>
+    </datalist>
     <label for="inputLAstName" class="sr-only">categoriesDto</label> 
-    <input type="text" name="categoriesDto" class="form-control" [(ngModel)]="event.categoriesDto" placeholder="Categories" required />
+    <input type="text" name="categoriesDto"  class="form-control" [(ngModel)]="event.categoriesDto" placeholder="Categories" required />
 
     <label for="inputEmail" class="sr-only">descriptionDto</label>
     <input type="text" name="descriptionDto" class="form-control" [(ngModel)]="event.descriptionDto" placeholder="Description" required />

@@ -17,8 +17,8 @@ export class EventService {
     return this.http.get<EventDto>(AppSitings.App_URL+"/event/")
   }
 
-  findAllArtistEvent(id:number) : Observable<any> { 
-    return this.http.get(AppSitings.App_URL+"/event/"+id)
+  findAllArtistEvent(id:number) { 
+    return this.http.get<EventDto []>(AppSitings.App_URL+"/event/"+id)
   }
 
   findEventByID(id : number): Observable<any>{

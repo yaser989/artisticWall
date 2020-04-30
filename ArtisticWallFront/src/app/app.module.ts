@@ -14,6 +14,8 @@ import { AuthorisedSideNavTogglerComponent } from './layout/authorised/authorise
 import { AuthorisedLayoutComponent } from './layout/authorised/authorised-layout/authorised-layout.component';
 import { AuthorisedSideNavComponent } from './layout/authorised/authorised-side-nav/authorised-side-nav.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { myfilterPipe } from './components/home/event-filter.pipe';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AuthorisedTopNavComponent,
     AuthorisedSideNavTogglerComponent,
     AuthorisedLayoutComponent,
-    AuthorisedSideNavComponent
+    AuthorisedSideNavComponent,
+    myfilterPipe,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

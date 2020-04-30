@@ -17,12 +17,18 @@ findAllArtist(){
   return this.http.get<Artist>(AppSitings.App_URL+"/artist/")
 }
 
-findArtistById(id : number){
-  return this.http.get<Artist>(AppSitings.App_URL+"/artist/" + id)
+findArtistById(id : number)  : Observable<any>{
+  return this.http.get(AppSitings.App_URL+"/artist/" + id)
 }
 createNewArtist(artist : ArtistDto){
   return this.http.post<ArtistDto>(AppSitings.App_URL+"/artist/",artist)
 }
+
+updateArtist(artist:ArtistDto,id:number) : Observable<any>{
+  return this.http.put(AppSitings.App_URL+"/artist/update/"+id,artist)
+}
+
+
 login(mail: string, password: string){
   return this.http.post<Artist>(AppSitings.App_URL+"/artist/login?mail="+mail+"&password="+password,null)
 }

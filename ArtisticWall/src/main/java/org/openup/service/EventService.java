@@ -53,7 +53,7 @@ public class EventService {
 		
         ArtistDomain domain = ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();
 		
-		Artist art = Artist.builder().id(artistDto.getIdDto()).name(artistDto.getArtistName())
+		Artist art = Artist.builder().id(artistDto.getId()).name(artistDto.getArtistName())
 			.lastName(artistDto.getArtistLastName()).mail(artistDto.getArtistMail()).password(artistDto.getArtistPassword())
 				.photo(artistDto.getArtistPhoto()).event(new ArrayList<Event>()).build();
 		
@@ -124,7 +124,7 @@ public class EventService {
 		
        ArtistDomain domain = ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();
 		
-	 Artist art = Artist.builder().id(artistDto.getIdDto()).name(artistDto.getArtistName())
+	 Artist art = Artist.builder().id(artistDto.getId()).name(artistDto.getArtistName())
 			.lastName(artistDto.getArtistLastName()).mail(artistDto.getArtistMail()).password(artistDto.getArtistPassword())
 				.photo(artistDto.getArtistPhoto()).build();
 		
