@@ -1,6 +1,0 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?>
-<mvc:resources mapping="swagger-ui.html" location="classpath:/META-INF/resources/"/>
-<mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/"/>
-
-Include a swagger configuration
-<bean name="swaggerConfig" class="com.exchangewalk.web.config.SwaggerConfig"/> -->

@@ -14,13 +14,19 @@ export class AuthorisedSideNavComponent implements OnInit {
   artist : ArtistDto;
   artiste : Artist;
   constructor(public sideNavService: AuthorisedSideNavService,private router :Router,private eventService : EventService ,private artistService :ArtistService) { 
-    
+    this.checkUser();
     
   }
 
   ngOnInit(): void {
   }
-
+  checkUser(){
+    if (localStorage.getItem('currentUser') === undefined || localStorage.getItem('currentUser') === null){
+      this.router.navigate(['/login']);
+      return;
+    }
+    this.artist = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   addNewEvent(){
     let idDto = localStorage.getItem('currentUser');
@@ -34,14 +40,14 @@ export class AuthorisedSideNavComponent implements OnInit {
   profile(id: number){
     this.router.navigate(['/profile',id]);
   }
-  logout(){
-  this.artistService.logout()
-  .subscribe(data => {
-    sessionStorage.removeItem('currentUser')
-    this.artiste.mail = null
-    this.artiste.password = null
+   logout(){
+   this.artistService.logout()
+   .subscribe(data => {
+     sessionStorage.removeItem('currentUser')
+     this.artiste.mail = null
+     this.artiste.password = null
    
-  });
-  this.router.navigate(['/login']);
-  }
+   });
+   this.router.navigate(['/login']);
+   }
 }
