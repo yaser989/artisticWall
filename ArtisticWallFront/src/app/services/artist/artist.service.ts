@@ -44,4 +44,8 @@ uploadProductPhoto(file: File, id :number): Observable<HttpEvent<{}>> {
   
 }
 
+logout(){
+  return this.http.get(AppSitings.App_URL+"/artist/logoutSuccessful");
+}
+
 }

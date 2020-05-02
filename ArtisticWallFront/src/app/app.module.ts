@@ -16,6 +16,7 @@ import { AuthorisedSideNavComponent } from './layout/authorised/authorised-side-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { myfilterPipe } from './components/home/event-filter.pipe';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     AuthorisedLayoutComponent,
     AuthorisedSideNavComponent,
     myfilterPipe,
-    ProfileComponent
+    ProfileComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

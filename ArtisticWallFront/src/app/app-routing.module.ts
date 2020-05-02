@@ -6,6 +6,7 @@ import { SubscribeComponent } from './components/subscribe/subscribe.component';
 import { CreateNewEventComponent } from './components/create-new-event/create-new-event.component';
 import { UpdateEventComponent } from './components/update-event/update-event.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 
 
@@ -16,7 +17,10 @@ const routes: Routes = [
   {path: 'subscribe', component : SubscribeComponent},
   {path:'createNewEvent', component : CreateNewEventComponent},
   {path:'update/:id',component : UpdateEventComponent},
-  {path:'profile/:id',component:ProfileComponent}
+  {path:'profile/:id',component:ProfileComponent},
+  {path:'admin',component:AdminComponent},
+  {path:'logout',component : LoginComponent}
+
 
 ];
 

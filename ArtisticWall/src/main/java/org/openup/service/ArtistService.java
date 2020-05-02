@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.engine.discovery.predicates.IsPotentialTestContainer;
 import org.openup.DTO.ArtistDto;
 import org.openup.entity.Artist;
 import org.openup.entity.ArtistDomain;
@@ -93,6 +92,7 @@ public class ArtistService {
 		}
 		return artistDto;
 	}
+
 	
 
 }

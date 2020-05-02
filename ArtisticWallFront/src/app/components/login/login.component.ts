@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import{FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import {ArtistService} from 'src/app/services/artist/artist.service';
+import { Artist } from 'src/app/models/artist';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,7 +10,8 @@ import {ArtistService} from 'src/app/services/artist/artist.service';
 })
 export class LoginComponent implements OnInit {
   errorMessage : string;
-  public loginForm: FormGroup
+  public loginForm: FormGroup;
+  artist : Artist;
 
   constructor(private artistService : ArtistService,private formBuilder: FormBuilder,private router :Router ) { 
     this.loginForm=new FormGroup({
@@ -54,4 +56,10 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('password');
   }
      
+
+  logout(){
+    sessionStorage.removeItem('currentUser')
+    this.artist.mail = null
+    this.artist.password = null
+  }
 }

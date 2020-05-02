@@ -1,0 +1,45 @@
+<app-authorised-top-nav></app-authorised-top-nav>
+<div class="up">
+<app-authorised-side-nav></app-authorised-side-nav>
+
+
+<div class="ro">
+
+  <form class="form-inline d-flex justify-content-center md-form form-sm active-pink active-pink-2 mt-2">
+    <i class="fas fa-search" style="color: #da054cbb;" ></i>
+    <input class="form-control form-control-sm ml-3 w-75" type="serch" placeholder="Search by type of event " (input)="filter($event.target.value)"
+      aria-label="Search">
+  </form>
+  <br><br>
+<div class="card"  *ngFor="let ev of admin">
+  <div class="card-header">
+    <p class="card-text" [hidden]="!ev.typeEventDto"><b>Type event: </b>{{ev.typeEventDto}} <br> <b>#: </b>{{ev.idEvent}}</p>
+    <p style="color: grey; font-size: 10px;">published :&nbsp;{{ev.dateOfCreatingDto}}</p>
+    <p class="card-title" [hidden]="!ev.categoriesDto" style="background-color:white;"><b>Categories: </b>{{ev.categoriesDto}}</p>
+  </div>
+  <div class="card-body">
+    <p class="card-text" [hidden]="!ev.descriptionDto"><b>Description: </b>{{ev.descriptionDto}}</p>
+  </div>
+
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" [hidden]="!ev.commonDto"><b>City: </b>{{ev.commonDto}}</li>
+    <li class="list-group-item" [hidden]="!ev.streetDto"><b>Street: </b>{{ev.streetDto}}</li>
+    <li class="list-group-item" [hidden]="!ev.zipCodeDto"><b>Zip code: </b>{{ev.zipCodeDto}}</li>
+    <li class="list-group-item" [hidden]="!ev.phoneDto"><b>Phone: </b>{{ev.phoneDto}}</li>
+    <li class="list-group-item" [hidden]="!ev.dateDto"><b>At: </b>{{ev.dateDto}}</li>
+        
+        <li class="list-group-item" [hidden]="!ev.artistName || !ev.artistLastName"><b>Artist: </b>{{ev.artistName}}&nbsp;{{ev.artistLastName}}</li>
+        <li class="list-group-item" [hidden]="!ev.artistMail"><b>Email: </b>{{ev.artistMail}}</li>
+        <li class="list-group-item" [hidden]="!ev.artistPassword"><b>Password :</b>{{ev.artistPassword}}</li>
+        <li class="list-group-item" [hidden]="!ev.artistDomain"><b>Domain: </b>{{ev.artistDomain}}</li>
+        <li class="list-group-item" [hidden]="!ev.roleName"><b>Role: </b>{{ev.roleName}}</li>
+        <li class="list-group-item" [hidden]="!ev.shared"><b>shared: </b>{{ev.shared}}</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+
+</div>
+</div>
+</div>

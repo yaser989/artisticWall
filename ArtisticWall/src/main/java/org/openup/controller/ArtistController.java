@@ -1,6 +1,5 @@
 package org.openup.controller;
 import org.openup.DTO.ArtistDto;
-import org.openup.DTO.EventDto;
 import org.openup.repo.ArtistRepository;
 import org.openup.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +65,8 @@ public class ArtistController {
         }
         return ResponseEntity.ok(artistService.login(mail, password));
     }
-
+	 @GetMapping("/logoutSuccessful")
+	    public ResponseEntity log() {
+	        return ResponseEntity.ok().body("logout success");
+	    }
 }

@@ -2,7 +2,7 @@ package org.openup.repo;
 
 
 
-import java.util.List;
+import java.util.List;	
 
 import org.openup.entity.Artist;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,7 +19,7 @@ public interface ArtistRepository extends JpaRepository<Artist, Long>{
 	@Query("select art from Artist art where art.id = :id")
 	List<Artist> findArtistById(@Param("id") Long id);
    
-
+ 
        
 
 	

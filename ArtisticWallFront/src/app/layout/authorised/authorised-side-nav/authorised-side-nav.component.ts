@@ -4,6 +4,7 @@ import {Artist} from 'src/app/models/artist';
 import { Router } from '@angular/router';
 import {EventService} from 'src/app/services/event/event.service';
 import { ArtistDto } from 'src/app/models/artistDto';
+import {ArtistService} from 'src/app/services/artist/artist.service';
 @Component({
   selector: 'app-authorised-side-nav',
   templateUrl: './authorised-side-nav.component.html',
@@ -11,20 +12,16 @@ import { ArtistDto } from 'src/app/models/artistDto';
 })
 export class AuthorisedSideNavComponent implements OnInit {
   artist : ArtistDto;
-  constructor(public sideNavService: AuthorisedSideNavService,private router :Router,private eventService : EventService) { 
-    this.checkUser();
+  artiste : Artist;
+  constructor(public sideNavService: AuthorisedSideNavService,private router :Router,private eventService : EventService ,private artistService :ArtistService) { 
+    
+    
   }
 
   ngOnInit(): void {
   }
 
-  checkUser(){
-    if (localStorage.getItem('currentUser') === undefined || localStorage.getItem('currentUser') === null){
-      this.router.navigate(['/login']);
-      return;
-    }
-    this.artist = JSON.parse(localStorage.getItem('currentUser'));
-  }
+
   addNewEvent(){
     let idDto = localStorage.getItem('currentUser');
     this.eventService.findAllArtistEvent(this.artist.id)
@@ -36,5 +33,15 @@ export class AuthorisedSideNavComponent implements OnInit {
   }
   profile(id: number){
     this.router.navigate(['/profile',id]);
+  }
+  logout(){
+  this.artistService.logout()
+  .subscribe(data => {
+    sessionStorage.removeItem('currentUser')
+    this.artiste.mail = null
+    this.artiste.password = null
+   
+  });
+  this.router.navigate(['/login']);
   }
 }
