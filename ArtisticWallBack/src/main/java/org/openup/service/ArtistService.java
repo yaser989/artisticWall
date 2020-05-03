@@ -10,6 +10,7 @@ import org.openup.entity.ArtistDomain;
 import org.openup.entity.Role;
 import org.openup.mapper.ArtistMapper;
 import org.openup.repo.ArtistRepository;
+import org.openup.utils.EncrytedPasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,9 @@ public class ArtistService {
 
 	@Autowired
 	private ArtistMapper artistMapper;
+	
+	@Autowired
+	static	EncrytedPasswordUtils encrytedPasswordUtils;
 
 	public List<ArtistDto> findAll() {
 		List<ArtistDto> listArtistDto = new ArrayList();
@@ -61,6 +65,7 @@ public class ArtistService {
 		role.setRoleName("ROLE_USER");
 		toPersist.setRole(role);
 		toPersist.setArtistDomain(artistDomain);
+		toPersist.setPassword(encrytedPasswordUtils.encrytePassword(toPersist.getPassword()));
 		System.out.println(toPersist);
 		System.out.println(artistDto);
 		return artistRepository.save(toPersist);

@@ -41,13 +41,11 @@ export class AuthorisedSideNavComponent implements OnInit {
     this.router.navigate(['/profile',id]);
   }
    logout(){
-   this.artistService.logout()
-   .subscribe(data => {
-     sessionStorage.removeItem('currentUser')
-     this.artiste.mail = null
-     this.artiste.password = null
-   
-   });
-   this.router.navigate(['/login']);
+   this.artistService.logout()   
+  localStorage.clear();
+  window.location.reload();
+  
    }
+
+   
 }

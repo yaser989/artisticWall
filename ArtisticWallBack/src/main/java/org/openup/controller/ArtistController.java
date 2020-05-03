@@ -65,8 +65,5 @@ public class ArtistController {
         }
         return ResponseEntity.ok(artistService.login(mail, password));
     }
-	 @GetMapping("/logoutSuccessful")
-	    public ResponseEntity log() {
-	        return ResponseEntity.ok().body("logout success");
-	    }
+
 }
