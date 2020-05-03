@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    
 this.AdminFindAll();
   }
 

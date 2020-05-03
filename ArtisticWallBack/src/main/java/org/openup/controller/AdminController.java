@@ -1,5 +1,6 @@
 package org.openup.controller;
 
+import org.openup.entity.Artist;
 import org.openup.service.AdminServise;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,13 @@ public class AdminController {
 	
 	@GetMapping("/")
 	public ResponseEntity findAll() {	
+		
+//		Artist artist = new Artist();
+//		if (artist.getRole().getRoleName() != "ROLE_Admin") {
+//			return ResponseEntity.notFound().build();
+//		}
+	
+		
 		return ResponseEntity.ok(adminServise.finAll());
 	}
 

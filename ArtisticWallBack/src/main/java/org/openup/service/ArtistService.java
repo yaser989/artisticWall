@@ -12,10 +12,16 @@ import org.openup.mapper.ArtistMapper;
 import org.openup.repo.ArtistRepository;
 import org.openup.utils.EncrytedPasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ArtistService {
+public class ArtistService implements UserDetailsService{
 
 	@Autowired
 	private ArtistRepository artistRepository;
@@ -96,6 +102,22 @@ public class ArtistService {
 			artistDto.setId(saveArtist.getId());
 		}
 		return artistDto;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+		 Optional<Artist> artist = artistRepository.findByName(name);
+	       if (artist == null) {
+	           System.out.println("artist not found! " + name);
+	           throw new UsernameNotFoundException("Artist " + name + " was not found in the database");
+	       }
+	       System.out.println("Found Artist: " + artist);
+	       List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
+	       GrantedAuthority authority = new SimpleGrantedAuthority(artist.get().getRole().getRoleName());
+           grantList.add(authority);
+	       UserDetails userDetails = (UserDetails) new User(artist.get().getName(), //
+	    		   artist.get().getPassword(),grantList);
+		return userDetails;
 	}
 
 	
