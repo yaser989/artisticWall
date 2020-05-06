@@ -75,23 +75,12 @@ public class EventService {
 	
 	public EventDto findEventById(Long id) {
 	EventDto eventDto = new EventDto();
-	Address address = Address.builder().common(eventDto.getCommonDto()).street(eventDto.getStreetDto())
-			.zipCode(eventDto.getZipCodeDto()).phone(eventDto.getPhoneDto())
-			.date(eventDto.getDateDto()).build();
 	
-	Categories categories = Categories.builder().categories(eventDto.getCategoriesDto()).build();
-	
-	Event toEvent = Event.builder().typeEvent(eventDto.getTypeEventDto()).description(eventDto.getDescriptionDto())
-			.date(eventDto.getDateOfCreatingDto()).photo(eventDto.getPhotoDto()).build();
-	
-	toEvent.setAddress(address);
-	toEvent.setCategories(categories);
-	address.setEvent(toEvent);
-
-  
+	Event toEvent = new  Event ();
+	  
 		Optional<Event> events = eventRepository.findById(id);
 		toEvent = events.get();
-		eventDto.setId(toEvent.getId());
+		eventDto.setIdEvent(toEvent.getId());
 		eventDto.setCategoriesDto(toEvent.getCategories().getCategories());
 		eventDto.setTypeEventDto(toEvent.getTypeEvent());
 		eventDto.setDescriptionDto(toEvent.getDescription());
@@ -138,7 +127,7 @@ public class EventService {
        toEvent.setArtist(art);
         
        Event eventSave = eventRepository.save(toEvent);
-       eventDto.setId(eventSave.getId());
+       eventDto.setIdEvent(eventSave.getId());
 	 return eventDto;
 
 	}
@@ -153,7 +142,7 @@ public class EventService {
 	 		eventRepository.flush();        
 	}
 		 
-		  eventDto.setId(event.getId());
+		  eventDto.setIdEvent(event.getId());
 		 return eventDto;
 	}
 	
@@ -166,7 +155,7 @@ public class EventService {
 		Categories categories = Categories.builder().categories(eventDto.getCategoriesDto()).build();
 		
 		Event toEvent = Event.builder().typeEvent(eventDto.getTypeEventDto()).description(eventDto.getDescriptionDto())
-				.date(eventDto.getDateOfCreatingDto()).photo(eventDto.getPhotoDto()).build();
+				.date(eventDto.getDateOfCreatingDto()).photo(eventDto.getEventPhoto()).build();
 		
 		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");  
 	    Date date = new Date();  
@@ -192,8 +181,8 @@ public class EventService {
 //	        event.setPhoto(null);
 	  Event saveEvent =    eventRepository.save(event);
 	 
-	  eventDto.setId(saveEvent.getId());
-		System.out.println(eventDto.getId()+"======================================");
+	  eventDto.setIdEvent(saveEvent.getId());
+		System.out.println(eventDto.getIdEvent()+"======================================");
 		}
 	
 		return eventDto;
@@ -208,7 +197,7 @@ public class EventService {
 		eventDto.setShared(!isShared);
 	
 		Event saveEvent =  eventRepository.save(event);
-		eventDto.setId(saveEvent.getId());
+		eventDto.setIdEvent(saveEvent.getId());
 		return eventDto;
 	}
 	

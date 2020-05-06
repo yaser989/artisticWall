@@ -37,38 +37,38 @@ public class EventController {
 		return ResponseEntity.ok(eventService.findAll());
 	}
 	
-	@GetMapping("/{id}")
-	public ResponseEntity findAllArtistEventById(@PathVariable(name = "id")Long id) {
-		return ResponseEntity.ok(eventService.findAllArtistEventById(id));
+	@GetMapping("/{idEvent}")
+	public ResponseEntity findAllArtistEventById(@PathVariable(name = "idEvent")Long idEvent) {
+		return ResponseEntity.ok(eventService.findAllArtistEventById(idEvent));
 	}
 	
-	@GetMapping("/findByID/{id}")
-	public ResponseEntity findEventById(@PathVariable(name = "id")Long id) {
-		return ResponseEntity.ok(eventService.findEventById(id));
+	@GetMapping("/findByID/{idEvent}")
+	public ResponseEntity findEventById(@PathVariable(name = "idEvent")Long idEvent) {
+		return ResponseEntity.ok(eventService.findEventById(idEvent));
 	}
 		
 	
-	@PostMapping("/create/{id}")
-	public EventDto createNewEvent (@RequestBody EventDto event,@PathVariable("id") Long id) {
+	@PostMapping("/create/{idEvent}")
+	public EventDto createNewEvent (@RequestBody EventDto event,@PathVariable("idEvent") Long idEvent) {
 		
-		return   eventService.createNewEvent(event, id);
+		return   eventService.createNewEvent(event, idEvent);
 	}
 	
-	@DeleteMapping("/{id}")
-	public ResponseEntity deleteEvent(@PathVariable(name="id") Long id) {
-		eventService.deleteEvent(id);
+	@DeleteMapping("/{idEvent}")
+	public ResponseEntity deleteEvent(@PathVariable(name="idEvent") Long idEvent) {
+		eventService.deleteEvent(idEvent);
 		return ResponseEntity.ok("Event removed with success");
 	}
 	
-	@PutMapping("/update/{id}")
-	public ResponseEntity updateEvent(@PathVariable(name="id") Long id, @RequestBody EventDto event) {
-		eventService.updateEvent(id, event);
+	@PutMapping("/update/{idEvent}")
+	public ResponseEntity updateEvent(@PathVariable(name="idEvent") Long idEvent, @RequestBody EventDto event) {
+		eventService.updateEvent(idEvent, event);
 		return ResponseEntity.ok("updet done with success");
 	}
 	
-	@GetMapping("/share/{id}/{isShared}")
-	public ResponseEntity shareEvent (@PathVariable (name="id")Long id,@PathVariable (name ="isShared")boolean isShared) {
-		eventService.shareEvent(id, isShared);
+	@GetMapping("/share/{idEvent}/{isShared}")
+	public ResponseEntity shareEvent (@PathVariable (name="idEvent")Long idEvent,@PathVariable (name ="isShared")boolean isShared) {
+		eventService.shareEvent(idEvent, isShared);
 		return ResponseEntity.ok("Event shared with succses");
 	}
 	

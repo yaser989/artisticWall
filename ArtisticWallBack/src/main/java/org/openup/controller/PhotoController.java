@@ -39,23 +39,23 @@ public class PhotoController {
 	@GetMapping("/event/{id}")
 	public ResponseEntity photoEvent(@PathVariable Long id) {
 		EventDto eventDto = new EventDto();
-		 Event event = Event.builder().photo(eventDto.getPhotoDto()).build();
+		 Event event = Event.builder().photo(eventDto.getEventPhoto()).build();
 	      event=eventRepository.getOne(id);
-	      eventDto.setPhotoDto(event.getPhoto());  
+	      eventDto.setEventPhoto(event.getPhoto());  
 	      
-	      eventDto.setId(event.getId());
+	      eventDto.setIdEvent(event.getId());
 		
 		return ResponseEntity.ok()
 				.contentType(MediaType.IMAGE_GIF)
 				.contentType(MediaType.IMAGE_JPEG)
 				.contentType(MediaType.IMAGE_PNG)
-				.body(new InputStreamResource(new ByteArrayInputStream(eventDto.getPhotoDto())));
+				.body(new InputStreamResource(new ByteArrayInputStream(eventDto.getEventPhoto())));
 	}
 	
 	@PostMapping("/uploadPhoto/{id}")
     public ResponseEntity<EventDto> uploadPhoto(@PathVariable Long id, MultipartFile file) throws IOException {
 		EventDto eventDto = new EventDto();
-		 Event event = Event.builder().photo(eventDto.getPhotoDto()).build();
+		 Event event = Event.builder().photo(eventDto.getEventPhoto()).build();
 		 byte[] byteObjects = new byte[file.getBytes().length];
 		 int i= 0;
 		 for (byte b : file.getBytes()){
@@ -66,9 +66,9 @@ public class PhotoController {
      event.setPhoto(byteObjects);
      
      final Event eventSave = eventRepository.save(event);
-       eventDto.setPhotoDto(event.getPhoto());
+       eventDto.setEventPhoto(event.getPhoto());
        
-        eventDto.setId(eventSave.getId());
+        eventDto.setIdEvent(eventSave.getId());
      return ResponseEntity.ok(eventDto);
     }
 	

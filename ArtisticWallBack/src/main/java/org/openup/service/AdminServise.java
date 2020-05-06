@@ -40,7 +40,7 @@ public class AdminServise {
 	public List<AdminDto> finAll(){
 		
 		List<AdminDto> listAdmintDto = new ArrayList();
-        List<Event> listevent = eventRepository.AdminfindAll();
+        List<Event> listevent = eventRepository.eventfindAll();
 		for (Event ev : listevent) {
 			listAdmintDto.add(adminMapper.adminDto(ev));
 		}

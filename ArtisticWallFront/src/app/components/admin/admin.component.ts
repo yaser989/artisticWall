@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import {AdminService} from 'src/app/services/admin/admin.service';
 import { AdminDto } from 'src/app/models/adminDto';
 import { Artist } from 'src/app/models/artist';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { EventService } from 'src/app/services/event/event.service';
+
 
 @Component({
   selector: 'app-admin',
@@ -10,12 +13,17 @@ import { Artist } from 'src/app/models/artist';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
+  progress: { percentage: number } = { percentage: 0 }
   admin : AdminDto [];
 
   event : Event;
   
-  constructor(private router :Router ,private adminService :AdminService ) {
+  public currentUploadFile : any;
+  public currentTime : number;
+  public editPhoto :boolean;
+  currentFileUpload:File;
+  selectedFiles : FileList;
+  constructor(private router :Router ,private adminService :AdminService ,private eventService:EventService) {
     this.checkUser();
    }
 
@@ -72,4 +80,31 @@ updateEventAndArtist(idEvent : number){
   this.router.navigate(['/adminUpdate',idEvent]);
     }
 
+
+    onselectedFile(event) {
+      const file = event.target.files.item(0)
+      if (file.type.match('image.*')) {
+        this.selectedFiles = event.target.files;
+      } else {
+        alert('invalid format!');
+      }
+    }
+  
+    uploadPhoto(id:number) {
+      this.progress.percentage = 0;
+      this.currentFileUpload = this.selectedFiles.item(0)
+      this.eventService.uploadProductPhoto(this.currentFileUpload, id)
+      .subscribe(event => {
+        if(event.type === HttpEventType.UploadProgress){
+          this.progress.percentage = Math.round(100 * event.loaded / event.total);
+        } else if (event instanceof HttpResponse) {
+          alert('File loaded successfully');
+          console.log('check if ' + event.url);
+          window.location.reload();
+        }
+      }, err => {
+          alert('Image failled to load');
+      });
+      this.selectedFiles = undefined;
+    }
 }

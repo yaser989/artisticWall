@@ -32,6 +32,9 @@ public interface EventRepository extends JpaRepository<Event, Long>{
 			+ " inner join Event event on artist.artiste_id = event.artiste_id"
 			+ " inner join Categories categories on event.categories_id = categories.categories_id"
 			+ " inner join Address address on event.event_id=address.event_id",nativeQuery=true)
-      List<Event> AdminfindAll ();
+      List<Event> eventfindAll ();
+	
+	
+	
 	
 }

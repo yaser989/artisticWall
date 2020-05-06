@@ -9,7 +9,7 @@ justify-content: space-between;
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 50%;
     padding: 20px;
 }
 .card{
@@ -43,6 +43,15 @@ p:blank{
         padding: 20px;
         
     }
+    .ro{
+
+        margin-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        padding: 20px;
+    }
     
 }
 @media only screen and (max-width: 1000px){
@@ -55,5 +64,14 @@ p:blank{
         width: 100%;
         padding: 20px;
         
+    }
+    .ro{
+
+        margin-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        padding: 20px;
     }
 }

@@ -33,7 +33,7 @@ events : Event;
 
   ngOnInit(): void {
     this.findAllEvent();
-    
+   
   }
 
 
@@ -69,8 +69,8 @@ data.typeEventDto.toLocaleLowerCase().includes(keyWord)
     });
   }
 
-  shareEvent(id : number, shared: boolean){
-  this.eventService.shareEvent(id,shared)
+  shareEvent(idEvent : number, shared: boolean){
+  this.eventService.shareEvent(idEvent,shared)
   .pipe()
   .subscribe(data => {
     this.findAllEvent();
@@ -91,10 +91,10 @@ data.typeEventDto.toLocaleLowerCase().includes(keyWord)
     }
   }
 
-  uploadPhoto(id:number) {
+  uploadPhoto(idEvent:number) {
     this.progress.percentage = 0;
     this.currentFileUpload = this.selectedFiles.item(0)
-    this.eventService.uploadProductPhoto(this.currentFileUpload, id)
+    this.eventService.uploadProductPhoto(this.currentFileUpload, idEvent)
     .subscribe(event => {
       if(event.type === HttpEventType.UploadProgress){
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
@@ -109,13 +109,13 @@ data.typeEventDto.toLocaleLowerCase().includes(keyWord)
     this.selectedFiles = undefined;
   }
   
-  removeEvent(id : number){
-    if (id === undefined){
+  removeEvent(idEvent : number){
+    if (idEvent === undefined){
       alert('An error has occured while removing the event');
       return;
     }
     if(confirm("Do you relly want to remove the event")){
-      this.eventService.deleteEvent(id)
+      this.eventService.deleteEvent(idEvent)
       .subscribe(data =>{
        this.findAllEvent = data
       });
@@ -123,8 +123,8 @@ data.typeEventDto.toLocaleLowerCase().includes(keyWord)
     window.location.reload();
   }
 
-  updateEvent(id : number){
-this.router.navigate(['/update',id]);
+  updateEvent(idEvent : number){
+this.router.navigate(['/update',idEvent]);
   }
 
  

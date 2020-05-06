@@ -11,13 +11,13 @@ import {Event} from 'src/app/models/event';
 export class UpdateEventComponent implements OnInit {
   event : Event = new Event ();
   evente : EventDto  = new EventDto();
-  id:number;
+  idEvent:number;
   constructor(private route : ActivatedRoute, private router: Router,private eventService:EventService) { }
 
   ngOnInit(): void {
    
-    this.id = this.route.snapshot.params.id;
-    this.eventService.findEventByID(this.id)
+    this.idEvent = this.route.snapshot.params.idEvent;
+    this.eventService.findEventByID(this.idEvent)
     .subscribe(data => {
       this.evente = data
       console.log(this.evente);
@@ -28,7 +28,7 @@ export class UpdateEventComponent implements OnInit {
 
 
   updateEvent(){
-    this.eventService.updateEvent(this.evente,this.id)
+    this.eventService.updateEvent(this.evente,this.idEvent)
     .subscribe(data => {
       this.evente = data;
     }); 

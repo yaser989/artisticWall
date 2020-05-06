@@ -17,33 +17,33 @@ export class EventService {
     return this.http.get<EventDto>(AppSitings.App_URL+"/event/")
   }
 
-  findAllArtistEvent(id:number) { 
-    return this.http.get<EventDto []>(AppSitings.App_URL+"/event/"+id)
+  findAllArtistEvent(idEvent:number) { 
+    return this.http.get<EventDto []>(AppSitings.App_URL+"/event/"+idEvent)
   }
 
-  findEventByID(id : number): Observable<any>{
-   return this.http.get(AppSitings.App_URL+"/event/findByID/"+id);
+  findEventByID(idEvent : number): Observable<any>{
+   return this.http.get(AppSitings.App_URL+"/event/findByID/"+idEvent);
   }
 
-  createNewEvent(event: EventDto, id : number){
-    return this.http.post<EventDto>(AppSitings.App_URL+"/event/create/" +id ,event)
+  createNewEvent(event: EventDto, idEvent : number){
+    return this.http.post<EventDto>(AppSitings.App_URL+"/event/create/" +idEvent ,event)
   }
 
-  shareEvent(id:number, isShared:boolean){
-    return this.http.get<EventDto>(AppSitings.App_URL+"/event/share/"+id+"/"+isShared)
+  shareEvent(idEvent:number, isShared:boolean){
+    return this.http.get<EventDto>(AppSitings.App_URL+"/event/share/"+idEvent+"/"+isShared)
   }
-deleteEvent(id:number) : Observable<any>{
-  return this.http.delete(AppSitings.App_URL+"/event/"+id)
+deleteEvent(idEvent:number) : Observable<any>{
+  return this.http.delete(AppSitings.App_URL+"/event/"+idEvent)
 }
 
-updateEvent(event:EventDto,id:number) : Observable<any>{
-  return this.http.put(AppSitings.App_URL+"/event/update/"+id,event)
+updateEvent(event:EventDto,idEvent:number) : Observable<any>{
+  return this.http.put(AppSitings.App_URL+"/event/update/"+idEvent,event)
 }
 
-uploadProductPhoto(file: File, id :number): Observable<HttpEvent<{}>> {
+uploadProductPhoto(file: File, idEvent :number): Observable<HttpEvent<{}>> {
   let formatData: FormData = new FormData();
   formatData.append('file', file);
-  const req = new HttpRequest('POST',AppSitings.App_URL+ "/photos/uploadPhoto/" + id , formatData, {
+  const req = new HttpRequest('POST',AppSitings.App_URL+ "/photos/uploadPhoto/" + idEvent , formatData, {
     reportProgress: true,
     responseType: 'text'
   });

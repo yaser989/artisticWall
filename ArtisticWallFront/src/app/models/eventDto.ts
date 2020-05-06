@@ -1,15 +1,23 @@
 export class EventDto{
-     id : number;
+     idArtist : number;
+	 idEvent : number;
+	 artistName : string;
+	 artistLastName : string;
+	 artistMail : string;
+	 artistPassword : string;
+	 artistDomain : string;
+	 roleName : string;
+	 artistPhoto : File;
 	 typeEventDto : string;
 	 descriptionDto : string;
-	 photoDto : File;
+	 eventPhoto : File;
 	 shared : boolean;
 	 idOwnerDto : number;
 	 categoriesDto : string;
-	 streetDto : string ;
+	 streetDto : string;
 	 zipCodeDto : string;
-	 commonDto : string ;
+	 commonDto : string;
 	 phoneDto : string;
-	 dateDto : Date; 
+	 dateDto : Date;
 	 dateOfCreatingDto : Date;
 }
