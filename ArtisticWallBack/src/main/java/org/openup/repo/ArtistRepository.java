@@ -19,6 +19,8 @@ public interface ArtistRepository extends JpaRepository<Artist, Long>{
 
 	Artist findByMailAndPassword(String mail,String password);
 	
+	Artist findByMail(String mail);
+	
 	@Query("select art from Artist art where art.id = :id")
 	List<Artist> findArtistById(@Param("id") Long id);
    

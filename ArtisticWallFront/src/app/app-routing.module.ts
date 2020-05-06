@@ -7,6 +7,7 @@ import { CreateNewEventComponent } from './components/create-new-event/create-ne
 import { UpdateEventComponent } from './components/update-event/update-event.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { AdminUpdateArtistEventComponent } from './components/admin-update-artist-event/admin-update-artist-event.component';
 
 
 
@@ -19,9 +20,9 @@ const routes: Routes = [
   {path:'update/:id',component : UpdateEventComponent},
   {path:'profile/:id',component:ProfileComponent},
   {path:'admin',component:AdminComponent},
-  {path:'logout',component : LoginComponent}
-
-
+  {path:'logout',component : LoginComponent},
+  {path:'adminUpdate/:idEvent',component : AdminUpdateArtistEventComponent}
+  
 ];
 
 

@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private artistService : ArtistService,private formBuilder: FormBuilder,private router :Router ) { 
     this.loginForm=new FormGroup({
-      login : new FormControl ('',Validators.required),
+      mail : new FormControl ('',Validators.required),
       password :new FormControl ('',Validators.required)
     });
   }
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
       this.errorMessage = "EMail and / or password is incorrect";
       return;
     }
-    this.artistService.login(this.login.value, this.password.value)
+    this.artistService.login(this.userName.value, this.password.value)
       .pipe()
       .subscribe(data => {
         localStorage.setItem('currentUser', JSON.stringify(data));
@@ -48,8 +48,8 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  get login() {
-    return this.loginForm.get('login');
+  get userName() {
+    return this.loginForm.get('mail');
   }
 
   get password() {
@@ -57,9 +57,5 @@ export class LoginComponent implements OnInit {
   }
      
 
-  logout(){
-    sessionStorage.removeItem('currentUser')
-    this.artist.mail = null
-    this.artist.password = null
-  }
+  
 }

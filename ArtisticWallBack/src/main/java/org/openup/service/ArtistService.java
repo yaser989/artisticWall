@@ -10,7 +10,6 @@ import org.openup.entity.ArtistDomain;
 import org.openup.entity.Role;
 import org.openup.mapper.ArtistMapper;
 import org.openup.repo.ArtistRepository;
-import org.openup.utils.EncrytedPasswordUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -18,10 +17,11 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ArtistService implements UserDetailsService{
+public class ArtistService {
 
 	@Autowired
 	private ArtistRepository artistRepository;
@@ -30,7 +30,7 @@ public class ArtistService implements UserDetailsService{
 	private ArtistMapper artistMapper;
 	
 	@Autowired
-	static	EncrytedPasswordUtils encrytedPasswordUtils;
+	 private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	public List<ArtistDto> findAll() {
 		List<ArtistDto> listArtistDto = new ArrayList();
@@ -40,6 +40,8 @@ public class ArtistService implements UserDetailsService{
 		}
 		return listArtistDto;
 	}
+	
+	
 
 	public ArtistDto findById(Long id) {
 	ArtistDto artistDto = new ArtistDto();
@@ -71,14 +73,15 @@ public class ArtistService implements UserDetailsService{
 		role.setRoleName("ROLE_USER");
 		toPersist.setRole(role);
 		toPersist.setArtistDomain(artistDomain);
-		toPersist.setPassword(encrytedPasswordUtils.encrytePassword(toPersist.getPassword()));
+		toPersist.setPassword(bCryptPasswordEncoder.encode(toPersist.getPassword()));
 		System.out.println(toPersist);
 		System.out.println(artistDto);
 		return artistRepository.save(toPersist);
 	}
 
 	public Artist login(String mail, String password) {
-		Artist authenticatedArtist = artistRepository.findByMailAndPassword(mail, password);
+		Artist authenticatedArtist = artistRepository.findByMail(mail);
+		
 		return authenticatedArtist;
 	}
 	
@@ -104,21 +107,21 @@ public class ArtistService implements UserDetailsService{
 		return artistDto;
 	}
 
-	@Override
-	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-		 Optional<Artist> artist = artistRepository.findByName(name);
-	       if (artist == null) {
-	           System.out.println("artist not found! " + name);
-	           throw new UsernameNotFoundException("Artist " + name + " was not found in the database");
-	       }
-	       System.out.println("Found Artist: " + artist);
-	       List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
-	       GrantedAuthority authority = new SimpleGrantedAuthority(artist.get().getRole().getRoleName());
-           grantList.add(authority);
-	       UserDetails userDetails = (UserDetails) new User(artist.get().getName(), //
-	    		   artist.get().getPassword(),grantList);
-		return userDetails;
-	}
+//	@Override
+//	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+//		 Optional<Artist> artist = artistRepository.findName(name);
+//	       if (artist == null) {
+//	           System.out.println("artist not found! " + name);
+//	           throw new UsernameNotFoundException("Artist " + name + " was not found in the database");
+//	       }
+//	       System.out.println("Found Artist: " + artist);
+//	       List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
+//	       GrantedAuthority authority = new SimpleGrantedAuthority(artist.get().getRole().getRoleName());
+//           grantList.add(authority);
+//	       UserDetails userDetails = (UserDetails) new User(artist.get().getName(), //
+//	    		   artist.get().getPassword(),grantList);
+//		return userDetails;
+//	}
 
 	
 

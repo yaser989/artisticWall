@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {AdminService} from 'src/app/services/admin/admin.service';
 import { AdminDto } from 'src/app/models/adminDto';
+import { Artist } from 'src/app/models/artist';
 
 @Component({
   selector: 'app-admin',
@@ -11,6 +12,9 @@ import { AdminDto } from 'src/app/models/adminDto';
 export class AdminComponent implements OnInit {
 
   admin : AdminDto [];
+
+  event : Event;
+  
   constructor(private router :Router ,private adminService :AdminService ) {
     this.checkUser();
    }
@@ -49,4 +53,23 @@ data.typeEventDto.toLocaleLowerCase().includes(keyWord)
     
   );
 }
+
+removeEvent(id : number){
+  if (id === undefined){
+    alert('An error has occured while removing the event');
+    return;
+  }
+  if(confirm("Do you relly want to remove the event")){
+    this.adminService.deleteEvent(id)
+    .subscribe(data =>{
+     this.adminService = data
+    });
+  }
+  window.location.reload();
+}
+
+updateEventAndArtist(idEvent : number){
+  this.router.navigate(['/adminUpdate',idEvent]);
+    }
+
 }

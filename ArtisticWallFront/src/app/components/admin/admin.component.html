@@ -3,6 +3,7 @@
 <app-authorised-side-nav></app-authorised-side-nav>
 
 <div class="ro">
+  
 
   <form class="form-inline d-flex justify-content-center md-form form-sm active-pink active-pink-2 mt-2">
     <i class="fas fa-search" style="color: #da054cbb;" ></i>
@@ -35,8 +36,8 @@
         <li class="list-group-item" [hidden]="!ev.shared"><b>shared: </b>{{ev.shared}}</li>
       </ul>
       <div class="card-body">
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
+        <button type="button" class="btn btn-link" (click)="removeEvent(ev.idEvent)"><i class="fas fa-trash"></i>&nbsp;Remove</button>
+        <button type="button" class="btn btn-link" (click)="updateEventAndArtist(ev.idEvent)"><i class="fas fa-pen" ></i>&nbsp;Edit</button>
       </div>
 
 </div>

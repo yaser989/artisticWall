@@ -15,4 +15,15 @@ AdminFindAll(){
   return this.http.get<AdminDto []>(AppSitings.App_URL+"/admin/");
 }
 
+findAllByID(idEvent : number): Observable<any>{
+  return this.http.get(AppSitings.App_URL+"/admin/findByID/"+idEvent);
+ }
+
+deleteEvent(id:number) : Observable<any>{
+  return this.http.delete(AppSitings.App_URL+"/admin/"+id)
+}
+
+adminUpdateArtistEvent(admin:AdminDto,idEvent:number) : Observable<any>{
+  return this.http.put(AppSitings.App_URL+"/admin/update/"+idEvent,admin)
+}
 }

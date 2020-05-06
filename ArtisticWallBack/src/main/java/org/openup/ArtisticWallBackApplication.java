@@ -8,6 +8,8 @@ public class ArtisticWallBackApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ArtisticWallBackApplication.class, args);
+		
+		
 	}
 
 }
