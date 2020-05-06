@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import {EventService} from 'src/app/services/event/event.service';
 import { ArtistDto } from 'src/app/models/artistDto';
 import {ArtistService} from 'src/app/services/artist/artist.service';
+import { AdminDto } from 'src/app/models/adminDto';
+import { EventDto } from 'src/app/models/eventDto';
 @Component({
   selector: 'app-authorised-side-nav',
   templateUrl: './authorised-side-nav.component.html',
@@ -13,6 +15,7 @@ import {ArtistService} from 'src/app/services/artist/artist.service';
 export class AuthorisedSideNavComponent implements OnInit {
   artist : ArtistDto;
   artiste : Artist;
+  event : EventDto;
   constructor(public sideNavService: AuthorisedSideNavService,private router :Router,private eventService : EventService ,private artistService :ArtistService) { 
     this.checkUser();
     
@@ -46,6 +49,8 @@ export class AuthorisedSideNavComponent implements OnInit {
   window.location.reload();
   
    }
-
+   admin(){
+    this.router.navigate(['/admin']);
+   }
    
 }

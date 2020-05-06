@@ -13,6 +13,16 @@ justify-content: space-between;
     padding: 20px;
 }
 
+.ro{
+    width: 18rem;
+    margin-top: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding: 20px;
+}
+
 p:blank{
     display: none;
 }
@@ -37,6 +47,15 @@ p:blank{
         padding: 20px;
         
     }
+    .ro{
+        width: 18rem;
+        margin-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        padding: 20px;
+    }
     
 }
 @media only screen and (max-width: 1000px){
@@ -50,4 +69,14 @@ p:blank{
         padding: 20px;
         
     }
+    .ro{
+        width: 18rem;
+        margin-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        padding: 20px;
+    }
 }
+
