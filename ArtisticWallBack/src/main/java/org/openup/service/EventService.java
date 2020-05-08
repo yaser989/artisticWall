@@ -93,6 +93,32 @@ public class EventService {
 	}
 	
 	
+	public List< EventDto> findEventbyConcert() {
+		List<EventDto> listEventDto = new ArrayList<>();
+		List<Event> listEvent = eventRepository.findByconcert("Concert");
+		for (Event event : listEvent) {
+			listEventDto.add(eventMapper.toEventDto(event));
+		}
+		return listEventDto;
+	}
+	public List< EventDto> findEventbyShow() {
+		List<EventDto> listEventDto = new ArrayList<>();
+		List<Event> listEvent = eventRepository.findByshow("Show");
+		for (Event event : listEvent) {
+			listEventDto.add(eventMapper.toEventDto(event));
+		}
+		return listEventDto;
+	}
+	public List< EventDto> findEventbyAudition() {
+		List<EventDto> listEventDto = new ArrayList<>();
+		List<Event> listEvent = eventRepository.findByaudition("Audition");
+		for (Event event : listEvent) {
+			listEventDto.add(eventMapper.toEventDto(event));
+		}
+		return listEventDto;
+	}
+	
+	
 	public EventDto createNewEvent(EventDto eventDto , Long id) {
 		Address address = Address.builder().common(eventDto.getCommonDto()).street(eventDto.getStreetDto())
 				.zipCode(eventDto.getZipCodeDto()).phone(eventDto.getPhoneDto())

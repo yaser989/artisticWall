@@ -1,0 +1,82 @@
+.up{
+    display: flex;
+    flex-direction: row;
+justify-content: space-between;
+}
+.card{
+    width: 18rem;
+    margin-top: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    padding: 20px;
+}
+
+.ro{
+    width: 18rem;
+    margin-top: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding: 20px;
+}
+
+p:blank{
+    display: none;
+}
+.active-pink input[type='serch']{
+    border-bottom: 1px solid #da054c;
+    box-shadow: 0 1px 0 0 #da054c;
+    border-top: hidden;
+    border-right: hidden;
+    border-left: hidden;
+    
+}
+
+
+@media only screen and (max-width: 600px){
+    .card{
+        width: 18rem;
+        margin-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        padding: 20px;
+        
+    }
+    .ro{
+        width: 18rem;
+        margin-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        padding: 20px;
+    }
+    
+}
+@media only screen and (max-width: 1000px){
+    .card{
+        width: 18rem;
+        margin-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        padding: 20px;
+        
+    }
+    .ro{
+        width: 18rem;
+        margin-top: 30px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        padding: 20px;
+    }
+}
+

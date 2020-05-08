@@ -49,8 +49,11 @@ export class AuthorisedSideNavComponent implements OnInit {
   window.location.reload();
   
    }
+   
    admin(){
+    
     this.router.navigate(['/admin']);
    }
+   
    
 }

@@ -50,6 +50,7 @@ public class Event implements Serializable {
 	@Column(name = "type_event")
 	private String typeEvent;
 
+	@Lob
 	@Column(name = "description")
 	private String description;
 	

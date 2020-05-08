@@ -18,6 +18,9 @@ import { myfilterPipe } from './components/home/event-filter.pipe';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AdminUpdateArtistEventComponent } from './components/admin-update-artist-event/admin-update-artist-event.component';
+import { AuditionComponent } from './components/audition/audition.component';
+import { ConcertComponent } from './components/concert/concert.component';
+import { ShowComponent } from './components/show/show.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { AdminUpdateArtistEventComponent } from './components/admin-update-artis
     myfilterPipe,
     ProfileComponent,
     AdminComponent,
-    AdminUpdateArtistEventComponent
+    AdminUpdateArtistEventComponent,
+    AuditionComponent,
+    ConcertComponent,
+    ShowComponent
   ],
   imports: [
     BrowserModule,

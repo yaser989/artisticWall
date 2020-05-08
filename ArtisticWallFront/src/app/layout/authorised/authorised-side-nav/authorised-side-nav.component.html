@@ -10,11 +10,20 @@
       <li class="nav-item">
         <button type="button" class="btn btn-link" (click)="addNewEvent()" style="color: white;"> <li class="breadcrumb-item" aria-current="page"><i class="fas fa-plus"></i>&nbsp; Add new Event</li></button>
       </li>
-      <li class="nav-item">
-       <button  type="button" class="btn btn-link" (click)="logout()" style="color: white;" ><li class="breadcrumb-item" aria-current="page"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</li></button>
+     <li class="nav-item">
+      <button routerLink="/audition" type="button" class="btn btn-link"   style="color: white;" ><li class="breadcrumb-item" aria-current="page"><i class="fas fa-star"></i>&nbsp; Audition</li></button>
       </li>
-    <li class="nav-item">
-     <button  type="button" class="btn btn-link" (click)="admin()" style="color: white;" ><li class="breadcrumb-item" aria-current="page"><i class="fas fa-user-lock"></i>&nbsp; Admin</li></button>
-     </li>
+      <li class="nav-item">
+        <button routerLink="/concert" type="button" class="btn btn-link"  style="color: white;" ><li class="breadcrumb-item" aria-current="page"><i class="fas fa-star"></i>&nbsp; Concert</li></button>
+        </li>
+        <li class="nav-item">
+          <button routerLink="/show" type="button" class="btn btn-link"  style="color: white;" ><li class="breadcrumb-item" aria-current="page"><i class="fas fa-star"></i>&nbsp; Show</li></button>
+          </li>
+         <li class="nav-item">
+          <button  type="button" class="btn btn-link" (click)="admin()" style="color: white;" ><li class="breadcrumb-item" aria-current="page"><i class="fas fa-user-lock"></i>&nbsp; Admin</li></button>
+          </li>
+          <li class="nav-item">
+            <button routerLink="/audition" type="button" class="btn btn-link" (click)="logout()" style="color: white;" ><li class="breadcrumb-item" aria-current="page"><i class="fas fa-sign-out-alt"></i>&nbsp; Logout</li></button>
+           </li>
     </ul>
   </nav>

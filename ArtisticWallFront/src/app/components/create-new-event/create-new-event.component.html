@@ -28,7 +28,11 @@
     <input type="text" name="zipCodeDto" class="form-control" [(ngModel)]="event.zipCodeDto" placeholder="Zip Code" required />
 
     <label for="inputDomain" class="sr-only">dateDto</label>
-    <input type="datetime-local" name="dateDto" class="form-control" [(ngModel)]="event.dateDto" placeholder="Date" required />
+    <input type="datetime-local" id="meeting-time"
+       name="meeting-time" 
+        class="form-control" [(ngModel)]="event.dateDto" placeholder="Date" required />
+
+
 
     <label for="inputDomain" class="sr-only">phoneDto</label>
     <input type="text" name="phoneDto" class="form-control" [(ngModel)]="event.phoneDto" placeholder="Phone" required />

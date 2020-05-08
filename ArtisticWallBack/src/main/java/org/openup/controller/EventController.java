@@ -1,5 +1,7 @@
 package org.openup.controller;
 
+import java.util.List;
+
 import org.openup.DTO.EventDto;
 import org.openup.entity.Event;
 import org.openup.repo.ArtistRepository;
@@ -72,7 +74,19 @@ public class EventController {
 		return ResponseEntity.ok("Event shared with succses");
 	}
 	
+	@GetMapping("/Audition")
+	public ResponseEntity findByAudition(){
+		return ResponseEntity.ok(eventService.findEventbyAudition());
+	}
 	
+	@GetMapping("/Concert")
+	public ResponseEntity findByConcert(){
+		return ResponseEntity.ok(eventService.findEventbyConcert());
+	}
 	
+	@GetMapping("/Show")
+	public ResponseEntity findByShow(){
+		return ResponseEntity.ok(eventService.findEventbyShow());
+	}
 	
 }

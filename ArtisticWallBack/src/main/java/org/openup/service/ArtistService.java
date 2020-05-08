@@ -47,11 +47,15 @@ public class ArtistService {
 	ArtistDto artistDto = new ArtistDto();
 	
 	ArtistDomain artistDomain= ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();
+	
 	Artist toPersist = Artist.builder().name(artistDto.getArtistName()).lastName(artistDto.getArtistLastName())
 			.mail(artistDto.getArtistMail()).password(artistDto.getArtistPassword()).photo(artistDto.getArtistPhoto())
 			.build();
-	toPersist.setArtistDomain(artistDomain);
 	
+	Role role = Role.builder().roleName(artistDto.getArtistRole()).build();
+	
+	toPersist.setArtistDomain(artistDomain);
+	toPersist.setRole(role);
 	Optional<Artist> artists = artistRepository.findById(id);
 		toPersist = artists.get();
 		artistDto.setId(toPersist.getId());
@@ -60,7 +64,7 @@ public class ArtistService {
 		artistDto.setArtistLastName(toPersist.getLastName());
 		artistDto.setArtistMail(toPersist.getMail());
 		artistDto.setArtistPassword(toPersist.getPassword());
-	
+		artistDto.setArtistRole(toPersist.getRole().getRoleName());
 		return artistDto;
 	}
 
@@ -81,8 +85,7 @@ public class ArtistService {
 
 	public Artist login(String mail, String password) {
 		Artist authenticatedArtist = artistRepository.findByMail(mail);
-		
-		return authenticatedArtist;
+	    	return authenticatedArtist;
 	}
 	
 	public ArtistDto updatArtist(Long id , ArtistDto artistDto) {
@@ -107,21 +110,7 @@ public class ArtistService {
 		return artistDto;
 	}
 
-//	@Override
-//	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
-//		 Optional<Artist> artist = artistRepository.findName(name);
-//	       if (artist == null) {
-//	           System.out.println("artist not found! " + name);
-//	           throw new UsernameNotFoundException("Artist " + name + " was not found in the database");
-//	       }
-//	       System.out.println("Found Artist: " + artist);
-//	       List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
-//	       GrantedAuthority authority = new SimpleGrantedAuthority(artist.get().getRole().getRoleName());
-//           grantList.add(authority);
-//	       UserDetails userDetails = (UserDetails) new User(artist.get().getName(), //
-//	    		   artist.get().getPassword(),grantList);
-//		return userDetails;
-//	}
+
 
 	
 

@@ -6,4 +6,5 @@ export class ArtistDto {
     artistPassword : string;
     artistDomain : string;
     artistPhoto : File;
+    artistRole : string;
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {Artist} from 'src/app/models/artist';
-import { EventService } from 'src/app/services/event/event.service';
 import { Event } from 'src/app/models/event';
 import { EventDto } from 'src/app/models/eventDto';
+import { EventService } from 'src/app/services/event/event.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import {ArtistService} from 'src/app/services/artist/artist.service';
 
@@ -43,7 +43,7 @@ events : Event;
     return;
   }
   this.evente = this.evente.filter(data => 
-data.typeEventDto.toLocaleLowerCase().includes(keyWord)
+data.typeEventDto.toLocaleLowerCase().includes(keyWord) 
     
     );
 }

@@ -51,5 +51,13 @@ uploadProductPhoto(file: File, idEvent :number): Observable<HttpEvent<{}>> {
   
 }
 
-
+getEventByAudition() :Observable<any>{
+return this.http.get(AppSitings.App_URL+"/event/Audition")
+}
+getEventByConcert() :Observable<any>{
+  return this.http.get(AppSitings.App_URL+"/event/Concert")
+}
+getEventByShow() :Observable<any>{
+  return this.http.get(AppSitings.App_URL+"/event/Show")
+}
 }

@@ -7,20 +7,13 @@
   
   <form class="form-inline d-flex justify-content-center md-form form-sm active-pink active-pink-2 mt-2">
     <i class="fas fa-search" style="color: #da054cbb;" ></i>
-    <input class="form-control form-control-sm ml-3 w-75" type="serch" placeholder="Search by type of event " (input)="filter($event.target.value)"
+    <input class="form-control form-control-sm ml-3 w-75" type="serch" placeholder="Search by categories " (input)="filter($event.target.value)"
       aria-label="Search">
   </form>
 
     <div class="card" *ngFor="let ev of evente">
       <p style="color: darkgray;">#&nbsp;{{ev.idEvent}}</p>
-      <div class="card-header bg-transparent" *ngIf="ev.idOwnerDto !== -1">
-        <div class="btn-group" role="group" aria-label="Basic example" >
-          <button type="button" class="btn btn-link" (click)="updateEvent(ev.idEvent)"><i class="fas fa-pen" ></i>&nbsp;Edit</button>
-          <button type="button" class="btn btn-link" (click)="removeEvent(ev.idEvent)"><i class="fas fa-trash"></i>&nbsp;Remove</button>
-          <button type="button" class="btn btn-link" *ngIf="ev.shared == 0" (click)="shareEvent(ev.idEvent, ev.shared)"><i class="fas fa-share-alt"></i>&nbsp;Share</button>
-          <button type="button" class="btn btn-link" *ngIf="ev.shared == 1" (click)="shareEvent(ev.idEvent, ev.shared)"><i class="fas fa-share-alt" ></i>&nbsp;Unshare</button>
-        </div>
-      </div>
+      
       <div class="card-header bg-transparent" *ngIf="ev.idOwnerDto === -1">
           <button type="button" class="btn btn-outline-primary btn-block btn-link"><i class="fas fa-share-alt"></i>&nbsp;Shared</button>
       </div>
@@ -44,22 +37,7 @@
 
    
 
-        <div *ngIf="currentFileUpload" class="progress">
-          <div class="progress-bar progress-bar-info progress-bar-striped"
-            role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
-            aria-valuemin="0" aria-valuemax="100"
-            [ngStyle]="{width:progress.percentage+'%'}">
-            {{progress.percentage}}%</div>
-        </div>
-         
-        <label  class="btn btn-link" ><span style="color: red;">Choose photo</span> 
-          <input type="file" (change)="onselectedFile($event)" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden; ">
-        </label>
-        <br>
-         
-        <button class="btn btn-light" style="border: 1px solid black;" [disabled]="!selectedFiles"
-          (click)="uploadPhoto(ev.idEvent)"><span style="color: brown; ;"><b>Upload</b></span></button>
-        
+     
          
 
 </div>
