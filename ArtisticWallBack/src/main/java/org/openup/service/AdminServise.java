@@ -126,6 +126,7 @@ public class AdminServise {
 		Event toEvent = new Event();
 
 		Optional<Event> events =  eventRepository.findById(id);
+		if(events.isPresent()) {
 		toEvent = events.get();
 		adminDto.setArtistDomain(toEvent.getArtist().getArtistDomain().getDomain());
 		adminDto.setArtistName(toEvent.getArtist().getName());
@@ -145,6 +146,7 @@ public class AdminServise {
 		adminDto.setIdOwnerDto(toEvent.getIdOwner());
 		adminDto.setShared(toEvent.isShared());
 		adminDto.setIdEvent(toEvent.getId());
+		}
 		return adminDto;
 	}
 	

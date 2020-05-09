@@ -1,8 +1,6 @@
 package org.openup;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -20,8 +18,6 @@ import org.mockito.MockitoAnnotations;
 import org.openup.DTO.AdminDto;
 import org.openup.DTO.ArtistDto;
 import org.openup.DTO.EventDto;
-import org.openup.controller.ArtistController;
-import org.openup.controller.EventController;
 import org.openup.entity.Address;
 import org.openup.entity.Artist;
 import org.openup.entity.ArtistDomain;
@@ -48,18 +44,9 @@ class ArtisticWallBackApplicationTests {
 	private static EventDto eventDto = new EventDto();
 	private static AdminDto adminDto = new AdminDto();
 	private Long id = 1L;
-	private Long idEvent;
 	private String mail;
 	private String password;
-	@Autowired
-	private ArtistService artistService;
-	
-	@Autowired
-	private EventService eventService;
-	
-	@Autowired
-	private AdminServise adminService;
-	
+
 	@Autowired
 	 private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
@@ -87,6 +74,9 @@ class ArtisticWallBackApplicationTests {
 	
 	@InjectMocks
 	private AdminServise targetAdmin;
+	
+	@InjectMocks
+	private EventService targetEvent;
 	
 	@Before
 	public void setUp() {
@@ -192,9 +182,184 @@ class ArtisticWallBackApplicationTests {
         event.setId(2L);
 
         Mockito.when(eventRepository.getOne(2L)).thenReturn(event).thenReturn(null);
+	}
+	
+	@Test
+	public void updateEvent() {
+		ArtistDomain domain = ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();
+		domain.setDomain("music");
+		
+		Role role = new Role();
+		role.setRoleName("ROLE_ADMIN");
+		
+		artist.setName("mari");
+		artist.setLastName("test2");
+		artist.setMail("mari@gmail.com");
+		artist.setArtistDomain(domain);
+		artist.setRole(role);
+		artist.setPassword("1234555");
+		
+		Address adres = new Address();
+		adres.setCommon("paris");
+		adres.setPhone("121212");
+		adres.setStreet("5 rue");
+		adres.setZipCode("55555");
+		
+		Categories cat = new Categories();
+		cat.setCategories("dance");
+	
+		event.setTypeEvent("audition");
+		event.setCategories(cat);
+		event.setAddress(adres);
+        event.setDescription("test");
+        event.setArtist(artist);
+        
+        adminDto.setArtistDomain(domain.getDomain());
+        adminDto.setArtistLastName(artist.getLastName());
+        adminDto.setArtistMail(artist.getMail());
+        adminDto.setArtistName(artist.getName());
+        adminDto.setArtistPassword(artist.getPassword());
+        adminDto.setCategoriesDto(cat.getCategories());
+        adminDto.setCommonDto(adres.getCommon());
+        adminDto.setDescriptionDto(event.getDescription());
+        adminDto.setPhoneDto(adres.getPhone());
+        adminDto.setZipCodeDto(adres.getZipCode());
+        adminDto.setRoleName(role.getRoleName());
+        adminDto.setTypeEventDto(event.getTypeEvent());
+		
+        when(eventRepository.save(event)).thenReturn(event);
+		assertEquals(adminDto, targetAdmin.updateEvent(id, adminDto));
+        
+	}
+	
+	@Test
+	public void findByID() {
+		targetAdmin.findByID(id);
+		verify(eventRepository).findById(id);
+	}
+	
+	//============================ Test ServiceEvent ============================//
+	
+	@Test
+	public void findAllEvent() {
+		targetEvent.findAll();
+		verify(eventRepository).findAll();
+	}
+	
+	@Test
+	public void findAllArtistEventById() {
+		targetEvent.findAllArtistEventById(id);
+		 artist = artistRepository.getOne(id);
+		verify(eventRepository).findBySharedAndArtistIsNotLike(true, artist);
+		
+	}
+	
+	@Test
+	public void findEventById() {
+		targetEvent.findEventById(id);
+		verify(eventRepository).findById(id);
+	}
+	
+	@Test
+	public void findEventbyConcert() {
+		targetEvent.findEventbyConcert();
+		verify(eventRepository).findByconcert("Concert");
+	}
+	
+	@Test 
+	public void findEventbyShow() {
+		targetEvent.findEventbyShow();
+		verify(eventRepository).findByshow("Show");
+	}
+	
+	@Test 
+	public void findEventbyAudition() {
+		targetEvent.findEventbyAudition();
+		verify(eventRepository).findByaudition("Audition");
+	}
+	
+	@Test
+	public void createNewEvent() {
+		
+		Address adres = new Address();
+		adres.setCommon("paris");
+		adres.setPhone("121212");
+		adres.setStreet("5 rue");
+		adres.setZipCode("55555");
+		
+		Categories cat = new Categories();
+		cat.setCategories("dance");
+	
+		event.setTypeEvent("audition");
+		event.setCategories(cat);
+		event.setAddress(adres);
+        event.setDescription("test");
+        
+        eventDto.setCategoriesDto(cat.getCategories());
+        eventDto.setCommonDto(adres.getCommon());
+        eventDto.setDescriptionDto(event.getDescription());
+        eventDto.setPhoneDto(adres.getPhone());
+        eventDto.setZipCodeDto(adres.getZipCode());
+        eventDto.setTypeEventDto(event.getTypeEvent());
+        eventDto.setIdEvent(event.getId());
+                
+        Mockito.when(eventRepository.save(event)).thenReturn(event);
 
 	}
 	
+	@Test
+	public void eventUpdateEvent() {
+		Address adres = new Address();
+		adres.setCommon("paris");
+		adres.setPhone("121212");
+		adres.setStreet("5 rue");
+		adres.setZipCode("55555");
+		
+		Categories cat = new Categories();
+		cat.setCategories("dance");
+	
+		event.setTypeEvent("audition");
+		event.setCategories(cat);
+		event.setAddress(adres);
+        event.setDescription("test");
+        
+        eventDto.setCategoriesDto(cat.getCategories());
+        eventDto.setCommonDto(adres.getCommon());
+        eventDto.setDescriptionDto(event.getDescription());
+        eventDto.setPhoneDto(adres.getPhone());
+        eventDto.setZipCodeDto(adres.getZipCode());
+        eventDto.setTypeEventDto(event.getTypeEvent());
+        eventDto.setIdEvent(event.getId());
+                
+        Mockito.when(eventRepository.save(event)).thenReturn(event);
+	}
+	
+	
+	@Test 
+	public void EventDeleteEvent() {
+		Address adres = new Address();
+		adres.setCommon("paris");
+		adres.setPhone("121212");
+		adres.setStreet("5 rue");
+		adres.setZipCode("55555");
+		Categories cat = new Categories();
+		cat.setCategories("dance");
+	
+		event.setTypeEvent("audition");
+		event.setCategories(cat);
+		event.setAddress(adres);
+        event.setDescription("test");
+        event.setId(2L);
+
+        Mockito.when(eventRepository.getOne(2L)).thenReturn(event).thenReturn(null);
+	}
+	
+	@Test
+	public void shareEvent() {
+		boolean isShared = true;
+		event.setShared(!isShared);
+		Mockito.when(eventRepository.getOne(1L)).thenReturn(event);
+	}
 	
 	
 }

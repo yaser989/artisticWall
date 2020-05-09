@@ -79,6 +79,7 @@ public class EventService {
 	Event toEvent = new  Event ();
 	  
 		Optional<Event> events = eventRepository.findById(id);
+		if (events.isPresent()) {
 		toEvent = events.get();
 		eventDto.setIdEvent(toEvent.getId());
 		eventDto.setCategoriesDto(toEvent.getCategories().getCategories());
@@ -89,6 +90,7 @@ public class EventService {
 		eventDto.setPhoneDto(toEvent.getAddress().getPhone());
 		eventDto.setStreetDto(toEvent.getAddress().getStreet());
 		eventDto.setZipCodeDto(toEvent.getAddress().getZipCode());
+		}
 		return eventDto;
 	}
 	
