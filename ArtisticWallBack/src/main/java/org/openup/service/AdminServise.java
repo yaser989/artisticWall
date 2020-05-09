@@ -57,7 +57,7 @@ public class AdminServise {
 		 		eventRepository.flush();        
 		}
 			 
-		adminDto.setIdEvent(event.getId());
+	
 			 return adminDto;
 		}
 	

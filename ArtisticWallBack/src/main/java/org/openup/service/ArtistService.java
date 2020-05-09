@@ -57,6 +57,7 @@ public class ArtistService {
 	toPersist.setArtistDomain(artistDomain);
 	toPersist.setRole(role);
 	Optional<Artist> artists = artistRepository.findById(id);
+	if (artists.isPresent()) {
 		toPersist = artists.get();
 		artistDto.setId(toPersist.getId());
 		artistDto.setArtistDomain(toPersist.getArtistDomain().getDomain());
@@ -65,6 +66,7 @@ public class ArtistService {
 		artistDto.setArtistMail(toPersist.getMail());
 		artistDto.setArtistPassword(toPersist.getPassword());
 		artistDto.setArtistRole(toPersist.getRole().getRoleName());
+	}
 		return artistDto;
 	}
 
@@ -77,7 +79,7 @@ public class ArtistService {
 		role.setRoleName("ROLE_USER");
 		toPersist.setRole(role);
 		toPersist.setArtistDomain(artistDomain);
-		toPersist.setPassword(bCryptPasswordEncoder.encode(toPersist.getPassword()));
+//	    toPersist.setPassword(bCryptPasswordEncoder.encode(toPersist.getPassword()));
 		System.out.println(toPersist);
 		System.out.println(artistDto);
 		return artistRepository.save(toPersist);
