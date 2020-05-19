@@ -52,13 +52,13 @@
             {{progress.percentage}}%</div>
         </div>
          
-        <label  class="btn btn-link" ><span style="color: red;">Choose photo</span> 
+        <label  class="btn btn-link" [hidden]="ev.idOwnerDto === -1"><span style="color: red;">Choose photo</span> 
           <input type="file" (change)="onselectedFile($event)" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden; ">
         </label>
         <br>
          
         <button class="btn btn-light" style="border: 1px solid black;" [disabled]="!selectedFiles"
-          (click)="uploadPhoto(ev.idEvent)"><span style="color: brown; ;"><b>Upload</b></span></button>
+          (click)="uploadPhoto(ev.idEvent)"[hidden]="ev.idOwnerDto === -1"><span style="color: brown; ;"><b>Upload</b></span></button>
         
          
 
