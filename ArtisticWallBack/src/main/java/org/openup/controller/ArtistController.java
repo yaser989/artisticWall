@@ -54,16 +54,16 @@ public class ArtistController {
 	}
 	
 	@PostMapping("/login")
-    public ResponseEntity login(@RequestParam(name = "mail",required=false) String mail, @RequestParam(name = "password",required=false) String password) {
+    public ResponseEntity login(@RequestParam(name = "artistMail",required=false) String artistMail, @RequestParam(name = "artistPassword",required=false) String artistPassword) {
 		
-        if(StringUtils.isEmpty(mail) || StringUtils.isEmpty(password)) {
+        if(StringUtils.isEmpty(artistMail) || StringUtils.isEmpty(artistPassword)) {
              return ResponseEntity.badRequest().body("Cannot login with empty user mail or password");
         }
         
-        if (artistService.login(mail, password) == null) {
+        if (artistService.login(artistMail, artistPassword) == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(artistService.login(mail, password));
+        return ResponseEntity.ok(artistService.login(artistMail, artistPassword));
     }
 
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpRequest, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpRequest, HttpEvent, HttpHeaders } from '@angular/common/http';
 import {AppSitings} from 'src/app/settings/app.sittings';
 import {Artist} from 'src/app/models/artist';
 import {ArtistDto} from 'src/app/models/artistDto';
@@ -29,8 +29,9 @@ updateArtist(artist:ArtistDto,id:number) : Observable<any>{
 }
 
 
-login(mail: string, password: string){
-  return this.http.post<Artist>(AppSitings.App_URL+"/artist/login?mail="+mail+"&password="+password,null)
+login(artistMail: string, artistPassword: string){
+  const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(artistMail+':'+artistPassword) });
+  return this.http.post<ArtistDto>(AppSitings.App_URL+"/artist/login?artistMail="+artistMail+"&artistPassword="+artistPassword,{headers,responseType:'text' as 'json'})
 }
 
 uploadProductPhoto(file: File, id :number): Observable<HttpEvent<{}>> {

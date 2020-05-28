@@ -16,6 +16,8 @@ export class AuthorisedSideNavComponent implements OnInit {
   artist : ArtistDto;
   artiste : Artist;
   event : EventDto;
+  isAdmin:boolean=false;
+  adminDto : AdminDto;
   constructor(public sideNavService: AuthorisedSideNavService,private router :Router,private eventService : EventService ,private artistService :ArtistService) { 
     this.checkUser();
     
@@ -50,9 +52,9 @@ export class AuthorisedSideNavComponent implements OnInit {
   
    }
    
-   admin(){
+   admin(id:number){
     
-    this.router.navigate(['/admin']);
+    this.router.navigate(['/admin',id]);
    }
    
    

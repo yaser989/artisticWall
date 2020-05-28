@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'createNewEvent', component : CreateNewEventComponent},
   {path:'update/:idEvent',component : UpdateEventComponent},
   {path:'profile/:id',component:ProfileComponent},
-  {path:'admin',component:AdminComponent},
+  {path:'admin/:id',component:AdminComponent},
   {path:'logout',component : LoginComponent},
   {path:'adminUpdate/:idEvent',component : AdminUpdateArtistEventComponent},
   {path:'audition',component : AuditionComponent},

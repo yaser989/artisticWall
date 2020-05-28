@@ -5,6 +5,7 @@ import { AdminDto } from 'src/app/models/adminDto';
 import { Artist } from 'src/app/models/artist';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { EventService } from 'src/app/services/event/event.service';
+import { ArtistDto } from 'src/app/models/artistDto';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class AdminComponent implements OnInit {
   admin : AdminDto [];
 
   event : Event;
-  
+  artistDto : ArtistDto;
   public currentUploadFile : any;
   public currentTime : number;
   public editPhoto :boolean;
@@ -37,7 +38,8 @@ this.AdminFindAll();
       this.router.navigate(['/login']);
       return;
     }
-    this.admin = JSON.parse(localStorage.getItem('currentUser'));
+    this.artistDto = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.artistDto);
   }
 
   AdminFindAll(){
@@ -47,6 +49,7 @@ this.AdminFindAll();
       this.admin = data;
     }, error => {
       console.log(error);
+      
     
     });
 }

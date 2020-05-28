@@ -85,9 +85,20 @@ public class ArtistService {
 		return artistRepository.save(toPersist);
 	}
 
-	public Artist login(String mail, String password) {
+	public ArtistDto login(String mail, String password) {
 		Artist authenticatedArtist = artistRepository.findByMail(mail);
-	    	return authenticatedArtist;
+		ArtistDto artistDto = new ArtistDto();
+		artistDto.setArtistDomain(authenticatedArtist.getArtistDomain().getDomain());
+		artistDto.setArtistLastName(authenticatedArtist.getLastName());
+		artistDto.setArtistName(authenticatedArtist.getName());
+		artistDto.setArtistMail(authenticatedArtist.getMail());
+		artistDto.setArtistPassword(authenticatedArtist.getPassword());
+		artistDto.setArtistRole(authenticatedArtist.getRole().getRoleName());
+		artistDto.setId(authenticatedArtist.getId());
+		artistDto.setRolId(authenticatedArtist.getRole().getId());
+		
+	
+	    	return artistDto;
 	}
 	
 	public ArtistDto updatArtist(Long id , ArtistDto artistDto) {

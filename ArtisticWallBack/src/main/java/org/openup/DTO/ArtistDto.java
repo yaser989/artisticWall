@@ -10,6 +10,7 @@ public class ArtistDto implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
     private Long id;
+    private Long rolId;
 	private String artistName;
 	private String artistLastName;
 	private String artistMail;
@@ -27,10 +28,11 @@ public class ArtistDto implements Serializable{
 
 
 
-	public ArtistDto(Long id, String artistName, String artistLastName, String artistMail, String artistPassword,
-			String artistDomain, String artistRole, byte[] artistPhoto) {
+	public ArtistDto(Long id, Long rolId, String artistName, String artistLastName, String artistMail,
+			String artistPassword, String artistDomain, String artistRole, byte[] artistPhoto) {
 		super();
 		this.id = id;
+		this.rolId = rolId;
 		this.artistName = artistName;
 		this.artistLastName = artistLastName;
 		this.artistMail = artistMail;
@@ -50,6 +52,18 @@ public class ArtistDto implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+
+
+	public Long getRolId() {
+		return rolId;
+	}
+
+
+
+	public void setRolId(Long rolId) {
+		this.rolId = rolId;
 	}
 
 
@@ -146,9 +160,13 @@ public class ArtistDto implements Serializable{
 
 	@Override
 	public String toString() {
-		return "ArtistDto [id=" + id + ", artistName=" + artistName + ", artistLastName=" + artistLastName
-				+ ", artistMail=" + artistMail + ", artistPassword=" + artistPassword + ", artistDomain=" + artistDomain
-				+ ", artistRole=" + artistRole + ", artistPhoto=" + Arrays.toString(artistPhoto) + "]";
+		return "ArtistDto [id=" + id + ", rolId=" + rolId + ", artistName=" + artistName + ", artistLastName="
+				+ artistLastName + ", artistMail=" + artistMail + ", artistPassword=" + artistPassword
+				+ ", artistDomain=" + artistDomain + ", artistRole=" + artistRole + ", artistPhoto="
+				+ Arrays.toString(artistPhoto) + "]";
 	}
+
+
+
 	
 }

@@ -3,6 +3,7 @@ import{FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import {ArtistService} from 'src/app/services/artist/artist.service';
 import { Artist } from 'src/app/models/artist';
+import { ArtistDto } from 'src/app/models/artistDto';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,11 +13,12 @@ export class LoginComponent implements OnInit {
   errorMessage : string;
   public loginForm: FormGroup;
   artist : Artist;
+  artistDto: ArtistDto;
 
   constructor(private artistService : ArtistService,private formBuilder: FormBuilder,private router :Router ) { 
     this.loginForm=new FormGroup({
-      mail : new FormControl ('',Validators.required),
-      password :new FormControl ('',Validators.required)
+      artistMail : new FormControl ('',Validators.required),
+      artistPassword :new FormControl ('',Validators.required)
     });
   }
 
@@ -49,11 +51,11 @@ export class LoginComponent implements OnInit {
   }
 
   get userName() {
-    return this.loginForm.get('mail');
+    return this.loginForm.get('artistMail');
   }
 
   get password() {
-    return this.loginForm.get('password');
+    return this.loginForm.get('artistPassword');
   }
      
 

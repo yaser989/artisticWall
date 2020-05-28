@@ -46,6 +46,8 @@ public class AdminServise {
 		}
 		return listAdmintDto;	
 	}
+	
+	
 
 	public AdminDto deleteEvent(Long id) {
 		AdminDto adminDto = new AdminDto();

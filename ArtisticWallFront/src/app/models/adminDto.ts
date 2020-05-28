@@ -1,5 +1,6 @@
 export class AdminDto {
-      idEvent : number;
+	  idEvent : number;
+	  id : number;
 	  artistName : string;
 	  artistLastName : string;
 	  artistMail : string;

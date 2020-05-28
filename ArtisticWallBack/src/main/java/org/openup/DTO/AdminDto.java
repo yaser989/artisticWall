@@ -18,6 +18,7 @@ public class AdminDto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	    private Long idEvent;
+	    private Long id;
 		private String artistName;
 		private String artistLastName;
 		private String artistMail;
@@ -44,13 +45,14 @@ public class AdminDto implements Serializable{
 			super();
 			// TODO Auto-generated constructor stub
 		}
-		public AdminDto(Long idEvent, String artistName, String artistLastName, String artistMail,
+		public AdminDto(Long idEvent, Long id, String artistName, String artistLastName, String artistMail,
 				String artistPassword, String artistDomain, String roleName, byte[] artistPhoto, String typeEventDto,
 				String descriptionDto, byte[] eventPhoto, boolean shared, Long idOwnerDto, String categoriesDto,
 				String streetDto, String zipCodeDto, String commonDto, String phoneDto, Date dateDto,
 				Date dateOfCreatingDto) {
 			super();
 			this.idEvent = idEvent;
+			this.id = id;
 			this.artistName = artistName;
 			this.artistLastName = artistLastName;
 			this.artistMail = artistMail;
@@ -76,6 +78,12 @@ public class AdminDto implements Serializable{
 		}
 		public void setIdEvent(Long idEvent) {
 			this.idEvent = idEvent;
+		}
+		public Long getId() {
+			return id;
+		}
+		public void setId(Long id) {
+			this.id = id;
 		}
 		public String getArtistName() {
 			return artistName;
@@ -196,15 +204,16 @@ public class AdminDto implements Serializable{
 		}
 		@Override
 		public String toString() {
-			return "AdminDto [idEvent=" + idEvent + ", artistName=" + artistName + ", artistLastName=" + artistLastName
-					+ ", artistMail=" + artistMail + ", artistPassword=" + artistPassword + ", artistDomain="
-					+ artistDomain + ", roleName=" + roleName + ", artistPhoto=" + Arrays.toString(artistPhoto)
-					+ ", typeEventDto=" + typeEventDto + ", descriptionDto=" + descriptionDto + ", eventPhoto="
-					+ Arrays.toString(eventPhoto) + ", shared=" + shared + ", idOwnerDto=" + idOwnerDto
-					+ ", categoriesDto=" + categoriesDto + ", streetDto=" + streetDto + ", zipCodeDto=" + zipCodeDto
-					+ ", commonDto=" + commonDto + ", phoneDto=" + phoneDto + ", dateDto=" + dateDto
-					+ ", dateOfCreatingDto=" + dateOfCreatingDto + "]";
+			return "AdminDto [idEvent=" + idEvent + ", id=" + id + ", artistName=" + artistName
+					+ ", artistLastName=" + artistLastName + ", artistMail=" + artistMail + ", artistPassword="
+					+ artistPassword + ", artistDomain=" + artistDomain + ", roleName=" + roleName + ", artistPhoto="
+					+ Arrays.toString(artistPhoto) + ", typeEventDto=" + typeEventDto + ", descriptionDto="
+					+ descriptionDto + ", eventPhoto=" + Arrays.toString(eventPhoto) + ", shared=" + shared
+					+ ", idOwnerDto=" + idOwnerDto + ", categoriesDto=" + categoriesDto + ", streetDto=" + streetDto
+					+ ", zipCodeDto=" + zipCodeDto + ", commonDto=" + commonDto + ", phoneDto=" + phoneDto
+					+ ", dateDto=" + dateDto + ", dateOfCreatingDto=" + dateOfCreatingDto + "]";
 		}
+
 	
 		
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Artist} from 'src/app/models/artist';
 import { Router } from '@angular/router';
 import {ArtistService} from 'src/app/services/artist/artist.service';
+import { ArtistDto } from 'src/app/models/artistDto';
 
 
 
@@ -11,7 +12,7 @@ import {ArtistService} from 'src/app/services/artist/artist.service';
   styleUrls: ['./authorised-top-nav.component.css']
 })
 export class AuthorisedTopNavComponent implements OnInit {
-artist : Artist;
+artist : ArtistDto;
 public spinner : boolean;
   public currentUploadFile : any;
  public currentTime : number;

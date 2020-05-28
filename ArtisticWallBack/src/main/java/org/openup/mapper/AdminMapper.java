@@ -13,6 +13,7 @@ public class AdminMapper {
 		
 	
 		adminDto.setIdEvent(event.getId());
+		adminDto.setId(event.getArtist().getId());
 		adminDto.setArtistDomain(event.getArtist().getArtistDomain().getDomain());
 		adminDto.setArtistName(event.getArtist().getName());
 		adminDto.setArtistLastName(event.getArtist().getLastName());
