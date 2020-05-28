@@ -14,18 +14,18 @@ export class ArtistService {
 
 
 findAllArtist(){
-  return this.http.get<Artist>(AppSitings.App_URL+"/artist/")
+  return this.http.get<Artist>(AppSitings.App_URL+"/artist/");
 }
 
 findArtistById(id : number)  : Observable<any>{
-  return this.http.get(AppSitings.App_URL+"/artist/" + id)
+  return this.http.get(AppSitings.App_URL+"/artist/" + id);
 }
 createNewArtist(artist : ArtistDto){
-  return this.http.post<ArtistDto>(AppSitings.App_URL+"/artist/",artist)
+  return this.http.post<ArtistDto>(AppSitings.App_URL+"/artist/",artist);
 }
 
 updateArtist(artist:ArtistDto,id:number) : Observable<any>{
-  return this.http.put(AppSitings.App_URL+"/artist/update/"+id,artist)
+  return this.http.put(AppSitings.App_URL+"/artist/update/"+id,artist);
 }
 
 

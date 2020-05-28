@@ -16,7 +16,7 @@ import { ArtistDto } from 'src/app/models/artistDto';
 export class AdminComponent implements OnInit {
   progress: { percentage: number } = { percentage: 0 }
   admin : AdminDto [];
-
+ isAdmin : boolean = false;
   event : Event;
   artistDto : ArtistDto;
   public currentUploadFile : any;
@@ -39,7 +39,14 @@ this.AdminFindAll();
       return;
     }
     this.artistDto = JSON.parse(localStorage.getItem('currentUser'));
+    if (this.artistDto.artistRole.match('ROLE_ADMIN')){
+      this.isAdmin = true;
+    }
+    else {
+      this.isAdmin = false;
+    }
     console.log(this.artistDto);
+    console.log("user is : ",this.isAdmin);
   }
 
   AdminFindAll(){

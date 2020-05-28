@@ -127,8 +127,27 @@ class ArtisticWallBackApplicationTests {
 	
 	@Test
 	public void login () {
-		targetArtist.login( mail, password);
-		verify(artistRepository).findByMail(mail);
+		ArtistDomain domain = ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();
+		domain.setDomain("dancer");
+		Role role = new Role();
+		role.setRoleName("ROLE_USER");
+		artist.setName("yaser");
+		artist.setLastName("test");
+		artist.setMail("yaser@gmail.com");
+		artist.setArtistDomain(domain);
+		artist.setRole(role);
+		artist.setPassword("1234");
+         
+       artistDto.setArtistDomain(artist.getArtistDomain().getDomain());
+       artistDto.setArtistLastName(artist.getLastName());
+       artistDto.setArtistMail(artist.getMail());
+       artistDto.setArtistName(artist.getName());
+       artistDto.setArtistPassword(artist.getPassword());
+       artistDto.setArtistRole(role.getRoleName());
+		when(artistRepository.findByMail(mail)).thenReturn(artist);
+		assertEquals(artistDto, targetArtist.login( mail, password));
+//		targetArtist.login( mail, password);
+//		verify(artistRepository).findByMail(mail);
 	}
 	
 	@Test

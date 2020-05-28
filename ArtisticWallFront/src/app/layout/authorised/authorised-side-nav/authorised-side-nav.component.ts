@@ -31,6 +31,13 @@ export class AuthorisedSideNavComponent implements OnInit {
       return;
     }
     this.artist = JSON.parse(localStorage.getItem('currentUser'));
+
+    if (this.artist.artistRole.match('ROLE_ADMIN')){
+      this.isAdmin = true;
+    }
+    else {
+      this.isAdmin = false;
+    }
   }
 
   addNewEvent(){

@@ -50,22 +50,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//  	  http.addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class);
+	  http.addFilterBefore(new CorsFilter(), ChannelProcessingFilter.class);
     	http.cors();
         http.csrf().disable().authorizeRequests()
-        .antMatchers("/").permitAll()
-               .antMatchers("/v1/admin/**").hasAuthority("ADMIN")
+        .antMatchers("/**").permitAll()
                 .antMatchers("/v1/artist/**, /v1/event/**, /v1/photos/**").permitAll()
-              
+                .antMatchers("/v1/admin/**").hasRole("ADMIN")
                 .and()
                 .httpBasic()
-//                .and().formLogin()
-//                .and()
-//                .logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/logoutSuccessful")
-//                .permitAll()
-                
                 ;
     }
 

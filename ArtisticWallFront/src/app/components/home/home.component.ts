@@ -6,6 +6,7 @@ import { EventDto } from 'src/app/models/eventDto';
 import { EventService } from 'src/app/services/event/event.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import {ArtistService} from 'src/app/services/artist/artist.service';
+import { ArtistDto } from 'src/app/models/artistDto';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
 
   artist :Artist ; 
  evente : EventDto [];
- 
+ artistDto: ArtistDto;
 events : Event;
  public spinner : boolean;
   public currentUploadFile : any;
@@ -56,6 +57,10 @@ data.typeEventDto.toLocaleLowerCase().includes(keyWord)
       return;
     }
     this.artist = JSON.parse(localStorage.getItem('currentUser'));
+    this.artistService.findArtistById(this.artist.id).subscribe(data => {
+      this.artist = data;
+      console.log("artist :",this.artist);
+    });
   }
 
   findAllEvent(){

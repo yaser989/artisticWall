@@ -52,7 +52,7 @@ public class ArtistService {
 			.mail(artistDto.getArtistMail()).password(artistDto.getArtistPassword()).photo(artistDto.getArtistPhoto())
 			.build();
 	
-	Role role = Role.builder().roleName(artistDto.getArtistRole()).build();
+	Role role = Role.builder().id(artistDto.getRolId()).roleName(artistDto.getArtistRole()).build();
 	
 	toPersist.setArtistDomain(artistDomain);
 	toPersist.setRole(role);
@@ -66,6 +66,7 @@ public class ArtistService {
 		artistDto.setArtistMail(toPersist.getMail());
 		artistDto.setArtistPassword(toPersist.getPassword());
 		artistDto.setArtistRole(toPersist.getRole().getRoleName());
+		artistDto.setRolId(toPersist.getRole().getId());
 	}
 		return artistDto;
 	}
@@ -86,6 +87,7 @@ public class ArtistService {
 	}
 
 	public ArtistDto login(String mail, String password) {
+		
 		Artist authenticatedArtist = artistRepository.findByMail(mail);
 		ArtistDto artistDto = new ArtistDto();
 		artistDto.setArtistDomain(authenticatedArtist.getArtistDomain().getDomain());
