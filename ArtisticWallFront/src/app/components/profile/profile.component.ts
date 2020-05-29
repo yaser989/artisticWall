@@ -45,7 +45,7 @@ export class ProfileComponent implements OnInit {
     .subscribe(data => {
       this.artist = data;
     }); 
-    this.router.navigate(['/home']);
+    window.location.reload();
   }
 
 
