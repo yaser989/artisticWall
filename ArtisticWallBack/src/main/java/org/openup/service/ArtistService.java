@@ -80,7 +80,7 @@ public class ArtistService {
 		role.setRoleName("ROLE_USER");
 		toPersist.setRole(role);
 		toPersist.setArtistDomain(artistDomain);
-//	    toPersist.setPassword(bCryptPasswordEncoder.encode(toPersist.getPassword()));
+	    toPersist.setPassword(bCryptPasswordEncoder.encode(toPersist.getPassword()));
 		System.out.println(toPersist);
 		System.out.println(artistDto);
 		return artistRepository.save(toPersist);

@@ -23,18 +23,19 @@
   </div>
   <img src="http://localhost:8080/v1/photos/event/{{ev.idEvent}}" class="card-img-top" style="width:100%; " onerror="this.src='assets/unnamed.png'">
   <ul class="list-group list-group-flush">
-    <li class="list-group-item" [hidden]="!ev.commonDto"><b>City: </b>{{ev.commonDto}}</li>
-    <li class="list-group-item" [hidden]="!ev.streetDto"><b>Street: </b>{{ev.streetDto}}</li>
-    <li class="list-group-item" [hidden]="!ev.zipCodeDto"><b>Zip code: </b>{{ev.zipCodeDto}}</li>
-    <li class="list-group-item" [hidden]="!ev.phoneDto"><b>Phone: </b>{{ev.phoneDto}}</li>
-    <li class="list-group-item" [hidden]="!ev.dateDto"><b>At: </b>{{ev.dateDto}}</li>
+    <li class="list-group-item" [hidden]="!ev.commonDto" *ngIf="check"><b>City: </b>{{ev.commonDto}}</li>
+    <li class="list-group-item" [hidden]="!ev.streetDto" *ngIf="check"><b>Street: </b>{{ev.streetDto}}</li>
+    <li class="list-group-item" [hidden]="!ev.zipCodeDto" *ngIf="check"><b>Zip code: </b>{{ev.zipCodeDto}}</li>
+    <li class="list-group-item" [hidden]="!ev.phoneDto" *ngIf="check"><b>Phone: </b>{{ev.phoneDto}}</li>
+    <li class="list-group-item" [hidden]="!ev.dateDto" *ngIf="check"><b>At: </b>{{ev.dateDto}}</li>
         
-        <li class="list-group-item" [hidden]="!ev.artistName || !ev.artistLastName"><b>Artist: </b>{{ev.artistName}}&nbsp;{{ev.artistLastName}}</li>
-        <li class="list-group-item" [hidden]="!ev.artistMail"><b>Email: </b>{{ev.artistMail}}</li>
-        <li class="list-group-item" [hidden]="!ev.artistPassword"><b>Password :</b>{{ev.artistPassword}}</li>
-        <li class="list-group-item" [hidden]="!ev.artistDomain"><b>Domain: </b>{{ev.artistDomain}}</li>
-        <li class="list-group-item" [hidden]="!ev.roleName"><b>Role: </b>{{ev.roleName}}</li>
-        <li class="list-group-item" [hidden]="!ev.shared"><b>shared: </b>{{ev.shared}}</li>
+        <li class="list-group-item" [hidden]="!ev.artistName || !ev.artistLastName" *ngIf="check"><b>Artist: </b>{{ev.artistName}}&nbsp;{{ev.artistLastName}}</li>
+        <li class="list-group-item" [hidden]="!ev.artistMail" *ngIf="check"><b>Email: </b>{{ev.artistMail}}</li>
+        <li class="list-group-item" [hidden]="!ev.artistPassword" *ngIf="check"><b>Password :</b>{{ev.artistPassword}}</li>
+        <li class="list-group-item" [hidden]="!ev.artistDomain" *ngIf="check"><b>Domain: </b>{{ev.artistDomain}}</li>
+        <li class="list-group-item" [hidden]="!ev.roleName" *ngIf="check"><b>Role: </b>{{ev.roleName}}</li>
+        <li class="list-group-item" [hidden]="!ev.shared" *ngIf="check"><b>shared: </b>{{ev.shared}}</li>
+        <p  type="button"  (click)="myClick()" style="color: rgba(139, 4, 4, 0.856); padding: 10px;" >{{nameButton}}</p>
       </ul>
       <div class="card-body">
         <button type="button" class="btn btn-link" (click)="removeEvent(ev.idEvent)"><i class="fas fa-trash"></i>&nbsp;Remove</button>

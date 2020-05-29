@@ -61,4 +61,16 @@ export class ShowComponent implements OnInit {
     window.location.reload();
     }
  
+    public  check : boolean ;
+    nameButton : String = "see more..";
+     myClick  ()  { 
+       this.check =! this.check;
+       if (this.check){
+         this.nameButton = "see less";
+       }
+   else{
+     this.nameButton = "see more..";
+   }
+   
+     }
 }

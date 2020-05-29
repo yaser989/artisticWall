@@ -21,9 +21,7 @@
           <button type="button" class="btn btn-link" *ngIf="ev.shared == 1" (click)="shareEvent(ev.idEvent, ev.shared)"><i class="fas fa-share-alt" ></i>&nbsp;Unshare</button>
         </div>
       </div>
-      <div class="card-header bg-transparent" *ngIf="ev.idOwnerDto === -1">
-          <button type="button" class="btn btn-outline-primary btn-block btn-link"><i class="fas fa-share-alt"></i>&nbsp;Shared</button>
-      </div>
+     
       <div style="margin-top: 10px;">
       <img src="http://localhost:8080/v1/photos/artist/{{ev.idArtist}}" class="rounded-circle" width="50" height="50"onerror="this.src='assets/16-168360_user-add-user-icon-add-symbol-member-friend.png'">&nbsp;
       <b>{{ev.artistName}}&nbsp;{{ev.artistLastName}}</b>
@@ -34,14 +32,14 @@
         
 
         <h5 class="card-text"  [hidden]="!ev.typeEventDto"  >{{ev.typeEventDto}}</h5>
-        <h6 [hidden]="!ev.categoriesDto"><b>categories :</b>&nbsp;{{ev.categoriesDto}}</h6>
-        <p class="card-text" [hidden]="!ev.descriptionDto">{{ev.descriptionDto}}</p>
-        <p class="card-text" [hidden]="!ev.commonDto"><b>Common :</b>&nbsp;{{ev.commonDto}}</p>
-        <p class="card-text" [hidden]="!ev.streetDto"><b>Street :</b>&nbsp;{{ev.streetDto}}</p>
-        <p class="card-text" [hidden]="!ev.zipCodeDto"><b>Zip code :</b>&nbsp;{{ev.zipCodeDto}}</p>
-        <p class="card-text" [hidden]="!ev.phoneDto"><b>Phone :</b>&nbsp;{{ev.phoneDto}}</p>
-        <p class="card-text" [hidden]="!ev.dateDto"><b>At :</b> &nbsp;{{ev.dateDto}}</p>
-
+        <h6 [hidden]="!ev.categoriesDto" ><b>categories :</b>&nbsp;{{ev.categoriesDto}}</h6>
+        <p class="card-text" [hidden]="!ev.descriptionDto" *ngIf="check">{{ev.descriptionDto}}</p>
+        <p class="card-text" [hidden]="!ev.commonDto" *ngIf="check"><b>Common :</b>&nbsp;{{ev.commonDto}}</p>
+        <p class="card-text" [hidden]="!ev.streetDto" *ngIf="check"><b>Street :</b>&nbsp;{{ev.streetDto}}</p>
+        <p class="card-text" [hidden]="!ev.zipCodeDto" *ngIf="check"><b>Zip code :</b>&nbsp;{{ev.zipCodeDto}}</p>
+        <p class="card-text" [hidden]="!ev.phoneDto" *ngIf="check"><b>Phone :</b>&nbsp;{{ev.phoneDto}}</p>
+        <p class="card-text" [hidden]="!ev.dateDto" *ngIf="check"><b>At :</b> &nbsp;{{ev.dateDto}}</p>
+        <p  type="button"  (click)="myClick()" style="color: rgba(139, 4, 4, 0.856)">{{nameButton}}</p>
    
 
         <div *ngIf="currentFileUpload" class="progress">
