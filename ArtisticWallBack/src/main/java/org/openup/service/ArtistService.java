@@ -77,7 +77,7 @@ public class ArtistService implements UserDetailsService{
 		Artist toPersist = Artist.builder().name(artistDto.getArtistName()).lastName(artistDto.getArtistLastName())
 				.mail(artistDto.getArtistMail()).password(artistDto.getArtistPassword()).photo(artistDto.getArtistPhoto())
 				.build();
-		role.setRoleName("ROLE_USER");
+		role.setRoleName("ROLE_ADMIN");
 		toPersist.setRole(role);
 		toPersist.setArtistDomain(artistDomain);
 	    toPersist.setPassword(EncrytedPasswordUtils.encrytePassword(toPersist.getPassword()));
