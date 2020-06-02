@@ -11,6 +11,12 @@ import org.openup.entity.Role;
 import org.openup.mapper.ArtistMapper;
 import org.openup.repo.ArtistRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -74,7 +80,7 @@ public class ArtistService {
 		role.setRoleName("ROLE_USER");
 		toPersist.setRole(role);
 		toPersist.setArtistDomain(artistDomain);
-//	    toPersist.setPassword(bCryptPasswordEncoder.encode(toPersist.getPassword()));
+	    toPersist.setPassword(bCryptPasswordEncoder.encode(toPersist.getPassword()));
 		System.out.println(toPersist);
 		System.out.println(artistDto);
 		return artistRepository.save(toPersist);
