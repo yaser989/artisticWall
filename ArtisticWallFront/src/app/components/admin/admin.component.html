@@ -21,7 +21,7 @@
   <div class="card-body">
     <p class="card-text" [hidden]="!ev.descriptionDto"><b>Description: </b>{{ev.descriptionDto}}</p>
   </div>
-  <img src="https://artistic-wall.herokuapp.com/v1/photos/event/{{ev.idEvent}}" class="card-img-top" style="width:100%; " onerror="this.src='assets/unnamed.png'">
+  <img src="http://localhost:8080/v1/photos/event/{{ev.idEvent}}" class="card-img-top" style="width:100%; " onerror="this.src='assets/unnamed.png'">
   <ul class="list-group list-group-flush">
     <li class="list-group-item" [hidden]="!ev.commonDto" *ngIf="check"><b>City: </b>{{ev.commonDto}}</li>
     <li class="list-group-item" [hidden]="!ev.streetDto" *ngIf="check"><b>Street: </b>{{ev.streetDto}}</li>

@@ -1,3 +1,3 @@
 export class AppSitings{
-    public static App_URL = "https://artistic-wall.herokuapp.com/v1";
+    public static App_URL = "http://localhost:8080/v1";
 }
