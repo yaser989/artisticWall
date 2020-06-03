@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.errorMessage = "";
     if (this.loginForm.invalid) {
-      this.errorMessage = "EMail and / or password is incorrect";
+      alert ('EMail and / or password is incorrect');
       return;
     }
     this.artistService.login(this.userName.value, this.password.value)
@@ -42,10 +42,11 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       }, error => {
         if(error.status === 404) {
-          this.errorMessage = "No user was found with the following Email/Password";
+          alert('No user was found with the following Email/Password');
         }
         if(error.status === 400) {
-          this.errorMessage = "EMail and / or password is incorrect";
+          alert('EMail and / or password is incorrect');
+        
         }
       });
   }
@@ -58,6 +59,9 @@ export class LoginComponent implements OnInit {
     return this.loginForm.get('artistPassword');
   }
      
-
+  getUrl()
+  {
+    return "url('assets/100143207-black-cracked-brick-tiles-wall-texture-dark-old-rough-brickwork-background.jpg')";
+  }
   
 }

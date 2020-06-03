@@ -26,6 +26,8 @@ public interface ArtistRepository extends JpaRepository<Artist, Long>{
    
  
 	Optional<Artist> findByName(String name);
+	
+	
       
 
 	
