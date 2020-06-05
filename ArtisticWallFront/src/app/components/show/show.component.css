@@ -11,6 +11,7 @@ justify-content: space-between;
     margin-right: auto;
     width: 70%;
     padding: 20px;
+    background-color: rgba(24, 21, 21, 0.856);
 }
 
 .ro{
@@ -26,16 +27,37 @@ justify-content: space-between;
 p:blank{
     display: none;
 }
-.active-pink input[type='serch']{
+.textbox i{
+    width: 26px;
+    float: left;
+    text-align: center;
+}
+.textbox input{
+    border: none;
+    outline: none;
+    background: none;
+    color: white;
+    font-size: 16px;
+    width: 80%;
+    float: left;
+    margin: 0 10px;
     border-bottom: 1px solid #da054c;
-    box-shadow: 0 1px 0 0 #da054c;
+    
     border-top: hidden;
     border-right: hidden;
     border-left: hidden;
-    
+}
+.textbox {
+
+    background-color: rgba(24, 21, 21, 0.856);
+}
+::placeholder{
+  color: white;
 }
 
-
+.card-body{
+    color: white;
+}
 @media only screen and (max-width: 600px){
     .card{
         width: 18rem;
@@ -67,7 +89,7 @@ p:blank{
         margin-right: auto;
         width: 100%;
         padding: 20px;
-        
+    
     }
     .ro{
         width: 18rem;

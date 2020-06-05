@@ -74,4 +74,9 @@ export class AuditionComponent implements OnInit {
    }
    
      }
+
+     getUrl()
+     {
+       return "url('assets/R10962_image1.jpg')";
+     }
 }

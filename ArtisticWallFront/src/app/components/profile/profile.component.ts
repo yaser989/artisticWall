@@ -79,4 +79,9 @@ export class ProfileComponent implements OnInit {
   toggleDisplay() {
     this.isShow = !this.isShow;
   }
+
+  getUrl()
+  {
+    return "url('assets/R10962_image1.jpg')";
+  }
 }

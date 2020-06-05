@@ -34,4 +34,9 @@ export class UpdateEventComponent implements OnInit {
     }); 
     this.router.navigate(['/home']);
   }
+
+  getUrl()
+  {
+    return "url('assets/R10962_image1.jpg')";
+  }
 }

@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
      
   getUrl()
   {
-    return "url('assets/100143207-black-cracked-brick-tiles-wall-texture-dark-old-rough-brickwork-background.jpg')";
+    return "url('assets/R10962_image1.jpg')";
   }
   
 }

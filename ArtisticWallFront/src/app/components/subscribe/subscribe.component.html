@@ -1,66 +1,35 @@
-<nav class="navbar navbar-dark bg-dark">
-    <img src="assets\login-logo.png" alt="..." class="img-rounded">
-</nav>
+<div class="bo" [ngStyle]="{'background-image': getUrl()}" style="height: 1000px; background-attachment: fixed; background-repeat: no-repeat; background-size: cover ;">
    
-
+  <div class="logo"> <img src="assets\login-logo.png"></div>
+ 
+  <div class="login-box">
+    <h1>Registre now</h1>
 
     <form class="form-group" (ngSubmit)="createNewArtist()"  novalidate>
   
-        <label for="inputName" class="sr-only">Name</label>
+      <div class="textbox">
         <input type="text" name="artistName" class="form-control" [(ngModel)]="artist.artistName" placeholder="Name" required  />
-
-        <label for="inputLAstName" class="sr-only">Last Name</label> 
+</div>
+        <div class="textbox">
         <input type="text" name="artistLastName" class="form-control" [(ngModel)]="artist.artistLastName" placeholder="Last name" required />
-  
-        <label for="inputEmail" class="sr-only">Email address</label>
+  </div>
+        <div class="textbox">
         <input type="email" name="artistMail" class="form-control" [(ngModel)]="artist.artistMail" placeholder="Email address" required />
-
-        <label for="inputPassword" class="sr-only">Password</label>
+</div>
+        <div class="textbox">
         <input type="password" name="artistPassword" class="form-control" [(ngModel)]="artist.artistPassword" placeholder="Password" required />
-
-        <label for="inputDomain" class="sr-only">Domain</label>
+</div>
+        <div class="textbox">
         <input type="text" name="artistDomain" class="form-control" [(ngModel)]="artist.artistDomain" placeholder="Domain" required />
-        <br>  
-        <button class="btn btn-lg btn-primary btn-block" type="submit" >register</button>
+    </div>
+    <input type="button" type="submit" class="btn" value="register">
+    <div>
+
+      <a routerLink="/login" style="color: white;">Sign in</a>
+    </div>
+    
     </form>
 
-
-
-
-  <!--Carousel Wrapper-->
-  <div class="all">
-<div id="carousel-example-2" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
-
-    
-      <div class="carousel-item active">
-        <div class="view">
-          <img class="d-block w-100" src="assets\Illustration-classical-music-composer-composition-blog-history-2009.jpg" alt="First slide">
-        </div>
-         </div>
-
-      <div class="carousel-item">
-     <div class="view">
-          <img class="d-block w-100" src="assets\images.png" alt="Second slide">
-        </div>
-      </div>
-      
-      <div class="carousel-item">
-        <div class="view">
-          <img class="d-block w-100" src="assets\musik-islam.jpg" alt="Third slide">
-        </div>
-    </div>
-             
-    <div class="carousel-item">
-        <div class="view">
-             <img class="d-block w-100" src="assets\SOM_Hero_PianoKeys_CreditDavidAndrews.jpg" alt="Second slide">
-           </div>
-         </div>
-         
-   
-
-
-
-
-
 </div>
+
 </div>

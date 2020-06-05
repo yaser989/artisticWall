@@ -1,5 +1,5 @@
 <app-authorised-top-nav></app-authorised-top-nav>
-<div class="up">
+<div class="up" [ngStyle]="{'background-image': getUrl()}" style="height: auto; background-attachment: fixed; background-repeat: no-repeat; background-size: cover ;">
 
 <app-authorised-side-nav></app-authorised-side-nav>
 
@@ -7,15 +7,17 @@
 
 
   <form class="form-inline d-flex justify-content-center md-form form-sm active-pink active-pink-2 mt-2">
+    <div class="textbox">
     <i class="fas fa-search" style="color: #da054cbb;" ></i>
     <input class="form-control form-control-sm ml-3 w-75" type="serch" placeholder="Search by type of event " (input)="filter($event.target.value)"
       aria-label="Search">
+    </div>
   </form>
   <br><br>
 <div class="card"  *ngFor="let ev of admin">
   <div class="card-header">
-    <p class="card-text" [hidden]="!ev.typeEventDto"><b>Type event: </b>{{ev.typeEventDto}} <br> <b>#: </b>{{ev.idEvent}}</p>
-    <p style="color: grey; font-size: 10px;">published :&nbsp;{{ev.dateOfCreatingDto}}</p>
+    <p class="card-text" [hidden]="!ev.typeEventDto" style="color: white;"><b >Type event: </b>{{ev.typeEventDto}} <br> <b>#: </b>{{ev.idEvent}}</p>
+    <p style="color: rgb(221, 214, 214); font-size: 14px;">published :&nbsp;{{ev.dateOfCreatingDto}}</p>
     <p class="card-title" [hidden]="!ev.categoriesDto" style="background-color:white;"><b>Categories: </b>{{ev.categoriesDto}}</p>
   </div>
   <div class="card-body">
@@ -35,12 +37,13 @@
         <li class="list-group-item" [hidden]="!ev.artistDomain" *ngIf="check"><b>Domain: </b>{{ev.artistDomain}}</li>
         <li class="list-group-item" [hidden]="!ev.roleName" *ngIf="check"><b>Role: </b>{{ev.roleName}}</li>
         <li class="list-group-item" [hidden]="!ev.shared" *ngIf="check"><b>shared: </b>{{ev.shared}}</li>
-        <p  type="button"  (click)="myClick()" style="color: rgba(139, 4, 4, 0.856); padding: 10px;" >{{nameButton}}</p>
+        <p  type="button"  (click)="myClick()" style="color: white; padding: 10px;" >{{nameButton}}</p>
       </ul>
       <div class="card-body">
+        <div class="btn">
         <button type="button" class="btn btn-link" (click)="removeEvent(ev.idEvent)"><i class="fas fa-trash"></i>&nbsp;Remove</button>
         <button type="button" class="btn btn-link" (click)="updateEventAndArtist(ev.idEvent)"><i class="fas fa-pen" ></i>&nbsp;Edit</button>
-
+        </div>
         <div *ngIf="currentFileUpload" class="progress">
           <div class="progress-bar progress-bar-info progress-bar-striped"
             role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
@@ -49,7 +52,7 @@
             {{progress.percentage}}%</div>
         </div>
          
-        <label  class="btn btn-link" ><span style="color: red;">Choose photo</span> 
+        <label  class="btn btn-link" ><span style="color:white;">Choose photo</span> 
           <input type="file" (change)="onselectedFile($event)" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden; ">
         </label>
         <br>

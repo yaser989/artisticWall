@@ -130,4 +130,9 @@ updateEventAndArtist(idEvent : number){
    }
    
      }
+
+     getUrl()
+     {
+       return "url('assets/R10962_image1.jpg')";
+     }
 }

@@ -1,20 +1,23 @@
 <app-authorised-top-nav></app-authorised-top-nav>
-<div class="up">
+
+  <div class="up" [ngStyle]="{'background-image': getUrl()}" style="height: auto; background-attachment: fixed; background-repeat: no-repeat; background-size: cover ;">
 <app-authorised-side-nav></app-authorised-side-nav>
 
 
 <div class="ro">
   
   <form class="form-inline d-flex justify-content-center md-form form-sm active-pink active-pink-2 mt-2">
+    <div class="textbox">
     <i class="fas fa-search" style="color: #da054cbb;" ></i>
     <input class="form-control form-control-sm ml-3 w-75" type="serch" placeholder="Search by type of event " (input)="filter($event.target.value)"
       aria-label="Search">
+      </div>
   </form>
 
     <div class="card" *ngFor="let ev of evente">
-      <p style="color: darkgray;">#&nbsp;{{ev.idEvent}}</p>
+      <p style="color: rgb(207, 205, 205);">#&nbsp;{{ev.idEvent}}</p>
       <div class="card-header bg-transparent" *ngIf="ev.idOwnerDto !== -1">
-        <div class="btn-group" role="group" aria-label="Basic example" >
+        <div class="btn" >
           <button type="button" class="btn btn-link" (click)="updateEvent(ev.idEvent)"><i class="fas fa-pen" ></i>&nbsp;Edit</button>
           <button type="button" class="btn btn-link" (click)="removeEvent(ev.idEvent)"><i class="fas fa-trash"></i>&nbsp;Remove</button>
           <button type="button" class="btn btn-link" *ngIf="ev.shared == 0" (click)="shareEvent(ev.idEvent, ev.shared)"><i class="fas fa-share-alt"></i>&nbsp;Share</button>
@@ -24,22 +27,22 @@
      
       <div style="margin-top: 10px;">
       <img src="http://localhost:8080/v1/photos/artist/{{ev.idArtist}}" class="rounded-circle" width="50" height="50"onerror="this.src='assets/16-168360_user-add-user-icon-add-symbol-member-friend.png'">&nbsp;
-      <b>{{ev.artistName}}&nbsp;{{ev.artistLastName}}</b>
+      <b style="color: whitesmoke;">{{ev.artistName}}&nbsp;{{ev.artistLastName}}</b>
       </div>
-      <p style="color: grey; font-size: 10px;">published :&nbsp;{{ev.dateOfCreatingDto}}</p>
+      <p style="color: rgb(194, 188, 188); font-size: 10px;">published :&nbsp;{{ev.dateOfCreatingDto}}</p>
       <img src="http://localhost:8080/v1/photos/event/{{ev.idEvent}}" class="card-img-top" style="width:100%; " onerror="this.src='assets/unnamed.png'">
       <div class="card-body">
         
 
         <h5 class="card-text"  [hidden]="!ev.typeEventDto"  >{{ev.typeEventDto}}</h5>
-        <h6 [hidden]="!ev.categoriesDto" ><b>categories :</b>&nbsp;{{ev.categoriesDto}}</h6>
+        <h6 [hidden]="!ev.categoriesDto" ><span style="font-size: 16px;">categories :</span>&nbsp;{{ev.categoriesDto}}</h6>
         <p class="card-text" [hidden]="!ev.descriptionDto" *ngIf="check">{{ev.descriptionDto}}</p>
         <p class="card-text" [hidden]="!ev.commonDto" *ngIf="check"><b>Common :</b>&nbsp;{{ev.commonDto}}</p>
         <p class="card-text" [hidden]="!ev.streetDto" *ngIf="check"><b>Street :</b>&nbsp;{{ev.streetDto}}</p>
         <p class="card-text" [hidden]="!ev.zipCodeDto" *ngIf="check"><b>Zip code :</b>&nbsp;{{ev.zipCodeDto}}</p>
         <p class="card-text" [hidden]="!ev.phoneDto" *ngIf="check"><b>Phone :</b>&nbsp;{{ev.phoneDto}}</p>
         <p class="card-text" [hidden]="!ev.dateDto" *ngIf="check"><b>At :</b> &nbsp;{{ev.dateDto}}</p>
-        <p  type="button"  (click)="myClick()" style="color: rgba(139, 4, 4, 0.856)">{{nameButton}}</p>
+        <p  type="button"  (click)="myClick()" style="color: white">{{nameButton}}</p>
    
 
         <div *ngIf="currentFileUpload" class="progress">
@@ -50,7 +53,7 @@
             {{progress.percentage}}%</div>
         </div>
          
-        <label  class="btn btn-link" [hidden]="ev.idOwnerDto === -1"><span style="color: red;">Choose photo</span> 
+        <label  class="btn btn-link" [hidden]="ev.idOwnerDto === -1"><span style="color:white;">Choose photo</span> 
           <input type="file" (change)="onselectedFile($event)" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden; ">
         </label>
         <br>

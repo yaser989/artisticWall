@@ -49,4 +49,9 @@ this.eventForm = new FormGroup({
     window.location.reload();
   }
 
+  getUrl()
+  {
+    return "url('assets/R10962_image1.jpg')";
+  }
+
 }

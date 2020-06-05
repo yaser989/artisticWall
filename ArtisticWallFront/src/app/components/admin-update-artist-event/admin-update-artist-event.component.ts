@@ -32,4 +32,9 @@ idEvent: number;
     }); 
     this.router.navigate(['/admin']);
   }
+
+  getUrl()
+  {
+    return "url('assets/R10962_image1.jpg')";
+  }
 }

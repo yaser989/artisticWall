@@ -1,45 +1,51 @@
 <app-authorised-top-nav></app-authorised-top-nav>
-<div class="up">
+<div class="up" [ngStyle]="{'background-image': getUrl()}" style="height: auto; background-attachment: fixed; background-repeat: no-repeat; background-size: cover ;">
 <app-authorised-side-nav></app-authorised-side-nav>
 
-
+<div class="login-box">
 <form class="form-group" (ngSubmit)="createEvent()"  novalidate>
   
-    <label for="inputName" class="sr-only">typeEventDto</label>
+    <div class="textbox">  
     <input type="text" name="typeEventDto" list="chose-type" class="form-control" [(ngModel)]="event.typeEventDto" placeholder="Type of event" required  />
     <datalist id="chose-type">
         <option value="Audition">
          <option value="Concert">
          <option value="Show"></option>
     </datalist>
-    <label for="inputLAstName" class="sr-only">categoriesDto</label> 
+    </div>
+
+    <div class="textbox">
     <input type="text" name="categoriesDto"  class="form-control" [(ngModel)]="event.categoriesDto" placeholder="Categories" required />
+</div>
 
-    <label for="inputEmail" class="sr-only">descriptionDto</label>
+    <div class="textbox">
     <input type="text" name="descriptionDto" class="form-control" [(ngModel)]="event.descriptionDto" placeholder="Description" required />
+</div>
 
-    <label for="inputPassword" class="sr-only">commonDto</label>
+    <div class="textbox">
     <input type="text" name="commonDto" class="form-control" [(ngModel)]="event.commonDto" placeholder="Common" required />
+</div>
 
-    <label for="inputDomain" class="sr-only">streetDto</label>
+    <div class="textbox">
     <input type="text" name="streetDto" class="form-control" [(ngModel)]="event.streetDto" placeholder="Street" required />
-
-    <label for="inputDomain" class="sr-only">zipCodeDto</label>
+</div>
+    <div class="textbox">
     <input type="text" name="zipCodeDto" class="form-control" [(ngModel)]="event.zipCodeDto" placeholder="Zip Code" required />
-
-    <label for="inputDomain" class="sr-only">dateDto</label>
+</div>
+    <div class="textbox">
     <input type="datetime-local" id="meeting-time"
        name="meeting-time" 
         class="form-control" [(ngModel)]="event.dateDto" placeholder="Date" required />
+</div>
 
 
-
-    <label for="inputDomain" class="sr-only">phoneDto</label>
+        <div class="textbox">
     <input type="text" name="phoneDto" class="form-control" [(ngModel)]="event.phoneDto" placeholder="Phone" required />
+    </div>
+  <input type="button" type="submit" class="btn" value="Create">
     
-    <br>  
-    <button class="btn btn-lg btn-primary btn-block" type="submit" >Create</button>
 </form>
 
 
+</div>
 </div>
