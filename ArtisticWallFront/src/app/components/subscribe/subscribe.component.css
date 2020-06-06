@@ -6,13 +6,13 @@
 }
 
   .login-box{
-    width: 280px;
+    width: 30%;
     position: absolute;
-    top: 50%;
+    top: 80%;
     left: 50%;
     transform: translate(-50%,-50%);
     color: white;
-    background-color: rgba(24, 21, 21, 0.856);
+    background-color: rgba(24, 21, 21, 0.945);
     padding: 10px;
   }
   .login-box h1{
@@ -55,7 +55,10 @@
     cursor: pointer;
     margin: 12px 0;
   }
-  
+  .logo{
+    float: left;
+    background-color: rgba(24, 21, 21, 0.945);
+  }
 
   @media only screen and (max-width: 600px){
     .login-box{

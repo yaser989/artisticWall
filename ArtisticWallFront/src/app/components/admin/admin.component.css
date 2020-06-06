@@ -14,7 +14,7 @@ justify-content: space-between;
 }
 .card{
     margin: 20px;
-    background-color: rgba(24, 21, 21, 0.856);
+    background-color: rgba(24, 21, 21, 0.945);
 }
 .ro b{
 color: rgba(207, 58, 58, 0.904);
@@ -45,7 +45,7 @@ p:blank{
 }
 .textbox {
 
-    background-color: rgba(24, 21, 21, 0.856);
+    background-color: rgba(24, 21, 21, 0.945);
 }
 ::placeholder{
   color: white;

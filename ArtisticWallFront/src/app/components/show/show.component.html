@@ -27,9 +27,9 @@
         
 
         <h5 class="card-text"  [hidden]="!ev.typeEventDto"  >{{ev.typeEventDto}}</h5>
-        <h6 [hidden]="!ev.categoriesDto"><b>categories :</b>&nbsp;{{ev.categoriesDto}}</h6>
+        <h6 [hidden]="!ev.categoriesDto"><b>Category :</b>&nbsp;{{ev.categoriesDto}}</h6>
         <p class="card-text" [hidden]="!ev.descriptionDto" *ngIf="check">{{ev.descriptionDto}}</p>
-        <p class="card-text" [hidden]="!ev.commonDto" *ngIf="check"><b>Common :</b>&nbsp;{{ev.commonDto}}</p>
+        <p class="card-text" [hidden]="!ev.commonDto" *ngIf="check"><b>City :</b>&nbsp;{{ev.commonDto}}</p>
         <p class="card-text" [hidden]="!ev.streetDto" *ngIf="check"><b>Street :</b>&nbsp;{{ev.streetDto}}</p>
         <p class="card-text" [hidden]="!ev.zipCodeDto" *ngIf="check"><b>Zip code :</b>&nbsp;{{ev.zipCodeDto}}</p>
         <p class="card-text" [hidden]="!ev.phoneDto" *ngIf="check"><b>Phone :</b>&nbsp;{{ev.phoneDto}}</p>
