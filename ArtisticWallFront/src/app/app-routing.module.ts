@@ -11,11 +11,12 @@ import { AdminUpdateArtistEventComponent } from './components/admin-update-artis
 import { AuditionComponent } from './components/audition/audition.component';
 import { ConcertComponent } from './components/concert/concert.component';
 import { ShowComponent } from './components/show/show.component';
+import { FirstPageComponent } from './components/first-page/first-page.component';
 
 
 
 const routes: Routes = [
-  {path : '', redirectTo:'/login', pathMatch:'full' },
+  {path : '', redirectTo:'/firstPage', pathMatch:'full' },
   {path:'home', component : HomeComponent},
   {path:'login', component : LoginComponent},
   {path: 'subscribe', component : SubscribeComponent},
@@ -27,7 +28,9 @@ const routes: Routes = [
   {path:'adminUpdate/:idEvent',component : AdminUpdateArtistEventComponent},
   {path:'audition',component : AuditionComponent},
   {path:'concert',component : ConcertComponent},
-  {path:'show',component : ShowComponent}
+  {path:'show',component : ShowComponent},
+  {path:'firstPage',component : FirstPageComponent}
+ 
 ];
 
 

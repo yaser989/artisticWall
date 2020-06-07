@@ -21,6 +21,7 @@ import { AdminUpdateArtistEventComponent } from './components/admin-update-artis
 import { AuditionComponent } from './components/audition/audition.component';
 import { ConcertComponent } from './components/concert/concert.component';
 import { ShowComponent } from './components/show/show.component';
+import { FirstPageComponent } from './components/first-page/first-page.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ShowComponent } from './components/show/show.component';
     AdminUpdateArtistEventComponent,
     AuditionComponent,
     ConcertComponent,
-    ShowComponent
+    ShowComponent,
+    FirstPageComponent
   ],
   imports: [
     BrowserModule,

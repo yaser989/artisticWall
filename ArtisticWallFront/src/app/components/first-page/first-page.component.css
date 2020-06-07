@@ -1,0 +1,55 @@
+.logo img{
+    width: 50%;
+}
+
+#contact{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(24, 21, 21, 0.945);
+    padding: 5px;
+
+}
+
+#contact p{
+    color: white;
+}
+
+.container h1{
+color: rgb(255, 255, 255);
+    text-align: center;
+text-shadow: 3px 3px white;
+} 
+.container .artistic{
+    font-size: 80px; 
+    margin-right:2em ; 
+    color: brown;
+}
+
+.container .wall{
+    font-size: 80px; 
+    margin-left:2em ; 
+    color: brown;
+}
+
+@media only screen and (max-width: 600px){
+    #contact{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+     
+    }
+    .container .artistic{
+        font-size: 40px; 
+        margin-right:2em ; 
+        color: brown;
+    }
+    
+    .container .wall{
+        font-size: 40px; 
+        margin-left:2em ; 
+        color: brown;
+    }
+}

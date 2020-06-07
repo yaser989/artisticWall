@@ -24,6 +24,12 @@
     a[data-toggle="collapse"] {
       position: relative;
     }
+    .btn{
+      color: rgba(255, 255, 255, 0.425);
+    }
+    .btn :hover{
+      color: white;
+    }
      
     @media (max-width: 575px) {
       #sidebar {
