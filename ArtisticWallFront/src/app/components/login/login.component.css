@@ -5,17 +5,18 @@
     
 }
 
-  .login-box{
-    width: 280px;
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    color: white;
-    background-color: rgba(24, 21, 21, 0.945);
-    padding: 10px;
-  }
-  .login-box h1{
+.up{
+  width: 280px;
+  margin-top: 10%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+  background-color: rgba(24, 21, 21, 0.945);
+  padding: 10px;
+
+}
+  .up h1{
     float: left;
     font-size: 40px;
     border-bottom: 6px solid rgba(182, 6, 6, 0.795);
@@ -56,27 +57,19 @@
     margin: 12px 0;
   }
  
-.logo{
-  float: left;
-  background-color: rgba(24, 21, 21, 0.945);
+  .logo img{
+    width: 50%;
 }
   @media only screen and (max-width: 600px){
-    .login-box{
-        width: 70vw;
-    }
+
     .btn{
         width: fit-content ;
     }
 
-      .bo{
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-        padding: 20px;
-      }
+
 
       
-      .login-box h1{
+      .up h1{
         font-size: 20px;
         border-bottom: 3px solid rgba(182, 6, 6, 0.795);
       }
@@ -88,28 +81,19 @@
         float: left;
         text-align: center;
       }
-.logo img{
-    width: 30%;
-}
+
   }
 
   @media only screen and (min-width: 1500px){
-    .login-box{
-        width: 280px;
-    }
+ 
     .btn{
         width: 100%;
     }
 
-      .bo{
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-        padding: 20px;
-      }
+
 
       
-      .login-box h1{
+      .up h1{
         font-size: 40px;
         border-bottom: 6px solid rgba(182, 6, 6, 0.795);
       }
@@ -121,9 +105,7 @@
         float: left;
         text-align: center;
       }
-.logo img{
-    width: 20%;
-}
+
   }
 
 

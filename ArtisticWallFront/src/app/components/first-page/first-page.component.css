@@ -33,6 +33,21 @@ text-shadow: 3px 3px white;
     color: brown;
 }
 
+.event{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    text-align: center;
+margin-top: 10%;
+margin-bottom: 10%;
+   float: left;
+   
+}
+
+.event img {
+    width: 30%;
+}
+
 @media only screen and (max-width: 600px){
     #contact{
         display: flex;

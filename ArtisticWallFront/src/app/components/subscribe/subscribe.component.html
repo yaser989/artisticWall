@@ -1,8 +1,43 @@
 <div class="bo" [ngStyle]="{'background-image': getUrl()}" style="height: 1000px; background-attachment: fixed; background-repeat: no-repeat; background-size: cover ;">
    
-  <div class="logo"> <img src="assets\login-logo.png"></div>
+    <!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container">
+    <div class="logo">
+      <img src="assets\login-logo.png">
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item ">
+              <a class="nav-link" routerLink="/firstPage">Home
+              
+                  </a>
+            </li>
+        <li class="nav-item ">
+          <a class="nav-link" routerLink="/login">Sign in
+          
+              </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/subscribe">Sign up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
  
-  <div class="login-box">
+<div class="container">
+
+  <div class=" up">
     <h1>Registre now</h1>
 
     <form class="form-group" (ngSubmit)="createNewArtist()"  novalidate>
@@ -23,13 +58,10 @@
         <input type="text" name="artistDomain" class="form-control" [(ngModel)]="artist.artistDomain" placeholder="Domain" required />
     </div>
     <input type="button" type="submit" class="btn" value="register">
-    <div>
-
-      <a routerLink="/login" style="color: white;">Sign in</a>
-    </div>
+ 
     
     </form>
-
+  </div>
 </div>
 
 </div>
