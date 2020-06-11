@@ -27,7 +27,7 @@ export class AuthorisedSideNavComponent implements OnInit {
   }
   checkUser(){
     if (localStorage.getItem('currentUser') === undefined || localStorage.getItem('currentUser') === null){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/firstPage']);
       return;
     }
     this.artist = JSON.parse(localStorage.getItem('currentUser'));

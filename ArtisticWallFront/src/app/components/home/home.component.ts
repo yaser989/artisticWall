@@ -53,7 +53,7 @@ data.typeEventDto.toLocaleLowerCase().includes(keyWord)
 
   checkUser(){
     if (localStorage.getItem('currentUser') === undefined || localStorage.getItem('currentUser') === null){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/firstPage']);
       return;
     }
     this.artist = JSON.parse(localStorage.getItem('currentUser'));
@@ -72,6 +72,7 @@ data.typeEventDto.toLocaleLowerCase().includes(keyWord)
       console.log(error);
     
     });
+  
   }
 
   shareEvent(idEvent : number, shared: boolean){

@@ -35,7 +35,7 @@ this.AdminFindAll();
 
   checkUser(){
     if (localStorage.getItem('currentUser') === undefined || localStorage.getItem('currentUser') === null){
-      this.router.navigate(['/login']);
+      this.router.navigate(['/firstPage']);
       return;
     }
     this.artistDto = JSON.parse(localStorage.getItem('currentUser'));
