@@ -49,4 +49,5 @@ logout(){
   return this.http.get(AppSitings.App_URL+"/artist/logoutSuccessful");
 }
 
+
 }

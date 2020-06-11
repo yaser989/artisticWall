@@ -17,4 +17,6 @@ export class FirstPageComponent implements OnInit {
   {
     return "url('assets/R10962_image1.jpg')";
   }
+
+  
 }
