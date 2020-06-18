@@ -181,7 +181,7 @@ class ArtisticWallBackApplicationTests {
 	@Test
 	public void findAll() {
 		targetAdmin.finAll();
-		verify(eventRepository).eventfindAll();
+		verify(eventRepository).findAll();
 	}
 	
 	@Test
@@ -282,19 +282,19 @@ class ArtisticWallBackApplicationTests {
 	@Test
 	public void findEventbyConcert() {
 		targetEvent.findEventbyConcert();
-		verify(eventRepository).findByconcert("Concert");
+		verify(eventRepository).findBySharedAndTypeEvent(true,"Concert");
 	}
 	
 	@Test 
 	public void findEventbyShow() {
 		targetEvent.findEventbyShow();
-		verify(eventRepository).findByshow("Show");
+		verify(eventRepository).findBySharedAndTypeEvent(true,"Show");
 	}
 	
 	@Test 
 	public void findEventbyAudition() {
 		targetEvent.findEventbyAudition();
-		verify(eventRepository).findByaudition("Audition");
+		verify(eventRepository).findBySharedAndTypeEvent(true,"Audition");
 	}
 	
 	@Test

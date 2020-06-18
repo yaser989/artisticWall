@@ -1,9 +1,11 @@
 package org.openup.controller;
 import org.openup.DTO.ArtistDto;
+import org.openup.entity.Artist;
 import org.openup.repo.ArtistRepository;
 import org.openup.service.ArtistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +28,9 @@ public class ArtistController {
 	
 	@Autowired
 	private ArtistService artistService;
+	
+	@Autowired
+	 private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Autowired
 	private ArtistRepository artistRepository;
@@ -63,7 +68,16 @@ public class ArtistController {
         if (artistService.login(artistMail, artistPassword) == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(artistService.login(artistMail, artistPassword));
+        
+        Artist authenticatedArtist = artistRepository.findByMail(artistMail);
+        
+        if(artistMail.equalsIgnoreCase(authenticatedArtist.getMail()) && bCryptPasswordEncoder.matches(artistPassword, authenticatedArtist.getPassword())) {
+		    System.out.println("Your account has been deactivated successfully.");
+		      return ResponseEntity.ok(artistService.login(artistMail, artistPassword));
+		}
+		 
+        return ResponseEntity.badRequest().body("Email or Password is incorrect");
+  
     }
 
 }
