@@ -10,6 +10,7 @@ import org.openup.entity.ArtistDomain;
 import org.openup.entity.Role;
 import org.openup.mapper.ArtistMapper;
 import org.openup.repo.ArtistRepository;
+import org.openup.utils.WebMvcConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -31,6 +32,7 @@ public class ArtistService {
 	
 	@Autowired
 	 private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
 
 	public List<ArtistDto> findAll() {
 		List<ArtistDto> listArtistDto = new ArrayList();

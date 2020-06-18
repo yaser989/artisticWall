@@ -97,7 +97,7 @@ public class EventService {
 	
 	public List< EventDto> findEventbyConcert() {
 		List<EventDto> listEventDto = new ArrayList<>();
-		List<Event> listEvent = eventRepository.findByconcert("Concert");
+		List<Event> listEvent = eventRepository.findBySharedAndTypeEvent(true,"Concert");
 		for (Event event : listEvent) {
 			listEventDto.add(eventMapper.toEventDto(event));
 		}
@@ -105,7 +105,7 @@ public class EventService {
 	}
 	public List< EventDto> findEventbyShow() {
 		List<EventDto> listEventDto = new ArrayList<>();
-		List<Event> listEvent = eventRepository.findByshow("Show");
+		List<Event> listEvent = eventRepository.findBySharedAndTypeEvent(true,"Show");
 		for (Event event : listEvent) {
 			listEventDto.add(eventMapper.toEventDto(event));
 		}
@@ -113,7 +113,7 @@ public class EventService {
 	}
 	public List< EventDto> findEventbyAudition() {
 		List<EventDto> listEventDto = new ArrayList<>();
-		List<Event> listEvent = eventRepository.findByaudition("Audition");
+		List<Event> listEvent = eventRepository.findBySharedAndTypeEvent(true,"Audition");
 		for (Event event : listEvent) {
 			listEventDto.add(eventMapper.toEventDto(event));
 		}
