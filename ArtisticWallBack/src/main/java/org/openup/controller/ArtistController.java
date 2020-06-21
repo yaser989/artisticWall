@@ -48,7 +48,7 @@ public class ArtistController {
 	
 	@PostMapping("/")
 	public ResponseEntity createNewArtist(@RequestBody ArtistDto artist) {
-		System.out.println("Controller"+artist);
+		
 		return ResponseEntity.ok(artistService.createNewArtist(artist));
 	}
 	

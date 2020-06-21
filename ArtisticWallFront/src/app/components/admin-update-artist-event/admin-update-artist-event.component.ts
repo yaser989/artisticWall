@@ -30,7 +30,7 @@ idEvent: number;
     .subscribe(data => {
       this.admin = data;
     }); 
-    this.router.navigate(['/admin']);
+    window.location.reload();
   }
 
   getUrl()

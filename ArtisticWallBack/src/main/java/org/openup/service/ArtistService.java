@@ -119,7 +119,7 @@ public class ArtistService {
 			artis.setName(toPersist.getName());
 			artis.setLastName(toPersist.getLastName());
 			artis.setMail(toPersist.getMail());
-			artis.setPassword(toPersist.getPassword());
+			artis.setPassword(bCryptPasswordEncoder.encode(toPersist.getPassword()));
 			artis.getArtistDomain().setDomain(artistDomain.getDomain());
 			Artist saveArtist = artistRepository.save(artis);
 			artistDto.setId(saveArtist.getId());

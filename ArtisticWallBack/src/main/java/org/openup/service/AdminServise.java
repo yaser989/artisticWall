@@ -20,6 +20,7 @@ import org.openup.mapper.AdminMapper;
 import org.openup.repo.ArtistRepository;
 import org.openup.repo.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -28,6 +29,9 @@ public class AdminServise {
 
 	@Autowired
 	private EventRepository eventRepository;
+	
+	@Autowired
+	 private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 	@Autowired
 	private ArtistRepository artistRepository;
@@ -110,7 +114,7 @@ public class AdminServise {
 	        event.getArtist().setName(toPersist.getName());
 	        event.getArtist().setLastName(toPersist.getLastName());
 	        event.getArtist().setMail(toPersist.getMail());
-	        event.getArtist().setPassword(toPersist.getPassword());
+	        event.getArtist().setPassword(bCryptPasswordEncoder.encode(toPersist.getPassword()));
 	        event.getArtist().getArtistDomain().setDomain(artistDomain.getDomain());
 	        event.getArtist().getRole().setRoleName(role.getRoleName());
 	       
