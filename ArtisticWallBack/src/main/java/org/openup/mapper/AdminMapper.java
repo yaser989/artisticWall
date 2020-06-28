@@ -4,6 +4,11 @@ import org.openup.DTO.AdminDto;
 import org.openup.entity.Event;
 import org.springframework.stereotype.Component;
 
+
+/*
+ * AdminMapper to map entity artist and event with adminDto
+ */
+
 @Component
 public class AdminMapper {
 

@@ -36,6 +36,11 @@ public class PhotoController {
 	private EventRepository eventRepository; 
 	
 	
+ /*
+  * find photo of event by id
+  */
+	
+	
 	@GetMapping("/event/{id}")
 	public ResponseEntity photoEvent(@PathVariable Long id) {
 		EventDto eventDto = new EventDto();
@@ -51,6 +56,10 @@ public class PhotoController {
 				.contentType(MediaType.IMAGE_PNG)
 				.body(new InputStreamResource(new ByteArrayInputStream(eventDto.getEventPhoto())));
 	}
+	
+	/*
+	  * upload photo of event by id
+	  */
 	
 	@PostMapping("/uploadPhoto/{id}")
     public ResponseEntity<EventDto> uploadPhoto(@PathVariable Long id, MultipartFile file) throws IOException {
@@ -72,6 +81,9 @@ public class PhotoController {
      return ResponseEntity.ok(eventDto);
     }
 	
+	/*
+	  * find photo of artist by id
+	  */
 	
 	@GetMapping("/artist/{id}")
 	public ResponseEntity photoArtist(@PathVariable Long id) {
@@ -83,6 +95,10 @@ public class PhotoController {
 				.body(new InputStreamResource(new ByteArrayInputStream(artist.getPhoto())));
 		
 	}
+	
+	/*
+	  * upload photo of event by id
+	  */
 	
 	@PostMapping("/uploadPhotoArtist/{id}")
     public ResponseEntity uploadPhotoArtist(@PathVariable Long id, MultipartFile file) throws IOException {

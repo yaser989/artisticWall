@@ -35,16 +35,28 @@ public class ArtistController {
 	@Autowired
 	private ArtistRepository artistRepository;
 	
+	/*
+	 * artist find all
+	 */
+	
 	@GetMapping("/")
 	public ResponseEntity findAll() {
 		
 		return ResponseEntity.ok(artistService.findAll());
 	}
 	
+	/*
+	 * artist find by id
+	 */
+	
 	@GetMapping("/{id}")
 	public ResponseEntity findByID(@PathVariable (name = "id") Long id) {
 		return ResponseEntity.ok(artistService.findById(id));
 	}
+	
+	/*
+	 * create new artist 
+	 */
 	
 	@PostMapping("/")
 	public ResponseEntity createNewArtist(@RequestBody ArtistDto artist) {
@@ -52,11 +64,19 @@ public class ArtistController {
 		return ResponseEntity.ok(artistService.createNewArtist(artist));
 	}
 	
+	/*
+	 * update artist by id 
+	 */
+	
 	@PutMapping("/update/{id}")
 	public ResponseEntity updateEvent(@PathVariable(name="id") Long id, @RequestBody ArtistDto artist) {
 		artistService.updatArtist(id, artist);
 		return ResponseEntity.ok("updet done with success");
 	}
+	
+	/*
+	 * login by mail and password 
+	 */
 	
 	@PostMapping("/login")
     public ResponseEntity login(@RequestParam(name = "artistMail",required=false) String artistMail, @RequestParam(name = "artistPassword",required=false) String artistPassword) {

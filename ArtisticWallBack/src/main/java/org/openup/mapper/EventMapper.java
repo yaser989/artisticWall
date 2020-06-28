@@ -5,6 +5,10 @@ import org.openup.entity.Address;
 import org.openup.entity.Event;
 import org.springframework.stereotype.Component;
 
+/*
+ * EventMapper to map entity event with eventDto
+ */
+
 @Component
 public class EventMapper {
 

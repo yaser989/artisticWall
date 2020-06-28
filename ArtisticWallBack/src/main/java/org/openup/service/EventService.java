@@ -37,6 +37,13 @@ public class EventService {
 	@Autowired
 	private EventMapper eventMapper;
 	
+	
+	/*
+	 * find All it's to to get all event  
+	 *   and map it with the class eventDto
+	 */
+	
+	
 	public List<EventDto> findAll(){
 		List<EventDto> listEventDto = new ArrayList<>();
 		List<Event> listEvent = eventRepository.findAll();
@@ -45,6 +52,12 @@ public class EventService {
 		}
 		return listEventDto;
 	}
+	
+	/*
+	 * find All event created  artist by id 
+	 *   and map it with the class eventDto
+	 */
+	
 	
 	public List<EventDto> findAllArtistEventById(Long id){
 		List<EventDto> listEventDto = new ArrayList<>();
@@ -73,6 +86,13 @@ public class EventService {
 		return  listEventDto;
 	}
 	
+	
+	
+	/*
+	 * find event by id 
+	 *   and map it with the class eventDto
+	 */
+	
 	public EventDto findEventById(Long id) {
 	EventDto eventDto = new EventDto();
 	
@@ -94,6 +114,10 @@ public class EventService {
 		return eventDto;
 	}
 	
+	/*
+	 * find event by concert
+	 *   and map it with the class eventDto
+	 */
 	
 	public List< EventDto> findEventbyConcert() {
 		List<EventDto> listEventDto = new ArrayList<>();
@@ -103,6 +127,13 @@ public class EventService {
 		}
 		return listEventDto;
 	}
+	
+	/*
+	 * find event by show
+	 *   and map it with the class eventDto
+	 */
+	
+	
 	public List< EventDto> findEventbyShow() {
 		List<EventDto> listEventDto = new ArrayList<>();
 		List<Event> listEvent = eventRepository.findBySharedAndTypeEvent(true,"Show");
@@ -111,6 +142,13 @@ public class EventService {
 		}
 		return listEventDto;
 	}
+	
+	/*
+	 * find event by audition 
+	 *   and map it with the class eventDto
+	 */
+	
+	
 	public List< EventDto> findEventbyAudition() {
 		List<EventDto> listEventDto = new ArrayList<>();
 		List<Event> listEvent = eventRepository.findBySharedAndTypeEvent(true,"Audition");
@@ -120,6 +158,10 @@ public class EventService {
 		return listEventDto;
 	}
 	
+	/*
+	 * create new event  
+	 *   and map it with the class eventDto
+	 */
 	
 	public EventDto createNewEvent(EventDto eventDto , Long id) {
 		Address address = Address.builder().common(eventDto.getCommonDto()).street(eventDto.getStreetDto())
@@ -160,6 +202,11 @@ public class EventService {
 
 	}
 	
+	/*
+	 * delete event by id 
+	 *   and map it with the class eventDto
+	 */
+	
 	public EventDto deleteEvent(Long id) {
 	EventDto eventDto = new EventDto();
 	
@@ -173,6 +220,12 @@ public class EventService {
 		  eventDto.setIdEvent(event.getId());
 		 return eventDto;
 	}
+	
+	
+	/*
+	 * update  event by id 
+	 *   and map it with the class eventDto
+	 */
 	
 	public EventDto updateEvent (Long id, EventDto eventDto) {
 
@@ -206,7 +259,7 @@ public class EventService {
 	        event.getAddress().setStreet(address.getStreet());
 	        event.getAddress().setZipCode(address.getZipCode());
 	        event.getAddress().setDate(date);
-//	        event.setPhoto(null);
+
 	  Event saveEvent =    eventRepository.save(event);
 	 
 	  eventDto.setIdEvent(saveEvent.getId());
@@ -216,6 +269,11 @@ public class EventService {
 		return eventDto;
 	}
 	
+	
+	/*
+	 * share event by id 
+	 *   and map it with the class eventDto
+	 */
 	
 	public EventDto shareEvent (Long id , boolean isShared) {
 		EventDto eventDto = new EventDto();

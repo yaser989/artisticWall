@@ -34,6 +34,11 @@ public class ArtistService {
 	 private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
 
+	/*
+	 * find All it's to to get all the artist 
+	 *   and map it with the class artistDto
+	 */
+	
 	public List<ArtistDto> findAll() {
 		List<ArtistDto> listArtistDto = new ArrayList();
         List<Artist> listArtist = artistRepository.findAll();
@@ -45,6 +50,11 @@ public class ArtistService {
 	
 	
 
+	/*
+	 * find All it's to to get all the artist by id 
+	 *   and map it with the class artistDto
+	 */
+	
 	public ArtistDto findById(Long id) {
 	ArtistDto artistDto = new ArtistDto();
 	
@@ -72,6 +82,13 @@ public class ArtistService {
 	}
 		return artistDto;
 	}
+	
+	/*
+	 * create new artist 
+	 * and we put by default the ROLE_USER
+	 * and encode the password 
+	 */
+	
 
 	public Artist createNewArtist(ArtistDto artistDto) {
 		ArtistDomain artistDomain= ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();
@@ -88,6 +105,11 @@ public class ArtistService {
 		return artistRepository.save(toPersist);
 	}
 
+	/*
+	 * Login by mail and password 
+	 */
+	
+	
 	public ArtistDto login(String mail, String password) {
 		
 		Artist authenticatedArtist = artistRepository.findByMail(mail);
@@ -104,6 +126,11 @@ public class ArtistService {
 	
 	    	return artistDto;
 	}
+	
+	/*
+	 * update artist by id 
+	 */
+	
 	
 	public ArtistDto updatArtist(Long id , ArtistDto artistDto) {
 		ArtistDomain artistDomain= ArtistDomain.builder().domain(artistDto.getArtistDomain()).build();

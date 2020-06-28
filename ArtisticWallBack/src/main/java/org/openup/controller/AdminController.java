@@ -26,23 +26,39 @@ public class AdminController {
 	
 	@Autowired
 	private EventService eventService;
-//	 @PreAuthorize(value ="hasRole('ADMIN')")
+
+	/*
+	 * admin find all event 
+	 */
+	
 	@GetMapping("/")
 	public ResponseEntity findAll() {	
 				
 		return ResponseEntity.ok(adminServise.finAll());
 	}
 	
+	/*
+	 * admin find by id of event 
+	 */
+	
 	@GetMapping("/findByID/{idEvent}")
 	public ResponseEntity findEventById(@PathVariable(name = "idEvent")Long idEvent) {
 		return ResponseEntity.ok(adminServise.findByID(idEvent));
 	}
+	
+	/*
+	 * delete by id
+	 */
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity deleteEvent(@PathVariable(name="id") Long id) {
 		adminServise.deleteEvent(id);
 		return ResponseEntity.ok("Event removed with success");
 	}
+	
+	/*
+	 * update by id
+	 */
 	
 	@PutMapping("/update/{idEvent}")
 	public ResponseEntity updateEvent(@PathVariable(name="idEvent") Long idEvent, @RequestBody AdminDto adminDto) {

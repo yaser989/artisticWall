@@ -41,6 +41,13 @@ public class AdminServise {
 	private AdminMapper adminMapper;
 	
 	
+	/*
+	 * find All it's to to get all the event
+	 * created with the info of the artist how created   
+	 *   and map it with the class admintDto
+	 */
+	
+	
 	public List<AdminDto> finAll(){
 		
 		List<AdminDto> listAdmintDto = new ArrayList();
@@ -52,7 +59,10 @@ public class AdminServise {
 	}
 	
 	
-
+	/*
+	 * delete event 
+	 */
+	
 	public AdminDto deleteEvent(Long id) {
 		AdminDto adminDto = new AdminDto();
 		
@@ -67,7 +77,10 @@ public class AdminServise {
 			 return adminDto;
 		}
 	
-
+	/*
+	 * update event by id 
+	 */
+	
 	public AdminDto updateEvent (Long id, AdminDto adminDto) {
 
 		Address address = Address.builder().common(adminDto.getCommonDto()).street(adminDto.getStreetDto())
@@ -126,6 +139,12 @@ public class AdminServise {
 	
 		return adminDto;
 	}
+	
+	/*
+	 * find All it's to to get all event by id 
+	 *   and map it with the class adminDto
+	 */
+	
 	
 	public AdminDto findByID (Long id) {
 		AdminDto adminDto = new AdminDto();
