@@ -95,7 +95,7 @@ public class ArtistController {
 		    System.out.println("Your account has been deactivated successfully.");
 		      return ResponseEntity.ok(artistService.login(artistMail, artistPassword));
 		}
-		 
+		 System.out.println("no ok");
         return ResponseEntity.badRequest().body("Email or Password is incorrect");
   
     }

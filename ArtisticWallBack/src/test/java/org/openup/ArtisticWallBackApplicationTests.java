@@ -155,11 +155,11 @@ class ArtisticWallBackApplicationTests {
 		Role role = new Role();
 		role.setRoleName("ROLE_ADMIN");
 		artist.setName("mari");
-		artist.setLastName("test2");
+		artist.setLastName("mar");
 		artist.setMail("mari@gmail.com");
 		artist.setArtistDomain(domain);
 		artist.setRole(role);
-		artist.setPassword("1234555");
+		artist.setPassword("mari1234");
   
        artistDto.setArtistDomain(domain.getDomain());
        artistDto.setArtistLastName(artist.getLastName());
